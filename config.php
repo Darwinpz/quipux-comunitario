@@ -40,7 +40,7 @@ $usuario = "postgres";
 $contrasena= "postgres"; 
 $servidor = "127.0.0.1:5432";
 $driver = "postgres";
-$db = "quipux_comunidad";
+$db = "quipux_transaccional";
 
 $usuario_bodega = "postgres";
 $contrasena_bodega = "postgres";
