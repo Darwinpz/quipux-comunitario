@@ -102,7 +102,7 @@ if (!$orderTipo) {
     $pager->toRefVars = $encabezado;
     $pager->descCarpetasGen=$descCarpetasGen;
     $pager->descCarpetasPer=$descCarpetasPer;
-    $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+    $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 //    $db->query('set enable_nestloop = on');
 ?>
   </body>

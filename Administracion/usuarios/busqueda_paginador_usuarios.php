@@ -53,7 +53,7 @@ if ($txt_reporte!=1){
     $pager->toRefVars = $encabezado;
     $pager->descCarpetasGen=$descCarpetasGen;
     $pager->descCarpetasPer=$descCarpetasPer;
-    $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+    $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 }else{
      $rs_paginador=$db->conn->query($sql);
      include "busqueda_reporte_manual_usuarios_exportar.php";

@@ -217,7 +217,7 @@ function regresar(){
 	$pager->toRefVars = $encabezado;
 	$pager->checkAll = true;
 	$pager->checkTitulo = true;
-	$pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+	$pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 ?>
 <input type='hidden' name=depsel value='<?=$depsel?>'>
 </form>

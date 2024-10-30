@@ -1011,7 +1011,7 @@ elseif ($codTx!=9){
         $pager->toRefVars = $encabezado;
         $pager->checkAll = true;
         $pager->checkTitulo = false;
-        $pager->Render($rows_per_page=200,$linkPagina,$checkbox=chkAnulados);
+        $pager->Render($rows_per_page=200,$linkPagina,$checkbox="chkAnulados");
 
 ?>
     </form>

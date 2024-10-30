@@ -518,7 +518,7 @@ if ($accion==1) {
             $pager->toRefVars = "";
             $pager->checkAll = true;
             $pager->checkTitulo = false;
-            $pager->Render($rows_per_page=50,$linkPagina,$checkbox=chkAnulados);
+            $pager->Render($rows_per_page=50,$linkPagina,$checkbox="chkAnulados");
 ?>
             <center>
             <div id="div_datos_registro_civil" style="width: 100%;"></div>

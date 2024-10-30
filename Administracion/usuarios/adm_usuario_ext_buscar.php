@@ -65,7 +65,7 @@ if (!$orderNo) $orderNo = 1;
 	$pager->toRefVars = $encabezado;
 	$pager->descCarpetasGen=$descCarpetasGen;
 	$pager->descCarpetasPer=$descCarpetasPer;
-	$pager->Render($rows_per_page=30,$linkPagina,$checkbox=chkAnulados);
+	$pager->Render($rows_per_page=30,$linkPagina,$checkbox="chkAnulados");
 
 
 ?>

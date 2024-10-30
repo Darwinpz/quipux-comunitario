@@ -123,7 +123,7 @@ if (trim($firma) != "")
         $pager->toRefVars = $encabezado;
         $pager->checkAll = false;
         $pager->checkTitulo = false;
-        $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+        $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 ?>
     </form>
     <iframe  name="ifr_descargar_archivo" id="ifr_descargar_archivo" style="display: none" src="">

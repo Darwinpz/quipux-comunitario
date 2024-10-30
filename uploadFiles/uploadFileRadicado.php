@@ -100,7 +100,7 @@ if(trim($busq_radicados_tmp)!="" or trim($imprimir)!="si")
     $pager->toRefVars = $encabezado;
     $pager->descCarpetasGen=$descCarpetasGen;
     $pager->descCarpetasPer=$descCarpetasPer;
-    $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+    $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 }
 ?>
 </FORM>

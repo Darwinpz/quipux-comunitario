@@ -234,7 +234,7 @@ include_once "$ruta_raiz/rec_session.php";
             $pager->toRefVars = "";
             $pager->checkAll = true;
             $pager->checkTitulo = false;
-            $pager->Render($rows_per_page=50,$linkPagina,$checkbox=chkAnulados);
+            $pager->Render($rows_per_page=50,$linkPagina,$checkbox="chkAnulados");
 ?>
             <br />
             <center>

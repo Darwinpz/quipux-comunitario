@@ -55,7 +55,7 @@ switch ($txt_tipo_busqueda) {
         $pager->descCarpetasGen=$descCarpetasGen;
         $pager->descCarpetasPer=$descCarpetasPer;
         $db->conn->pageExecuteCountRows=false;
-        $pager->Render($rows_per_page=30,$linkPagina,$checkbox=chkAnulados);
+        $pager->Render($rows_per_page=30,$linkPagina,$checkbox="chkAnulados");
     } else {
         $rs_paginador=$db->conn->query($isql2);
         include "busqueda_generar_paginador.php";

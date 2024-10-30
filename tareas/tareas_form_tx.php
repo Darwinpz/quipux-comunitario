@@ -403,7 +403,7 @@ require_once "$ruta_raiz/js/ajax.js";
         $pager->toRefVars = $encabezado;
         $pager->checkAll = true;
         $pager->checkTitulo = false;
-        $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+        $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
         echo "</div>";
 ?>
     </form>

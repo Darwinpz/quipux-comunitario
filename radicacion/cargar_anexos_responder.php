@@ -36,7 +36,7 @@ $pager->toRefLinks = $linkPagina;
 $pager->toRefVars = $encabezado;
 $pager->descCarpetasGen=$descCarpetasGen;
 $pager->descCarpetasPer=$descCarpetasPer;
-$pager->Render($rows_per_page=30,$linkPagina,$checkbox=chkAnulados);
+$pager->Render($rows_per_page=30,$linkPagina,$checkbox="chkAnulados");
 
 //echo "<script> parent.leftFrame.cambiar_contador('$carpeta','$pager->num_rows'); </script>";
 

@@ -66,7 +66,7 @@ print $rs->GetMenu('depe_sel','Seleccion Dependencia');
 	$db->debug = true;
 $pager = new ADODB_Pager($db,$isql,'adodb', true,$order_no,$order_tipo);
 $to_ref_order = "paginador.php?order_tipo=$order_tipo&order_no=";
-$pager->Render($rows_per_page=35,$to_ref_order,$checkbox=chkAnulados);
+$pager->Render($rows_per_page=35,$to_ref_order,$checkbox="chkAnulados");
 	$e = ADODB_Pear_Error();
 	echo '<p>',$e->message,'</p>';
 

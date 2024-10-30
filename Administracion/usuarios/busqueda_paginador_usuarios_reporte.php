@@ -55,7 +55,7 @@ if ($txt_reporte==0){
     $pager->toRefVars = $encabezado;
     $pager->descCarpetasGen=$descCarpetasGen;
     $pager->descCarpetasPer=$descCarpetasPer;
-    $pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+    $pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 }else{
     $tipoReporte="utilSistemaReporte";
     include "$ruta_raiz/include/query/administracion/queryCuerpoUsuarioReportes.php";

@@ -94,7 +94,7 @@ $orderNo   = $_GET['orderNo'];
 	$pager->toRefLinks = $linkPagina;
 	$pager->toRefVars = $encabezado;
 
-	$pager->Render($rows_per_page=20,$linkPagina,$checkbox=chkAnulados);
+	$pager->Render($rows_per_page=20,$linkPagina,$checkbox="chkAnulados");
 
 //$Rs_clta->Close();
 ?>
