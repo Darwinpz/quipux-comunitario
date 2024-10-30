@@ -268,7 +268,7 @@ if ($flag) {
                 /**
                 * Inicia nueva session
                 **/
-                session_id(str_replace(".","o",$_SERVER['REMOTE_ADDR'])."o$krd"."o".time("His")."o$appID");
+                session_id(str_replace(".","o",$_SERVER['REMOTE_ADDR'])."o$krd"."o".date("His")."o$appID");
                 session_id();
                 session_start();
 
