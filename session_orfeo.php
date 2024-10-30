@@ -33,7 +33,7 @@ if (str_replace("/","",str_replace(".","",$ruta_raiz))!="")
     die ("<br/><center><font size='6' color='red'><b>HA SIDO DETECTADO UN INTENTO DE VIOLACI&Oacute;N DE LAS SEGURIDADES DEL SISTEMA<br/>SU N&Uacute;MERO IP SER&Aacute; BLOQUEDO PERMANENTEMENTE</b></font>");
 include_once ("$ruta_raiz/include/db/ConnectionHandler.php");
 include_once ("$ruta_raiz/config.php");
-include_once ("$ruta_raiz/config_replicacion.php");
+//include_once ("$ruta_raiz/config_replicacion.php");
 
 error_reporting(7);
 $db = new ConnectionHandler("$ruta_raiz");
