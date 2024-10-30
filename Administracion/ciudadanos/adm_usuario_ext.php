@@ -42,7 +42,7 @@ $ciud = New Ciudadano($db);
 
 $accion_btn_aceptar = "setTime(ValidarInformacion());";
 
-$cod_impresion=0+limpiar_sql($_GET['cod_impresion']);//viene del NEW.php
+$cod_impresion= 0 + (int) limpiar_sql($_GET['cod_impresion']);//viene del NEW.php
 
 if ($cod_impresion==1)
     $cerrar='Si';

@@ -57,17 +57,17 @@ $txt_categoria = limpiar_sql($_POST["txt_categoria"]);
 $txt_tipificacion = limpiar_sql($_POST["txt_tipificacion"]);
 $txt_campo_metadato = limpiar_sql($_POST["txt_campo_metadato"]);
 //tipo: de para copia
-$txt_de_para_copia = 0+limpiar_sql($_POST["txt_de_para_copia"]);
+$txt_de_para_copia = 0+ (int) limpiar_sql($_POST["txt_de_para_copia"]);
 if (!isset($_POST["txt_de_para_copia"]))
     $txt_de_para_copia=1;
 //id_destinatario
-$txt_usua_destinatario_h = 0+limpiar_sql($_POST["txt_usua_destinatario_h"]);
+$txt_usua_destinatario_h = 0+ (int) limpiar_sql($_POST["txt_usua_destinatario_h"]);
 
-$txt_de_para_ex = 0+limpiar_sql($_POST["txt_de_para_ex"]);
+$txt_de_para_ex = 0+ (int) limpiar_sql($_POST["txt_de_para_ex"]);
 if (!isset($_POST["txt_de_para_ex"]))
     $txt_de_para_ex=2;
 $txt_usua_para = limpiar_sql($_POST["txt_usua_para"]);
-$txt_usua_para_h = 0+limpiar_sql($_POST["txt_usua_para_h"]);
+$txt_usua_para_h = 0+ (int) limpiar_sql($_POST["txt_usua_para_h"]);
 
 
 //institucion

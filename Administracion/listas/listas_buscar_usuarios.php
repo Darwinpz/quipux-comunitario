@@ -23,9 +23,9 @@ include_once "$ruta_raiz/rec_session.php";
 
 $buscar_nombre = trim(limpiar_sql($_POST["txt_buscar_nombre"]));
 $buscar_cargo = trim(limpiar_sql($_POST["txt_buscar_cargo"]));
-$buscar_tipo_usuario = 0 + $_POST["txt_buscar_tipo_usuario"];
-$buscar_dependencia = 0 + $_POST["txt_buscar_dependencia"];
-$buscar_institucion = 0 + $_POST["txt_buscar_institucion"];
+$buscar_tipo_usuario = 0 + (int) $_POST["txt_buscar_tipo_usuario"];
+$buscar_dependencia = 0 + (int) $_POST["txt_buscar_dependencia"];
+$buscar_institucion = 0 + (int) $_POST["txt_buscar_institucion"];
 $lista_usuarios = "";
 
 ?>
