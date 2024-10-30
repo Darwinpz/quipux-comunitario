@@ -38,7 +38,7 @@ No se ofrece ninguna garantía sobre el programa de ninguna clase, expresa o imp
 
 Remplace por su dominio o ip local
 
-
+* cp example.config_title.php config_title.php
 * cp example.config.php config.php
 * cp html_a_pdf/example.config.php html_a_pdf/config.php
 * cp html_a_pdf/example.html_a_pdf.wsdl html_a_pdf/html_a_pdf.wsdl
