@@ -32,8 +32,8 @@ include_once "$ruta_raiz/rec_session.php";
 include_once "../ciudadanos/util_ciudadano.php";
 $ciud = New Ciudadano($db);
 
-    $_POST["new_codigo"] = 0 + $_POST["new_codigo"];
-    $_POST["old_codigo"] = 0 + $_POST["old_codigo"];    
+    $_POST["new_codigo"] = 0 + (int) $_POST["new_codigo"];
+    $_POST["old_codigo"] = 0 + (int) $_POST["old_codigo"];    
 if (isset($_POST["new_cedula"])) { //Creacion de ciudadanos
     $flag_comparar = false;
     $new_cedula     = limpiar_sql($_POST["new_cedula"]);
