@@ -156,7 +156,7 @@ switch($_GET['de'])
                     <tr>
                     <td valign="middle" width="10%">
                         <div id="menu" class="menu"><a href="javascript:;" title="Exportar áreas a pdf" onclick="imprimirAreas();">Exportar &Aacute;reas a pdf</a>
-                            <?php echo obtenerAreas(0+$_GET['var'], $db);?>
+                            <?php echo obtenerAreas(0+ (int) $_GET['var'], $db);?>
                         </div>
                     </td>
                     </tr>

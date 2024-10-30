@@ -23,8 +23,8 @@ require_once "$ruta_raiz/rec_session.php";
 if (isset ($replicacion) && $replicacion && $config_db_replica_adm_validar_usuario_multiple!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_adm_validar_usuario_multiple);
 
 $usr_cedula = trim(limpiar_sql($_POST['cedula']));
-$usr_codigo = 0 + $_POST['usr_codigo'];
-$usr_tipo = 0 + $_POST['usr_tipo'];
+$usr_codigo = 0 + (int) $_POST['usr_codigo'];
+$usr_tipo = 0 + (int) $_POST['usr_tipo'];
 
 $sql = "select --Administracion/usuarios/validar_datos_usuario_multiple - usr=".$_SESSION['usua_codi']."
             case when tipo_usuario='2' then '<i>(Ciu.)</i>' else '<i>(Serv.)</i>' end as \"Tipo\"
