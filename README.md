@@ -34,6 +34,9 @@ No se ofrece ninguna garantía sobre el programa de ninguna clase, expresa o imp
 * php-pgsql
 * html2ps
 
+# Opcional - LAMMP SERVER - XAMMP
+* https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/7.4.9/
+
 # Configuraciones adicionales
 
 Remplace por su dominio o ip local
