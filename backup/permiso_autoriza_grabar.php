@@ -22,10 +22,6 @@
   include_once "$ruta_raiz/rec_session.php";
   require_once("$ruta_raiz/funciones.php");
   include_once "$ruta_raiz/funciones_interfaz.php";
-
-  //TODO: Verificar si otros usuarios deberian poder acceder a esta funcionalidad y agregarlos a esta validacion
-    if($_SESSION["usua_admin_sistema"]!=1) die("");
-
   echo "<html>".html_head();
 
   $dependencia = $_POST['dependencia'];

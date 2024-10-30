@@ -22,19 +22,13 @@
 **   - Recibidos: documentos recibidos por el usuario, reasignados e informados al usuario **
 **                                                                                         **
 ** Desarrollado por:                                                                       **
-**      Mauricio Haro A. -                                                                 **
-** SGE-Mintel                                                                              **          
-**      David Gamboa. - josedavo@gmail.com - afinando querys en base de datos              ** 
-**      Postgres                                                                           **
-**      Seguridades                                                                        **
+**      Mauricio Haro A. - mauricioharo21@gmail.com                                        **
+* Ultimos cambios realizados por la Subsecretaría de gobierno electrónico
+* David Gamboa
 ********************************************************************************************/
 
 $ruta_raiz= "..";
 include_once ("$ruta_raiz/config.php");
-
-if ($_SERVER['PHP_AUTH_USER'] != $authUser && $_SERVER['PHP_AUTH_PW'] != $authPassword)
-    die('permissions not supported');
-
 include_once ("$ruta_raiz/include/db/ConnectionHandler.php");
 include_once ("$ruta_raiz/funciones.php");
 
@@ -42,10 +36,7 @@ $db = new ConnectionHandler("$ruta_raiz");
 $db->conn->SetFetchMode(ADODB_FETCH_ASSOC);
 
 
-//$respaldo = limpiar_sql($_POST["txt_resp_codi"]);
-$respaldo = limpiar_numero($_POST["txt_resp_codi"]);
-$respaldo = (int) $respaldo;
-
+$respaldo = limpiar_sql($_POST["txt_resp_codi"]);
 $sql = "select usua_codi from respaldo_usuario where resp_codi=$respaldo";
 $rs = $db->query($sql);
 if (!$rs) die ("OK");

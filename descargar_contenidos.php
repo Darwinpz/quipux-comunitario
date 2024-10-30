@@ -20,17 +20,12 @@
 session_start();
 $ruta_raiz = ".";
 include_once "$ruta_raiz/rec_session.php";
-require_once "$ruta_raiz/config.php";
 
 /**
  * Permite descargar los archivos en formato .pdf
 **/
 
 $path_arch = $_GET["archivo"];
-
-//lista blanca
-$white_list=array($path_acuerdo);
-if(!in_array($path_arch,$white_list)){exit();}
 
 header("Content-Disposition: attachment; filename=\"$path_arch\"\n");
 header("Content-type: ".get_mime_tipe($archivo));

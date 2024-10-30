@@ -58,10 +58,8 @@ echo "<html>".html_head();
         foreach ($_POST['checkValue'] as $radi_nume => $chk) {
             if (trim($radi_nume)!="") {
                 $flag = validar_transacciones($codTx, $radi_nume, $db);
-                if ($flag == "") {
-                    if(!is_numeric($radi_nume)){continue;}
+                if ($flag == "")
                     $whereFiltro .= ",$radi_nume";
-                }
                 else
                     $mensaje_error .= $flag;
             }

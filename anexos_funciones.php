@@ -67,7 +67,7 @@ for($i=1;$i<=10;$i++)
 }
 
 if ($flag_error) echo "<script>alert('No se pudo subir el archivo.\\nPor favor verifique el tamaño del mismo.');</script>";
-$nurad=intval($nurad);
+
 $var_envio="$ruta_raiz/verradicado.php?verrad=$nurad&menu_ver=2";
 
 ?>

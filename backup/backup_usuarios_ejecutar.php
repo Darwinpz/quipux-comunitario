@@ -22,41 +22,13 @@
 ** llamando a backup_usuarios_cargar_documentos.php utilizando Ajax                 **
 **                                                                                  **
 ** Desarrollado por:                                                                **
-**      Mauricio Haro A. -                                                          **
-** SGE-Mintel                                                                       **
-**      David Gamboa. - josedavo@gmail.com - afinando querys en base de datos       ** 
-**      Postgres                                                                    **
-**      Seguridades                                                                 **
+**      Mauricio Haro A. - mauricioharo21@gmail.com                                 **
+* Ultimos cambios realizados por la Subsecretaría de gobierno electrónico
+* David Gamboa
 *************************************************************************************/
 
 $ruta_raiz = "..";
 include "$ruta_raiz/config.php";
-include_once "$ruta_raiz/funciones_interfaz.php";
-if (isset($nombre_servidor_respaldos) && $nombre_servidor!=$nombre_servidor_respaldos)
-    session_id ($_GET["id_sess"]);
-
- if ($_SERVER['PHP_AUTH_USER']!=$authUser)
-    destroy_foo();
-$AUTH_USER = $authUser;
-$AUTH_PASS = $authPassword;
-header('Cache-Control: no-cache, must-revalidate, max-age=0');
-$has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
-$is_not_authenticated = (
-    !$has_supplied_credentials ||
-    $_SERVER['PHP_AUTH_USER'] != $AUTH_USER ||
-    $_SERVER['PHP_AUTH_PW']   != $AUTH_PASS
-);
-if ($is_not_authenticated) {
-    destroy_foo();
-    header('HTTP/1.1 401 Authorization Required');
-    header('WWW-Authenticate: Basic realm="Access denied"');
-    die('permissions not supported');
-    exit;
-}else{
-    $_SERVER['PHP_AUTH_USER'] = $AUTH_USER;
-    $_SERVER['PHP_AUTH_PW'] = $AUTH_PASS;
-}
-
 
 if (isset($nombre_servidor_respaldos) && $nombre_servidor!=$nombre_servidor_respaldos)
     session_id ($_GET["id_sess"]);

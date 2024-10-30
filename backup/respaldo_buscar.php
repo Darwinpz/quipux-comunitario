@@ -20,8 +20,6 @@
   $ruta_raiz = "..";
   session_start();
   include_once "$ruta_raiz/rec_session.php";
-  include_once "$ruta_raiz/config.php";
-  
   if (isset ($replicacion) && $replicacion && $config_db_replica_adm_busqueda_paginador_usuarios!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_adm_busqueda_paginador_usuarios);
 
   include_once "respaldo_funciones.php";

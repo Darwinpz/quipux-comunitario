@@ -4,15 +4,9 @@
  * and open the template in the editor.
  */
 $ruta_raiz = "..";
-include_once "$ruta_raiz/config.php";
-
-if ($_SERVER['PHP_AUTH_USER'] != $authUser && $_SERVER['PHP_AUTH_PW'] != $authPassword)
-    die('permissions not supported');
-
 $output = array();
-$output = shell_exec("df -h $ruta_raiz/bodega/respaldos");
-
-$output = explode("Mounted on",$output);
+exec("df -h $ruta_raiz/bodega/respaldos", $output);
+//var_dump($output);
 
 echo '<table class="borde_tab" border="0" cellpadding="0" cellspacing="3">
           <tr><td colspan="4" align="center"><b>Espacio Disponible en Disco</b></td></tr>';

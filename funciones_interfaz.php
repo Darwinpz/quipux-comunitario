@@ -258,12 +258,4 @@ function dibujarDiv($ruta_raiz,$nom_div,$numeroCaracteresTexto){
                     .' caracteres </div>';
      return $html;
 }
-
-function destroy_foo() {
-    if(isset($_SERVER['PHP_AUTH_USER']))
-        unset($_SERVER['PHP_AUTH_USER']);       
-
-    if (isset($_SERVER['PHP_AUTH_PW']))
-        unset($_SERVER['PHP_AUTH_PW']);
-}
 ?>

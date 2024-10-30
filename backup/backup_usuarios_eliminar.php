@@ -20,26 +20,18 @@
 ** Permite eliminar los respaldos ya finalizados o en ejecución                     **
 **                                                                                  **
 ** Desarrollado por:                                                                **
-**      Mauricio Haro A. -                                                          **
-** SGE-Mintel                                                                       **
-**      David Gamboa. - josedavo@gmail.com - afinando querys en base de datos       ** 
-**      Postgres                                                                    **
-**      Seguridades                                                                 **  
+**      Mauricio Haro A. - mauricioharo21@gmail.com                                 **
+* Ultimos cambios realizados por la Subsecretaría de gobierno electrónico
+* David Gamboa
 *************************************************************************************/
 
 $ruta_raiz = "..";
 session_start();
-include_once "$ruta_raiz/config.php";
-
-
 include_once "$ruta_raiz/rec_session.php";
 require_once "$ruta_raiz/funciones.php"; //para traer funciones p_get y p_post
 
-//$resp_codi = limpiar_sql($_POST["txt_resp_codi"]);
-//$resp_codi = 0 + $resp_codi;
+$resp_codi = limpiar_sql($_POST["txt_resp_codi"]);
 
-$resp_codi = limpiar_numero($_POST["txt_resp_codi"]);
-$resp_codi = (int) $resp_codi;
 
 $sql = "select coalesce(fecha_fin::text,'NO') as \"fecha_fin\" from respaldo_usuario where resp_codi=$resp_codi";
 $rs = $db->query($sql);
@@ -47,17 +39,13 @@ $rs = $db->query($sql);
 $path = "$ruta_raiz/bodega/respaldos/respaldo_$resp_codi";
 
 if (trim($rs->fields["FECHA_FIN"]) == "NO") {
-    if (is_dir($path)) rmdir($path);//shell_exec("rm -rf $path");
+    if (is_dir($path)) exec("rm -rf $path");
     $sql = "delete from respaldo_usuario_radicado where resp_codi=$resp_codi";
     $db->query($sql);
 } else {
 //    unlink ("$path.zip");
-    $path = trim ($path);
-    if (is_dir($path)){
-        shell_exec("rm -f $path.z*");
-        shell_exec("rm -R $path");
-    }
-
+    exec("rm -f $path.z*");
+    exec("rm -R $path");
 
     $sql = "delete from respaldo_usuario_radicado where resp_codi=$resp_codi";
     $db->query($sql);

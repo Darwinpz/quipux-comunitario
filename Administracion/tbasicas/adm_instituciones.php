@@ -49,14 +49,10 @@ if (isset($_POST['btn_accion'])) {
 	$record['INST_ESTADO'] = "1";
         if($_POST['chkCoordinador'] == '') $_POST['chkCoordinador'] = '0';
         $record['INST_COORDINADOR'] = $db->conn->qstr(limpiar_sql($_POST['chkCoordinador']));
-	    $record['INST_TELEFONO'] = $db->conn->qstr(limpiar_sql(strtoupper($_POST['txtTelefono'])));
+	$record['INST_TELEFONO'] = $db->conn->qstr(limpiar_sql(strtoupper($_POST['txtTelefono'])));
         $record['INST_EMAIL'] = $db->conn->qstr(limpiar_sql($_POST['txtCorreo']));//no se guarda con mayusculas
         $record['INST_DESPEDIDA_OFI'] = $db->conn->qstr(limpiar_sql(strtoupper($_POST['txtDespedidaOfi'])));
         $arch_logo = $_FILES["arch_logo"]['tmp_name'];
-        if(strpos(mime_content_type($arch_logo),"image")===false){die("El archivo no es una imagen");}
-            $white_list_ext=array("png","jpg","");
-            if(!in_array($_POST['txtExt'],$white_list_ext)){
-                die("Archivo con una extensi&oacute;n no permitida " . $_POST["txtExt"]);}
 	if (trim($arch_logo!="")) {
 	    $path_arch = "/bodega/logos/$txt_id_inst.".limpiar_sql($_POST['txtExt']);
 	    $record['INST_LOGO'] = $db->conn->qstr($path_arch);

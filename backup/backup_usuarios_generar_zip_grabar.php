@@ -24,18 +24,13 @@
 ** entregarlo al usuario.                                                             **
 **                                                                                    **
 ** Desarrollado por:                                                                  **
-**      Mauricio Haro A. -                                                            **
+**      Mauricio Haro A. - mauricioharo21@gmail.com                                   **
 * Ultimos cambios realizados por la Subsecretaría de gobierno electrónico
 * David Gamboa
 ***************************************************************************************/
 
 $ruta_raiz= "..";
 include_once "$ruta_raiz/config.php";
-
-if ($_SERVER['PHP_AUTH_USER'] != $authUser && $_SERVER['PHP_AUTH_PW'] != $authPassword)
-    die('permissions not supported');
-
-
 include_once "$ruta_raiz/include/db/ConnectionHandler.php";
 include_once "$ruta_raiz/funciones.php";
 include_once "$ruta_raiz/obtenerdatos.php";
@@ -46,15 +41,7 @@ $db = new ConnectionHandler("$ruta_raiz");
 $db->conn->SetFetchMode(ADODB_FETCH_ASSOC);
 
 try {
-    //$resp_codi=limpiar_sql($_POST["txt_resp_codi"]);
-     if (!isset($_POST["txt_resp_codi"]))
-    $resp_codi = 0;
-    else
-   // $resp_codi = 0 + limpiar_sql($_POST["txt_resp_codi"]);
-   $resp_codi = (int) limpiar_numero($_POST["txt_resp_codi"]);
-    if ($resp_codi == 0)
-    die("Error file zip");
-
+    $resp_codi=limpiar_sql($_POST["txt_resp_codi"]);
 
     $sql = "select count(resp_codi) as \"num\" from respaldo_usuario_radicado where fila is null and resp_codi=$resp_codi";
     $rs = $db->query($sql);

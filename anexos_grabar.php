@@ -26,8 +26,6 @@ if (str_replace("/","",str_replace(".","",$ruta_raiz))!="")
     $ok = 0; //Error
 //Fecha del anexo
     $anex_fecha = $db->conn->sysTimeStamp;
-    if(!is_numeric($numrad)){
-        die("Ataque detectado");}
 //Numero de anexo
     $rs = $db->query("select coalesce(max(anex_numero),0) as num from anexos where anex_radi_nume=$numrad");
     $anex_numero = $rs->fields["NUM"] + 1;

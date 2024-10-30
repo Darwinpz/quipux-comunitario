@@ -34,7 +34,6 @@ if (str_replace("/","",str_replace(".","",$ruta_raiz))!="")
 include_once ("$ruta_raiz/include/db/ConnectionHandler.php");
 include_once ("$ruta_raiz/config.php");
 include_once ("$ruta_raiz/config_replicacion.php");
-
 error_reporting(7);
 $db = new ConnectionHandler("$ruta_raiz");
 $db->conn->SetFetchMode(ADODB_FETCH_ASSOC);
@@ -269,7 +268,6 @@ if ($flag) {
                 * Inicia nueva session
                 **/
                 session_id(str_replace(".","o",$_SERVER['REMOTE_ADDR'])."o$krd"."o".time("His")."o$appID");
-                session_id();
                 session_start();
 
                 if (!$dependencia) $dependencia=0;
