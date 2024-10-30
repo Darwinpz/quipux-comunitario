@@ -83,7 +83,7 @@ $cuenta_mail_soporte = "soporte@dominio.com";
 $cuenta_mail_envio = "recordatorio@dominio.com";
 
 // Configuración para la conexión con otros servidores adicionales
-$nombre_servidor="http://127.0.0.1/quipux";
+$nombre_servidor="http://127.0.0.1/quipux-comunitario";
 $nombre_servidor_reportes = $nombre_servidor; // en caso que los reportes se lo quiera enviar a un servidor diferente
 $nombre_servidor_respaldos = $nombre_servidor; // en caso que los respaldos se requiera sacar en un servidor diferente
 
@@ -91,7 +91,7 @@ $servidor_firma = "http://nombre_servidor_firma_electronica";
 
 $servidor_viajes = "http://nombre_servidor_viajes";
 
-$servidor_pdf = "http://127.0.0.1/html_a_pdf";
+$servidor_pdf = "http://127.0.0.1/quipux-comunitario/html_a_pdf";
 
 
 //Numero Meses en Reportes

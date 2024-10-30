@@ -1,6 +1,6 @@
 <?php
-$institucionSigla="institucionSigla";
-$institucionNombre="institucionNombre";
+$institucionSigla="INSTBMV";
+$institucionNombre="Instituto Tecnológico Bolivar Madero Vargas";
 $banner1 = "imagenes/index/banner_fijo_index.png";
 $banner2 = "imagenes/index/banner_fijo_index.png";
 $linkBanner1 = "";
