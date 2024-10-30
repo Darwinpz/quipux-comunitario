@@ -158,13 +158,13 @@ $queryLimit = 200;
                     select ciu_nombre, ciu_codigo,ciu_cedula,ciu_email,sol_estado from 
                datos_solicitud as s
                                where ";
-                            if($opc == a)//rechazado
+                            if($opc == "a")//rechazado
                             $sql .=  ' sol_estado = 0';
-                            else if($opc == c)//Enviado
+                            else if($opc == "c")//Enviado
                             $sql .=  ' sol_estado = 2';
-                            else if($opc == d)//autorizado
+                            else if($opc == "d")//autorizado
                             $sql .=  ' sol_estado = 3';
-                            else if($opc == e)//todos
+                            else if($opc == "e")//todos
                             $sql .=  ' (sol_estado = 0 or sol_estado = 2 or sol_estado = 3)';
       
                             if ($buscar_nom!="") 
