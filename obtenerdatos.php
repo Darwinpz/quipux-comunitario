@@ -634,7 +634,7 @@ function ObtenerDatosOpcImpresionSobre($radiNumeRadi,$usuaCodi,$db){
             elseif ($tipo=="D") {
                 $lista_usr = $rs->fields["RADI_USUA_DEST"];
                 foreach (explode("-", $rs->fields["RADI_LISTA_DEST"]) as $tmp) {
-                    if ((0 + $tmp) > 0) {
+                    if ((0 + (int) $tmp) > 0) {
                         $datosLista = ObtenerDatosLista($tmp,$db);
                         $lista_nombre .= $datosLista['nombre'] . "<br>";
                     }
