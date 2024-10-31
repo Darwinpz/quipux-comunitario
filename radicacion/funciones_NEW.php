@@ -102,7 +102,7 @@
         else
             $rad->radi_lista_dest = $radi_lista_dest;
         $rad->ocultar_recorrido = (isset($_POST["chk_ocultar_recorrido"])) ? "1" : "0";
-        $rad->usua_redirigido = 0+trim($_POST["txt_usua_redirigido"]);     // Categoría
+        $rad->usua_redirigido = 0+ (int) trim($_POST["txt_usua_redirigido"]);     // Categoría
 
 
         if ($ent == 1) { //Si es documento de salida

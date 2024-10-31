@@ -642,7 +642,7 @@ class GenerarDocumento {
 
     function cargar_lineas_especiales_con_copia() {
         $this->lineas_especiales["cca"] = "";
-        if (count($this->con_copia) == 0) return;
+        if (!is_array($this->con_copia) || count($this->con_copia) == 0) return;
 
         $cca = "";
         for ($i=0; $i<count($this->con_copia); ++$i) {
