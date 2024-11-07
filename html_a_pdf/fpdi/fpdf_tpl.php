@@ -240,12 +240,12 @@ class FPDF_TPL extends FPDF {
     /**
      * See FPDF/TCPDF-Documentation ;-)
      */
-    function Image($file, $x, $y, $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300) {
+    function Image($file, $x, $y, $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='') {
         if (!is_subclass_of($this, 'TCPDF') && func_num_args() > 7) {
             $this->Error('More than 7 arguments for the Image method are only available in TCPDF.');
         }
         
-        parent::Image($file, $x, $y, $w, $h, $type, $link, $align, $resize, $dpi);
+        parent::Image($file, $x, $y, $w, $h, $type, $link, $align, $resize, $dpi, $palign);
         if ($this->_intpl) {
             $this->_res['tpl'][$this->tpl]['images'][$file] =& $this->images[$file];
         } else {
@@ -267,10 +267,10 @@ class FPDF_TPL extends FPDF {
     /**
      * Preserve adding Links in Templates ...won't work
      */
-    function Link($x, $y, $w, $h, $link) {
+    function Link($x, $y, $w, $h, $link, $spaces = 0) {
         if ($this->_intpl)
             $this->Error('Using links in templates aren\'t possible!');
-        parent::Link($x, $y, $w, $h, $link);
+        parent::Link($x, $y, $w, $h, $link, $spaces);
     }
     
     function AddLink() {

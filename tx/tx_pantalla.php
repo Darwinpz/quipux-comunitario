@@ -317,7 +317,7 @@ include_once "$ruta_raiz/obtenerdatos.php";
         var fechaSeleccionada = document.getElementById('tx_fecha_tramite').value;
         var fechavalida = document.getElementById('txt_valida_fecha').value;
         if (fechavalida==1)
-        if(<?=(0+$carpeta)?> == 15 || <?=(0+$carpeta)?> == 16) //Validamos fechas solo si la tarea va a ser creada desde la bandeja de "Tareas Recibidas"
+        if(<?=(0+ (int) $carpeta)?> == 15 || <?=(0+ (int) $carpeta)?> == 16) //Validamos fechas solo si la tarea va a ser creada desde la bandeja de "Tareas Recibidas"
             if(validarFechas(fechaSeleccionada, fechaMaximaTarea)==2)
             //if (validarFechas(fechaSeleccionada,fechaMaximaFinal)==2)
             {

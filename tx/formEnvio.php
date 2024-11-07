@@ -890,7 +890,7 @@ if ($codTx==9){
                     <span id="spn_numero_caracteres_disponibles"></span>
                 </td>
             </tr>           
-                <? if(sizeof($radiNumeAsociados) > 0){?>                
+                <? if( is_array(radiNumeAsociados) && sizeof($radiNumeAsociados) > 0) { ?>                
                 <tr>
                      <td  colspan="2" align='center'>
                         <input type="checkbox" name="chk_reasigna_padre" id="chk_reasigna_padre" value="0" />¿Desea reasignar los documentos antecedentes?                        

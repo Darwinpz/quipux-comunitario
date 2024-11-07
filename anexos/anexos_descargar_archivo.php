@@ -24,10 +24,10 @@ $db_bodega = new ConnectionHandler($ruta_raiz,"bodega");
 
 $radi_nume = trim(limpiar_numero($_GET["radi_nume"]));
 $anex_codigo = trim(limpiar_sql($_GET["anex_codigo"]));
-$arch_tipo = 0 + $_GET["arch_tipo"];
+$arch_tipo = 0 + (int) $_GET["arch_tipo"];
 $tipo_descarga = substr(trim(limpiar_sql($_GET["tipo_descarga"])),0,10); //download, embeded
 
-grabar_log_descargar_archivo ($db, $radi_nume, $anex_codigo, $arch_tipo, $tipo_descarga);
+grabar_log_descargar_archivo($db, $radi_nume, $anex_codigo, $arch_tipo, $tipo_descarga);
 
 if ($anex_codigo == "" and $radi_nume == "")
     die("<script>alert('Lo sentimos, no se encontró el archivo solicitado.');</script>");
@@ -40,7 +40,7 @@ if ($anex_codigo != "") {
     // Formateamos el nombre del archivo
     $arch_nombre = str_replace(" ", "_", strtolower($rs_arch->fields["ANEX_NOMBRE"]));
     $arch_path   = trim($rs_arch->fields["ANEX_PATH"]);
-    $arch_codi   = 0+$rs_arch->fields["ARCH_CODI_FIRMA"];
+    $arch_codi   = 0+ (int) $rs_arch->fields["ARCH_CODI_FIRMA"];
     $radi_nume   = $rs_arch->fields["ANEX_RADI_NUME"];
 
     //obtenemos la extensión del archivo
@@ -56,7 +56,7 @@ if ($anex_codigo != "") {
         $arch_nombre = str_ireplace(".p7m", "", $arch_nombre);
         $arch_path   = str_ireplace(".p7m", "", $arch_path);
         $arch_ext    = str_ireplace(".p7m", "", $arch_ext);
-        $arch_codi   = 0 + $rs_arch->fields["ARCH_CODI"];
+        $arch_codi   = 0 + (int) $rs_arch->fields["ARCH_CODI"];
     }
 } else {
     // Verificamos si exite el anexo
@@ -69,17 +69,17 @@ if ($anex_codigo != "") {
     $arch_ext = trim(substr ($arch_path, 0+strpos($arch_path, ".")));
     if ($arch_ext == "") $arch_ext = ".pdf.p7m";
     $arch_nombre     = str_replace(" ", "_", $rs_arch->fields["RADI_NUME_TEXT"]).$arch_ext;
-    $arch_codi_firma = 0+$rs_arch->fields["ARCH_CODI_FIRMA"];
-    $arch_codi       = 0+$rs_arch->fields["ARCH_CODI_FIRMA"];
+    $arch_codi_firma = 0+ (int) $rs_arch->fields["ARCH_CODI_FIRMA"];
+    $arch_codi       = 0+ (int) $rs_arch->fields["ARCH_CODI_FIRMA"];
     if ($arch_tipo==0) {
         $arch_nombre = str_ireplace(".p7m", "", $arch_nombre);
         $arch_path   = str_ireplace(".p7m", "", $arch_path);
         $arch_ext    = str_ireplace(".p7m", "", $arch_ext);
-        $arch_codi   = 0 + $rs_arch->fields["ARCH_CODI"];
+        $arch_codi   = 0 + (int) $rs_arch->fields["ARCH_CODI"];
     }
     if ($arch_path=="" and $arch_codi==0 and $arch_codi_firma==0) {
         include_once "$ruta_raiz/plantillas/generar_documento.php";
-        $doc = New GenerarDocumento($db);
+        $doc = new GenerarDocumento($db);
         $arch_path = $doc->GenerarPDF($radi_nume);
         if (substr($arch_path, 0 , 1) != "/") {
             $arch_codi = $arch_path;
@@ -162,7 +162,7 @@ if (substr($tipo_descarga,0,7) == "embeded") {
 }
 
 // Registramos el usuario que descargo el archivo en un log
-function grabar_log_descargar_archivo ($db, $radi_nume, $anex_codigo, $arch_tipo=0, $tipo_descarga="") {
+function grabar_log_descargar_archivo($db, $radi_nume, $anex_codigo, $arch_tipo=0, $tipo_descarga="") {
     if (isset ($grabar_log)) unset ($grabar_log);
     $grabar_log["usua_codi"] = $_SESSION["usua_codi"];
     $grabar_log["fecha"] = "now()";

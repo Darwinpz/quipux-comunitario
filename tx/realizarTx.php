@@ -382,7 +382,7 @@ if($okTx== -1)  $okTxDesc = " NO ";
                 <td class="listado2"><?=join("<BR> ",$radicadosText)?></td>
             </tr>
 
-            <?php if (sizeof($radiAsociadosText) > 0){  ?>
+            <?php if (is_array($radiAsociadosText) && sizeof($radiAsociadosText) > 0) { ?>
             <tr>
                 <td align="right" class="titulos2">DOCUMENTO (S) ANTECEDENTES:</td>
                 <td class="listado2"><?=join("<BR> ",$radiAsociadosText)?></td>

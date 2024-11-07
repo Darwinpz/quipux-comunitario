@@ -40,7 +40,7 @@ $usuario = "postgres";
 $contrasena= "postgres"; 
 $servidor = "127.0.0.1:5432";
 $driver = "postgres";
-$db = "quipux_transaccional";
+$db = "quipux_comunidad";
 
 $usuario_bodega = "postgres";
 $contrasena_bodega = "postgres";
@@ -63,7 +63,7 @@ $db_busqueda = "quipux_replica";
 $appID = 'appID';
 
 //Path en donde se guardan los archivos que anexa el ciudadano para petición de uso de QUIPUX con firma digital
-$path_ciudadanos = "/var/www/quipux/bodega/ciudadanos";
+$path_ciudadanos = "/var/www/html/quipux-comunitario/bodega/ciudadanos";
 
 //Logs y Mensajes de la aplicacion
 //Muestra en pantalla los queries que se ejecutan en la bdd; 0 no muestra ningun mensaje, 1 muestra los errores, 2 muestra todos
