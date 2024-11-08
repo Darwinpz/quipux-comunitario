@@ -52,6 +52,11 @@ Crear dos bases de datos (transacional y documental), descargue los scripts desd
 
 https://minka.gob.ec/quipux-comunitario/scripts_data
 
+# Carpeta Bodega
+* /plantillas chmod 777
+* /ciudadanos
+* /tmp chmod 777
+* /logos
 
 # Requerimientos de Hardware
 * Almacenamiento de base de datos anual.
@@ -81,6 +86,6 @@ Edite el archivo include/tx/Tx.php
 
 CONSUMO DE SERVICIO WEB RES, la url es proporcionada de firma
 
-$urlws = "http://segun la configuracion del servicio de firma";
+$urlws = "http://segun_la_configuracion_del_servicio_de_firma";
 
 

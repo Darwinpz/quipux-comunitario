@@ -19,7 +19,7 @@
 
 // Archivo de configuracion del sistema QUIPUX
 
-// Se recomienda OCULTAR las contraseñas y datos importantes como se explica en el archivo ".env".
+// Las contraseñas y datos importantes se ocultan en un archivo ".env".
 
 // Archivo con algunas configuraciones de términos usados en el sistema
 $FILE_LOCAL = getenv('FILE_LOCAL');
