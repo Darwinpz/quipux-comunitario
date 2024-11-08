@@ -65,7 +65,7 @@ session_start();
 include_once "$ruta_raiz/rec_session.php";
 include_once "$ruta_raiz/funciones_interfaz.php";
 
-if($_SESSION["usua_perm_backup"]!=1) {
+if($_SESSION["usua_perm_backup"]==1) {
     echo html_error("Lo sentimos, usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
     die("");
 }

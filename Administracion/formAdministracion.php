@@ -91,6 +91,7 @@ echo "<html>".html_head();
             echo dibujar_opcion_menu("catalogos/ciudad.php", "Ciudad", "Opci&oacute;n para administrar las ciudades");
             echo dibujar_opcion_menu("catalogos/titulo_usuario.php", "Título Acad&eacute;mico", "Opci&oacute;n para administrar los títulos académicos");
             echo dibujar_opcion_menu("catalogos/contenido.php", "Administración de Contenidos", "Opci&oacute;n para administrar los contenidos del sistema");
+            echo dibujar_opcion_menu("$ruta_raiz/backup/backup_usuarios_menu.php", "Ejecutar Respaldo de Documentos", "Opci&oacute;n para ejecutar el respaldo de documentos de las solicitudes de usuario.");
             if(date("m")==1 and date("d")==1)
                 echo dibujar_opcion_menu("confirmar_inicio_secuencias();", "Inicializar Secuencias para el a&ntilde;o ". date("Y"), "Opci&oacute;n para inicializar secuencias al comenzar un nuevo a&ntilde;o", true);
         }
