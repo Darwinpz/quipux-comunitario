@@ -1,4 +1,4 @@
 <?php
-	$nombre_servidor = "http://127.0.0.1/quipux-comunitario/html_a_pdf";
-    $tipo_sistema = "Produccion";
+	$nombre_servidor = getenv('servidor_pdf');
+    $tipo_sistema = getenv('tipo_sistema');
 ?>

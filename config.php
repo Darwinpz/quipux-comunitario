@@ -19,101 +19,97 @@
 
 // Archivo de configuracion del sistema QUIPUX
 
-// Se recomienda OCULTAR las contraseñas y datos importantes como se explica en el archivo "config_recomendacion_seguridad.php".
+// Se recomienda OCULTAR las contraseñas y datos importantes como se explica en el archivo ".env".
 
 // Archivo con algunas configuraciones de términos usados en el sistema
-$FILE_LOCAL = "localEcuador.php";
+$FILE_LOCAL = getenv('FILE_LOCAL');
 
 // Activa la funcionalidad para bloquear el sistema;
 // Se lo debe activar cuando se programe un bloqueo del sistema para disminuir las consultas a la BDD
-$activar_bloqueo_sistema = false;
+$activar_bloqueo_sistema = getenv('activar_bloqueo_sistema');
 
 //Mejora algunos queries y bloquea algunas funcionalidades para reducir la carga a los servidores
-$version_light=false;
-$config_numero_meses = 60;
-$numeroCaracteresTexto = 0;
-$config_bloquear_acceso_ciudadano = false;
-
+$version_light = getenv('version_light');
+$config_numero_meses = getenv('config_numero_meses');
+$numeroCaracteresTexto = getenv('numeroCaracteresTexto');
+$config_bloquear_acceso_ciudadano = getenv('config_bloquear_acceso_ciudadano');
 
 // Configuracion de la conexion con la BDD
-$usuario = "postgres";
-$contrasena= "postgres"; 
-$servidor = "127.0.0.1:5432";
-$driver = "postgres";
-$db = "quipux_comunidad";
+$usuario = getenv('usuario');
+$contrasena= getenv('contrasena'); 
+$servidor = getenv('servidor');
+$driver = getenv('driver');
+$db = getenv('db');
 
-$usuario_bodega = "postgres";
-$contrasena_bodega = "postgres";
-$servidor_bodega = "127.0.0.1:5432";
-$db_bodega = "quipux_combodega";
+$usuario_bodega = getenv('usuario_bodega');
+$contrasena_bodega = getenv('contrasena_bodega');
+$servidor_bodega = getenv('servidor_bodega');
+$db_bodega = getenv('db_bodega');
 
 // Indica si se manejan replicas o conexiones con otras BDD
-$replicacion = false;
+$replicacion = getenv('replicacion');
 
 // Se definen las mismas variables que en la configuracion por defecto, seguidas por un guion bajo y un nombre que la distinga
 // Para utilizar esta funcionalidad se debe enviar el nombre utilizado en las variables como parametro al crear la conexion
 // Si se desea se puede ocultar los datos de la conexion en variables del servidor, como en el caso anterior
-$usuario_busqueda = "postgres";
-$contrasena_busqueda = "postgres";
-$servidor_busqueda = "127.0.0.1:5432";
-$db_busqueda = "quipux_replica";
+$usuario_busqueda = getenv('usuario_busqueda');
+$contrasena_busqueda = getenv('contrasena_busqueda');
+$servidor_busqueda = getenv('servidor_busqueda');
+$db_busqueda = getenv('db_busqueda');
 
 
 //Codigo de aplicacion (en caso de que se manejen varios servidores para distribución de carga)
-$appID = 'appID';
+$appID = getenv('appID');
 
 //Path en donde se guardan los archivos que anexa el ciudadano para petición de uso de QUIPUX con firma digital
-$path_ciudadanos = "/var/www/html/quipux-comunitario/bodega/ciudadanos";
+$path_ciudadanos = getenv('path_ciudadanos');
 
 //Logs y Mensajes de la aplicacion
 //Muestra en pantalla los queries que se ejecutan en la bdd; 0 no muestra ningun mensaje, 1 muestra los errores, 2 muestra todos
-$mostrar_logs = 0;
+$mostrar_logs = getenv('mostrar_logs');
 // Graba en la tabla logs de la bdd los queries (inserts y updates) mas importantes ejecutados; 0 no graba nada, 1 graba los errores, 2 graba todos
-$grabar_logs = 2;
+$grabar_logs = getenv('grabar_logs');
 // Graba en una tabla de logs la página invocada y el IP que la invocó (para identificar posibles ataques desde páginas externas o desde páginas de orfeo...)
-$grabar_log_paginas_visitadas = false;
-$grabar_log_full_backup = false;
-
+$grabar_log_paginas_visitadas = getenv('grabar_log_paginas_visitadas');
+$grabar_log_full_backup = getenv('grabar_log_full_backup');
 
 //Email del Super Administrador del Sistema QUIPUX
-$amd_email = "administrador@dominio.com";
+$amd_email = getenv('amd_email');
 // email de la cuenta de soporte
-$cuenta_mail_soporte = "soporte@dominio.com";
+$cuenta_mail_soporte = getenv('cuenta_mail_soporte');
 // email de la cuenta desde la que se enviarán los recordatorios a los usuarios
-$cuenta_mail_envio = "recordatorio@dominio.com";
+$cuenta_mail_envio = getenv('cuenta_mail_envio');
 
 // Configuración para la conexión con otros servidores adicionales
-$nombre_servidor="http://127.0.0.1/quipux-comunitario";
-$nombre_servidor_reportes = $nombre_servidor; // en caso que los reportes se lo quiera enviar a un servidor diferente
-$nombre_servidor_respaldos = $nombre_servidor; // en caso que los respaldos se requiera sacar en un servidor diferente
+$nombre_servidor = getenv('nombre_servidor');
+$nombre_servidor_reportes = getenv('nombre_servidor_reportes'); // en caso que los reportes se lo quiera enviar a un servidor diferente
+$nombre_servidor_respaldos = getenv('nombre_servidor_respaldos'); // en caso que los respaldos se requiera sacar en un servidor diferente
 
-$servidor_firma = "http://nombre_servidor_firma_electronica";
-
-$servidor_viajes = "http://nombre_servidor_viajes";
-
-$servidor_pdf = "http://127.0.0.1/quipux-comunitario/html_a_pdf";
-
+$servidor_firma = getenv('servidor_firma');
+$servidor_viajes = getenv('servidor_viajes');
+$servidor_pdf = getenv('servidor_pdf');
 
 //Numero Meses en Reportes
-$numeroMeses = 60;
+$numeroMeses = getenv('numeroMeses');
 //path de descarga del archivo
-$path_acuerdo = "http://www.informatica.gob.ec/index.php/component/docman/doc_download/57-acuerdo-de-uso/Acuerdo de Uso.odt";
+$path_acuerdo = getenv('path_acuerdo');
 //Acceso para Institución de Ciudadanos
-$acceso_ciudadano_inst = 1;
+$acceso_ciudadano_inst = getenv('acceso_ciudadano_inst');
 //Tipo de Documentos de Ciudadanos
-$tipo_doc_ciudadano = "7";
+$tipo_doc_ciudadano = getenv('tipo_doc_ciudadano');
 //Número de días de vigencia para descarga de archivos de respaldos
-$dias_descarga = 15;
+$dias_descarga = getenv('dias_descarga');
 //Correo para recibir notificaciones de respaldos para soporte
-$cuenta_mail_respaldo = "respaldo@informatica.gob.ec";
-$versionEstable = 25;//version de firefox menores a 17 es soportada
-$api_key_token="appquipux";
-$swEnvioArchivoFirmaConfig = "https://impws.firmadigital.gob.ec/servicio/documentos";
+$cuenta_mail_respaldo = getenv('cuenta_mail_respaldo');
+$versionEstable = getenv('versionEstable');//version de firefox menores a 17 es soportada
+$api_key_token = getenv('$api_key_token');
+$swEnvioArchivoFirmaConfig = getenv('swEnvioArchivoFirmaConfig');
 //Determina posición tamano y ambiente Solo para ambiente de pruebas debe estar en 1
 //Posición de la firma al pie
-$centrado = 260;
-$derecha = 419;
-$izquierda = 100;
-$parametrosFirmaConfig = "&llx=$centrado&lly=91&estampado=QR&razon=firmado desde $nombre_servidor";
+$centrado = getenv('centrado');
+$derecha = getenv('derecha');
+$izquierda = getenv('izquierda');
+$parametrosFirmaConfig = getenv('parametrosFirmaConfig');
 $parametrosFirmaConfig = rawurlencode($parametrosFirmaConfig);
+
 ?>
