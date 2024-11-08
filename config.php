@@ -20,7 +20,7 @@
 // Archivo de configuracion del sistema QUIPUX
 
 // Las contraseñas y datos importantes se ocultan en un archivo ".env".
-
+require_once 'cargar_env.php';
 // Archivo con algunas configuraciones de términos usados en el sistema
 $FILE_LOCAL = getenv('FILE_LOCAL');
 
