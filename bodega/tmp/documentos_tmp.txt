@@ -1,0 +1,1 @@
+Debe tener todos los permisos, aquí se almacena los archivos temporales
