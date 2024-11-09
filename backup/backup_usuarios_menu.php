@@ -23,7 +23,7 @@
 
 $ruta_raiz = "..";
 session_start();
-if($_SESSION["usua_perm_backup"]!=1) die("");
+if($_SESSION["usua_perm_backup"]==1) die("");
 include_once "$ruta_raiz/rec_session.php";
 
 include_once "$ruta_raiz/funciones_interfaz.php";
