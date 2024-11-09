@@ -36,3 +36,4 @@ function cargarVariablesDeEntorno($rutaArchivoEnv) {
 
 // Llama a la función para cargar las variables de entorno
 cargarVariablesDeEntorno(__DIR__.'/.env');
+?>
