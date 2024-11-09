@@ -106,7 +106,7 @@ if($orden_cambio==1) {
             left outer join respaldo_solicitud s on r.resp_codi=s.resp_codi";
     $isql .= " where r.fecha_solicita between '$txt_fecha_inicio_sol 00:00:00' and '$txt_fecha_fin_sol 23:59:59' 
              $where";
-    $isql .= " order by ".($orderNo+1)." $orderTipo";
+    $isql .= " order by ".((int)$orderNo+1)." $orderTipo";
 
 //echo "$isql";
 //    $db->query('set enable_nestloop = off');
