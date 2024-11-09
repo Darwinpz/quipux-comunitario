@@ -57,6 +57,8 @@ $contrasena_busqueda = getenv('contrasena_busqueda');
 $servidor_busqueda = getenv('servidor_busqueda');
 $db_busqueda = getenv('db_busqueda');
 
+$authUser = getenv('authUser');
+$authPassword = getenv('authPassword');
 
 //Codigo de aplicacion (en caso de que se manejen varios servidores para distribución de carga)
 $appID = getenv('appID');
@@ -88,6 +90,7 @@ $nombre_servidor_respaldos = getenv('nombre_servidor_respaldos'); // en caso que
 $servidor_firma = getenv('servidor_firma');
 $servidor_viajes = getenv('servidor_viajes');
 $servidor_pdf = getenv('servidor_pdf');
+$tipo_sistema = getenv('tipo_sistema');
 
 //Numero Meses en Reportes
 $numeroMeses = getenv('numeroMeses');
