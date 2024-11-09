@@ -1,6 +1,6 @@
 <?php
-$institucionSigla="INSTBMV";
-$institucionNombre="Instituto Tecnológico Bolivar Madero Vargas";
+$institucionSigla="GOB";
+$institucionNombre="Gobierno de la Ciudad de la República del Ecuador";
 $banner1 = "imagenes/index/banner_fijo_index.png";
 $banner2 = "imagenes/index/banner_fijo_index.png";
 $linkBanner1 = "";
