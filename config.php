@@ -105,7 +105,7 @@ $dias_descarga = getenv('dias_descarga');
 //Correo para recibir notificaciones de respaldos para soporte
 $cuenta_mail_respaldo = getenv('cuenta_mail_respaldo');
 $versionEstable = getenv('versionEstable');//version de firefox menores a 17 es soportada
-$api_key_token = getenv('$api_key_token');
+$api_key_token = getenv('api_key_token');
 $swEnvioArchivoFirmaConfig = getenv('swEnvioArchivoFirmaConfig');
 //Determina posición tamano y ambiente Solo para ambiente de pruebas debe estar en 1
 //Posición de la firma al pie
