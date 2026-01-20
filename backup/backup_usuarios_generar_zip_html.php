@@ -124,7 +124,7 @@ function cargar_top($respaldo) {
             <table width='100%' cellpadding='0' cellspacing='0' border='0'>
               <tr>
                 <td width='20%' valign='center' align='left'><img src='../archivos/logo.png'  height='70' width='100' alt='Salir'></td>
-                <td width='60%' valign='center' align='center'><h2>Gobierno Nacional de la Rep&uacute;blica del Ecuador</h2></td>
+                <td width='60%' valign='center' align='center'><h2>Instituto Superior Tecnológico Bolivar Madero Vargas</h2></td>
                 <td width='20%' valign='center' align='right'></td>
               </tr>
             </table>
