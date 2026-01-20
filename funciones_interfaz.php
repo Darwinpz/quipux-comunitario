@@ -115,7 +115,7 @@ function html_encabezado () {
     $texto = "<div id='header'><div class='shad-r'><div class='shad-l'><div class='moduletable'>
                 <table width='100%' cellpadding='0' cellspacing='0' >
                     <tr>
-                        <td width='18%'><img alt='Escudo' src='$ruta_raiz/imagenes/logo_ing2.png' height='80' width='150'></td>
+                        <td width='18%'><img alt='Escudo' src='$ruta_raiz/imagenes/logo_ing2.png' height='70' width='200'></td>
                         <td width='52%'><h2>Instituto Superior Tecnológico Bolivar Madero Vargas</h2></td>
                         <td  width='30%'><div id='nav-big'>
                            <ul><table align='right'>
