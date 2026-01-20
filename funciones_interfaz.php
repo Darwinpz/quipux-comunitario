@@ -143,8 +143,7 @@ function html_pie_pagina () {
                     <tr>
                         <td align='center'>
                             <center>
-                                <h3>Subsecretar&iacute;a de Gobierno Electr&oacute;nico y Registro Civil
-                                - Ministerio de Telecomunicaciones y de la Sociedad de la Información</h3>
+                                <h3>Sistema de Gestión Documental - Instituto Superior Tecnológico Bolivar Madero Vargas</h3>
                             </center>
                         </td>
                     </tr>
