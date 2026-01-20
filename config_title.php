@@ -1,11 +1,11 @@
 <?php
-$institucionSigla="GOB";
-$institucionNombre="Gobierno de la Ciudad de la República del Ecuador";
+$institucionSigla="BMV";
+$institucionNombre="Instituto Superior Tecnológico Bolivar Madero Vargas";
 $banner1 = "imagenes/index/banner_fijo_index.png";
-$banner2 = "imagenes/index/banner_fijo_index.png";
+$banner2 = "imagenes/index/banner_fijo_index2.png";
 $linkBanner1 = "";
 $nombreLinkBanner1 = "";
 $linkBanner2 = "";
 $nombreLinkBanner2 = "";
-$footerText = "footerText";
+$footerText = "Sistema Documental Bolivar Madero Vargas 2026";
 ?>

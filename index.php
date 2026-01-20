@@ -135,13 +135,13 @@ include_once "$ruta_raiz/config_title.php";
   </div>
   <div class="col-sm-4">
     <div class="well">
-      <p>Some text..</p>
+      <p>Gestión documental eficiente y segura para la organización, almacenamiento y consulta de documentos institucionales, optimizando los procesos administrativos y académicos del Instituto Superior Tecnológico Bolívar Madero Vargas.</p>
     </div>
     <div class="well">
-       <p>Upcoming Events..</p>
+       <p>Eventos y avisos institucionales donde podrás mantenerte informado sobre capacitaciones, reuniones, actividades académicas y comunicados importantes del instituto.</p>
     </div>
     <div class="well">
-       <p>Visit Our Blog</p>
+       <p>Noticias y novedades institucionales con información actualizada, comunicados oficiales, normativas y logros relevantes para toda la comunidad educativa.</p>
     </div>
   </div>
 </div>

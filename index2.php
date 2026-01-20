@@ -91,10 +91,10 @@ echo html_validar_browser(); /*Valida el browser*/
 ?>
 <html>
     <head>
-        <title>Quipux - Sistema de Gestión Documental</title>
+        <title>BMV - Sistema de Gestión Documental</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="description" content="Quipux Sistema de Gestión Documental" />
-        <meta name="keywords" content="Quipux, gobierno del Ecuador, Ecuador, Gobierno Nacional de la República del Ecuador"/>
+        <meta name="description" content="BMV Sistema de Gestión Documental" />
+        <meta name="keywords" content="BMV, Instituto Superior Tecnológico Bolivar Madero Vargas"/>
         <link rel="stylesheet" href="estilos/style.css" type="text/css" media="screen"/>     
         <!-- Persiana JavaScript -->
         <script type="text/javascript" src="js/jquery.min.js"></script>
