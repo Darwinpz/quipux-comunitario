@@ -68,7 +68,7 @@ include_once "$ruta_raiz/config_title.php";
       <ul class="nav navbar-nav">
       
         <li class="active"> <div style="position:absolute; margin-top:-15px" >
-      <a class="navbar-brand" href="#"><img src='imagenes/logo_ing2.png' width='120' height='45'></a>
+      <a class="navbar-brand" href="#"><img src='imagenes/logo_ing2.png' width='145' height='45'></a>
       </div>
      
       </li>
