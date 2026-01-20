@@ -116,7 +116,7 @@ function html_encabezado () {
                 <table width='100%' cellpadding='0' cellspacing='0' >
                     <tr>
                         <td width='18%'><img alt='Escudo' src='$ruta_raiz/imagenes/logo_ing2.png' height='80' width='150'></td>
-                        <td width='52%'><h2>Gobierno Nacional de la Rep&uacute;blica del Ecuador</h2></td>
+                        <td width='52%'><h2>Instituto Superior Tecnológico Bolivar Madero Vargas</h2></td>
                         <td  width='30%'><div id='nav-big'>
                            <ul><table align='right'>
                                 <tr><td><li class='active_menu'><a href='' class='b6' onclick='ver_ayuda()'></a></li></td></tr>

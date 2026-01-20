@@ -27,8 +27,8 @@ if (session_id())
 <TR align="center" valign="top"><TD >
 <table>
 <TR align="center" valign="top"><TD >
-    <h1>Gobierno Nacional de la Rep&uacute;blica del Ecuador</h1>
-    <h1>Sistema de Gesti&oacute;n Documental -     QUIPUX</h1>
+    <h1>Instituto Superior Tecnológico Bolivar Madero Vargas</h1>
+    <h1>Sistema de Gesti&oacute;n Documental - QUIPUX</h1>
     </TD></TR>
 <tr align="center">
 	<td height="150px"><h3>
