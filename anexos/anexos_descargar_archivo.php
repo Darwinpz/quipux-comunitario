@@ -20,6 +20,13 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Headers anti-caché para evitar que el navegador cachee versiones antiguas de archivos
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+header('Expires: 0');
+
 $ruta_raiz = "..";
 include_once "$ruta_raiz/rec_session.php";
 $db_bodega = new ConnectionHandler($ruta_raiz,"bodega");
@@ -122,7 +129,8 @@ if (substr($tipo_descarga,0,7) == "embeded") {
 //            $url = "data:$mime;base64," . $rs_bodega->fields["ARCHIVO"];
 //        }
 //    } else {
-        $url = $arch_path;
+        // Agregar cache buster para evitar que el navegador cachee versiones antiguas del PDF
+        $url = $arch_path . (strpos($arch_path, '?') !== false ? '&' : '?') . 'v=' . time();
 //    }
     switch (substr($arch_nombre,-3)) {
         case "pdf":

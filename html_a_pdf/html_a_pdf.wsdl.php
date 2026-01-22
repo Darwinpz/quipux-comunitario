@@ -2,6 +2,12 @@
 // Configurar el header para que se interprete como XML
 header('Content-Type: text/xml; charset=utf-8');
 
+// Headers anti-caché para evitar que el navegador cachee el WSDL
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+header('Expires: 0');
+
 // Detectar automáticamente el servidor y protocolo
 $protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
