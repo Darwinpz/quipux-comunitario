@@ -715,7 +715,12 @@ class GenerarDocumento {
         include $this->ruta_raiz."/config.php";
         require_once $this->ruta_raiz."/interconexion/generar_pdf.php";
 
-        $pdf = ws_generar_pdf_base64($this->documento_html, $this->plantilla_documento, $servidor_pdf, $this->registro_padre["estado"], $this->numero_documento, $this->fecha_documento, $this->registro_padre["ajust_texto"], $this->formato_pdf);
+        // Construir URL del servidor PDF automáticamente
+        $protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'];
+        $servidor_pdf_auto = "$protocolo://$host" . dirname(dirname($_SERVER['SCRIPT_NAME'])) . "/html_a_pdf";
+
+        $pdf = ws_generar_pdf_base64($this->documento_html, $this->plantilla_documento, $servidor_pdf_auto, $this->registro_padre["estado"], $this->numero_documento, $this->fecha_documento, $this->registro_padre["ajust_texto"], $this->formato_pdf);
         if ($pdf == "0") return;
 
         if (in_array($this->registro["estado"],array(1,3,4,7))) { // si es temporal
