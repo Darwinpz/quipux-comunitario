@@ -24,9 +24,12 @@ function ws_generar_pdf_base64($html, $plantilla, $servidor, $estado="", $numDoc
         }
         $oSoap = new SoapClient("$wsdl",array("trace" => 1, "exceptions" => 0));
 
+        // Si hay plantilla PDF, enviar HTML vacío para evitar conflicto
+        $htmlToSend = ($archivo != "") ? "" : base64_encode($html);
+
         $envioDatos=$oSoap->__soapcall('html_a_pdf',
             array(
-              new SoapParam(base64_encode($html), "set_html"),
+              new SoapParam($htmlToSend, "set_html"),
               new SoapParam($archivo, "set_pdf"),
               new SoapParam($estado, "set_estado"),
               new SoapParam($numDocu, "set_num_docu"),
@@ -138,9 +141,12 @@ function ws_generar_pdf($html, $plantilla, $servidor, $estado="", $numDocu="", $
         }
         $oSoap = new SoapClient("$wsdl",array("trace" => 1, "exceptions" => 0));
 
+        // Si hay plantilla PDF, enviar HTML vacío para evitar conflicto
+        $htmlToSend = ($archivo != "") ? "" : base64_encode($html);
+
         $envioDatos=$oSoap->__soapcall('html_a_pdf',
             array(
-              new SoapParam(base64_encode($html), "set_html"),
+              new SoapParam($htmlToSend, "set_html"),
               new SoapParam($archivo, "set_pdf"),
               new SoapParam($estado, "set_estado"),
               new SoapParam($numDocu, "set_num_docu"),
