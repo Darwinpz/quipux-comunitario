@@ -718,7 +718,12 @@ class GenerarDocumento {
         // Construir URL del servidor PDF automáticamente
         $protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
         $host = $_SERVER['HTTP_HOST'];
-        $servidor_pdf_auto = "$protocolo://$host" . dirname(dirname($_SERVER['SCRIPT_NAME'])) . "/html_a_pdf";
+        $base_path = dirname(dirname($_SERVER['SCRIPT_NAME']));
+        // Normalizar la ruta para evitar barras duplicadas
+        if ($base_path == '/' || $base_path == '\\') {
+            $base_path = '';
+        }
+        $servidor_pdf_auto = "$protocolo://$host$base_path/html_a_pdf";
 
         $pdf = ws_generar_pdf_base64($this->documento_html, $this->plantilla_documento, $servidor_pdf_auto, $this->registro_padre["estado"], $this->numero_documento, $this->fecha_documento, $this->registro_padre["ajust_texto"], $this->formato_pdf);
         if ($pdf == "0") return;
