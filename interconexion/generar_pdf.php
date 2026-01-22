@@ -53,7 +53,13 @@ function ws_generar_pdf_base64($html, $plantilla, $servidor, $estado="", $numDoc
         }
     	return $envioDatos;
     } catch (SoapFault $e) { //Captura los errores
-//        var_dump($e);
+        // DEBUG: Mostrar información del error
+        echo "<pre>";
+        echo "Error SOAP: " . $e->getMessage() . "\n";
+        echo "WSDL URL: " . $wsdl . "\n";
+        echo "\nDetalles del error:\n";
+        var_dump($e);
+        echo "</pre>";
         printf("No se generó correctamente el archivo PDFs.");
         return "0";
        }
