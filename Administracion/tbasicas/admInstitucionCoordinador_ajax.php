@@ -64,7 +64,7 @@ if ($slc_institucion != 0 and $slc_institucion != '') {
                     where
                         inst_estado=1
                         and inst_coordinador = 1
-                        and inst_codi not in (select inst_codi from institucion where inst_codi = ".$slc_institucion.")
+                        and inst_codi not in (select inst_codi_coor from institucion_coordinador where inst_codi = ".$slc_institucion.")
                     order by 1 asc";
            
             $rs = $db->conn->Execute($sql);
