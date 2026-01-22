@@ -34,7 +34,9 @@ $db = new ConnectionHandler($ruta_raiz);
 
 
 //Destruimos la session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 unset ($_SESSION);
 session_destroy();
 

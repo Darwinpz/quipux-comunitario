@@ -26,8 +26,11 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
 /* */
 
-session_start();
-$ruta_raiz = "."; 
+// Verificar si la sesión no está iniciada antes de llamar a session_start()
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$ruta_raiz = ".";
 include_once "$ruta_raiz/rec_session.php";
 ?>
 <html>

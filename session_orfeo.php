@@ -288,8 +288,12 @@ if ($flag) {
                 /**
                 * Inicia nueva session
                 **/
+                // Si ya existe una sesión, destruirla primero
+                if (session_status() === PHP_SESSION_ACTIVE) {
+                    session_destroy();
+                }
+                // Crear nuevo ID de sesión y iniciar la sesión
                 session_id(str_replace(".","o",obtener_ip_real())."o$krd"."o".date("His")."o$appID");
-                session_id();
                 session_start();
 
                 if (!$dependencia) $dependencia=0;
