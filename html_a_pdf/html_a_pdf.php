@@ -178,8 +178,8 @@ function validar_html($html) {
 }
 
     include "config.php";
-    ini_set("soap.wsdl_cache_enabled", "0");  
-    $sServer = new SoapServer("$nombre_servidor/html_a_pdf.wsdl");
+    ini_set("soap.wsdl_cache_enabled", "0");
+    $sServer = new SoapServer("$nombre_servidor/html_a_pdf.wsdl.php");
     $sServer->addFunction("html_a_pdf");
     $sServer->addFunction("unir_archivos_pdf");
     $sServer->handle();  

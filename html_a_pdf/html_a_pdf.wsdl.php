@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?php
+// Configurar el header para que se interprete como XML
+header('Content-Type: text/xml; charset=utf-8');
+
+// Detectar automáticamente el servidor y protocolo
+$protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$base_path = dirname(dirname($_SERVER['SCRIPT_NAME'])); // Obtiene /quipux-comunitario
+
+$soap_location = "$protocolo://$host$base_path/html_a_pdf/html_a_pdf.php";
+
+// Salida del XML
+echo '<?xml version="1.0" encoding="utf-8"?>';
+?>
 <definitions name="soapapihtml_a_pdf" targetNamespace="urn:soapapihtml_a_pdf"
     xmlns:typens="urn:soapapihtml_a_pdf" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema"
@@ -75,10 +88,10 @@
             </output>
         </operation>
     </binding>
-    
+
     <service name="soapapihtml_a_pdfService">
         <port name="soapapihtml_a_pdfPort" binding="typens:soapapihtml_a_pdfBinding">
-		<soap:address location="http://127.0.0.1/quipux-comunitario/html_a_pdf/html_a_pdf.php"/>
+		<soap:address location="<?php echo $soap_location; ?>"/>
         </port>
     </service>
 </definitions>
