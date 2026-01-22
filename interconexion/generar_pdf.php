@@ -57,6 +57,15 @@ function ws_generar_pdf_base64($html, $plantilla, $servidor, $estado="", $numDoc
         echo "<pre>";
         echo "Error SOAP: " . $e->getMessage() . "\n";
         echo "WSDL URL: " . $wsdl . "\n";
+
+        // Mostrar la respuesta real del servidor
+        if (isset($oSoap)) {
+            echo "\n=== SOAP Request ===\n";
+            echo htmlspecialchars($oSoap->__getLastRequest()) . "\n";
+            echo "\n=== SOAP Response ===\n";
+            echo htmlspecialchars($oSoap->__getLastResponse()) . "\n";
+        }
+
         echo "\nDetalles del error:\n";
         var_dump($e);
         echo "</pre>";
