@@ -23,7 +23,9 @@ $ruta_raiz = isset($ruta_raiz) ? $ruta_raiz : "..";
 require_once("$ruta_raiz/funciones.php"); 
 p_register_globals(array());
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 /*if (!$_SESSION['permiso_archivar_documentos']) {
     die('No cuenta con los permisos necesarios para usar esta parte del sistema. Si cree que es un error, comuníquese con su administrador del sistema para que le habilite esta funcionalidad.');

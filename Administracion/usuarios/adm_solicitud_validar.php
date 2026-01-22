@@ -28,7 +28,9 @@ require_once("$ruta_raiz/funciones_interfaz.php");
 
 global $servidor_registro_civil;
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 $ciu_codigo = limpiar_sql($_POST["ciu_codigo"]);
 

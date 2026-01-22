@@ -23,7 +23,9 @@
 //header("Cache-Control: post-check=0, pre-check=0", false);
 //header("Pragma: no-cache");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = ".";
 include_once "$ruta_raiz/rec_session.php";
 if (isset ($replicacion) && $replicacion && $config_db_replica_menu_correspondencia!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_menu_correspondencia);

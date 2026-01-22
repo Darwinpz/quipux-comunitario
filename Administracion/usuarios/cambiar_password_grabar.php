@@ -31,7 +31,9 @@ if (isset($_POST["krd"])) {
     $accion_aceptar = "window.location='$ruta_raiz/login.php'";
     $flag = false;
 } else {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     include_once "$ruta_raiz/rec_session.php";
     $krd = $_SESSION["krd"];
     if (substr($krd,0,1)=="U")

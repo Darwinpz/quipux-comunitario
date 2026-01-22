@@ -26,7 +26,9 @@
 ***********************************************************************************/
 
 $ruta_raiz = "..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $texto = generar_clave(4);
 $_SESSION['captcha'] = $texto;
 $texto = substr($texto,0,1)." ".substr($texto,1,1)." ".substr($texto,2,1)." ".substr($texto,3,1);

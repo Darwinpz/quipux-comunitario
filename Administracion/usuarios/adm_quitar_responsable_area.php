@@ -5,7 +5,9 @@
  * and open the template in the editor.
  */
 $ruta_raiz = "../..";
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     if ($_SESSION["usua_admin_sistema"] != 1) {
     die( html_error("Lo sentimos, usted no tiene permisos suficientes para acceder a esta p&aacute;gina.") );
 }

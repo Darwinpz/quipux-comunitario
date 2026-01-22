@@ -21,7 +21,9 @@ $ruta_raiz = "../..";
 require_once("$ruta_raiz/funciones.php"); //para traer funciones p_get y p_post
 p_register_globals(array());
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["usua_admin_sistema"]!=1) {
   echo html_error("Lo sentimos, usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
   die("");

@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $ruta_raiz = "..";
     include_once "$ruta_raiz/rec_session.php";
     if (isset ($replicacion) && $replicacion && $config_db_replica_tx_formenvio_ajax!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_tx_formenvio_ajax);

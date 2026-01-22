@@ -20,7 +20,9 @@
 $ruta_raiz="../..";
 
 //Archivo que permite buscar el destinatario y remitente para los documentos
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 
 include_once("$ruta_raiz/obtenerdatos.php");

@@ -37,7 +37,9 @@
 **                                                                                              **
 **************************************************************************************************/
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = "..";
 include_once "$ruta_raiz/rec_session.php";
 require_once "$ruta_raiz/tx/tx_actualiza_opcion_imp.php";

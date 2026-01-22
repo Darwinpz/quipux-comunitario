@@ -43,7 +43,9 @@ if (isset($_GET["krd"]) && isset($_GET["code"])) {
     $accion_cancelar="window.close()";
 } else {
     $flag = true;
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     include_once "$ruta_raiz/rec_session.php";
     $krd = $_SESSION["krd"];
     $accion_cancelar="history.back()";//window.location='$ruta_raiz/cuerpo.php?carpeta=81&adodb_next_page=1'";

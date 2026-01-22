@@ -27,7 +27,9 @@
 /*************************************************************************************/
 
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["usua_admin_sistema"]!=1)
 {
     if ($_SESSION["usua_perm_ciudadano"]!=1)

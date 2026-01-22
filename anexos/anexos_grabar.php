@@ -26,7 +26,9 @@ if (count($_FILES) == 0) {
 }
 
 $ruta_raiz = "..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "$ruta_raiz/rec_session.php";
 include_once "$ruta_raiz/include/tx/Historico.php";
 include_once "$ruta_raiz/include/tx/Firma_Digital.php";

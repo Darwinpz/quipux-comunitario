@@ -22,7 +22,9 @@
 *****************************************************************************************/
 
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["usua_admin_sistema"]!=1) die("");
 include_once "$ruta_raiz/rec_session.php";
 

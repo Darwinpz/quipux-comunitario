@@ -18,7 +18,9 @@
 **/
 
   $ruta_raiz = isset($ruta_raiz) ? $ruta_raiz : "..";
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
   include_once "$ruta_raiz/rec_session.php";
   if (isset ($replicacion) && $replicacion && $config_db_replica_info_lista_asociados!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_info_lista_asociados);
 

@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 include_once "$ruta_raiz/obtenerdatos.php";
 if (isset ($replicacion) && $replicacion && $config_db_replica_lst_listas_datos_lista!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_lst_listas_datos_lista);

@@ -20,7 +20,9 @@ if(!isset($ruta_raiz)) $ruta_raiz = ".";
 if (str_replace("/","",str_replace(".","",$ruta_raiz))!="")
     die ("<br/><center><font size='6' color='red'><b>HA SIDO DETECTADO UN INTENTO DE VIOLACI&Oacute;N DE LAS SEGURIDADES DEL SISTEMA
 	<br/>SU N&Uacute;MERO IP SER&Aacute; BLOQUEDO PERMANENTEMENTE</b></font>");
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "$ruta_raiz/rec_session.php";
 
 include_once "$ruta_raiz/anexos_grabar.php";

@@ -3,7 +3,9 @@
 
 $ruta_raiz = "../..";
 $ruta_raiz2 = "..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 include_once "$ruta_raiz/rec_session.php";
 

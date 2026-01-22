@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if ($ruta_raiz != ".") $ruta_raiz = "..";
 
 include_once "$ruta_raiz/rec_session.php";

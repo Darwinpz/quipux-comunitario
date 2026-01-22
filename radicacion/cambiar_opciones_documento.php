@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 $ruta_raiz = "..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "$ruta_raiz/rec_session.php";
 require_once "$ruta_raiz/funciones.php";
 require_once "$ruta_raiz/obtenerdatos.php";

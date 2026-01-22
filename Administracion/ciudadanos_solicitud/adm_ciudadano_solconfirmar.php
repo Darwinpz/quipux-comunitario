@@ -25,7 +25,9 @@
 *****************************************************************************************/
 $ruta_raiz = "../..";
 $ruta_raiz2 = "..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "$ruta_raiz/funciones.php"; //para traer funciones p_get y p_post
 include_once "$ruta_raiz/funciones_interfaz.php";
 include_once "$ruta_raiz/rec_session.php";

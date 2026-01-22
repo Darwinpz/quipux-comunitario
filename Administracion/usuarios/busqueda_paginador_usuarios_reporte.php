@@ -18,7 +18,9 @@
 **/
 
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "$ruta_raiz/rec_session.php";
 require_once "$ruta_raiz/obtenerdatos.php";
 if (isset ($replicacion) && $replicacion && $config_db_replica_adm_busqueda_paginador_usuarios!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_adm_busqueda_paginador_usuarios);

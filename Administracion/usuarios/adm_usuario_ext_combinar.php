@@ -23,7 +23,9 @@ $ruta_raiz = "../..";
 require_once "$ruta_raiz/funciones.php"; //para traer funciones p_get y p_post
 include_once "$ruta_raiz/funciones_interfaz.php";
 p_register_globals(array());
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 
 $paginador = new ADODB_Pager_Ajax($ruta_raiz, "div_lista_personas", "adm_usuario_ext_buscar.php", 'txt_buscar_nombre');

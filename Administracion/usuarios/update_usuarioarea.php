@@ -16,7 +16,9 @@
 *    along with this program.  If not, see http://www.gnu.org/licenses. 
 *------------------------------------------------------------------------------
 **/
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["usua_admin_sistema"]!=1) die("");
 $ruta_raiz = "../..";
 include_once "$ruta_raiz/rec_session.php";

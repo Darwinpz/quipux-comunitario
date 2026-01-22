@@ -26,7 +26,9 @@
 *************************************************************************************/
 
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["perm_actualizar_sistema"]!=1) die("ERROR: Usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
 include_once "$ruta_raiz/rec_session.php";
 if (!is_dir("$ruta_raiz/bodega/2013/reversa")) mkdir ("$ruta_raiz/bodega/2013/reversa");

@@ -26,7 +26,9 @@ $ruta_raiz = "../..";
 require_once "$ruta_raiz/funciones.php";
 require_once "$ruta_raiz/funciones_interfaz.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 $flag_login = true;
 if ($_SESSION["admin_institucion"]!=1) die("Usted no tiene permisos para acceder a esta p&aacute;gina.");

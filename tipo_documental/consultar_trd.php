@@ -18,7 +18,9 @@
 **/
   $ruta_raiz = "..";
 
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
   include_once "$ruta_raiz/rec_session.php";
   if (isset ($replicacion) && $replicacion) $db = new ConnectionHandler("$ruta_raiz","busqueda");
   include_once "obtener_datos_trd.php";

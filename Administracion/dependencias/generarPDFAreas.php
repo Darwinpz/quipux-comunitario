@@ -18,7 +18,9 @@
 **/
 
 $ruta_raiz = isset($ruta_raiz) ? $ruta_raiz : "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 
 include_once "$ruta_raiz/class_control/class_gen.php";

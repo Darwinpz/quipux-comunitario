@@ -25,7 +25,9 @@
 
 
   $ruta_raiz = "../..";
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
 
   $txt_tipo_lista = trim(limpiar_numero($_GET["txt_tipo_lista"])); //1: Muestra listado del usuario actual, 2: Muestra listado por autorizar
   

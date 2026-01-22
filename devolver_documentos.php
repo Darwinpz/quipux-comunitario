@@ -21,7 +21,9 @@ $ruta_raiz = ".";
 require_once("$ruta_raiz/funciones.php");
 p_register_globals(array());
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 
 include_once "$ruta_raiz/funciones_interfaz.php";

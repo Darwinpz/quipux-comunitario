@@ -39,7 +39,9 @@ p_register_globals(array());
 
 //$accion = $_GET['accion']; //agregado por register_globals
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if($_SESSION["usua_admin_sistema"]!=1 and $_SESSION["usua_perm_ciudadano"]!=1) {
     echo html_error("Lo sentimos, usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
     die("");

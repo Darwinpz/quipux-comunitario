@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = "..";
 require_once("$ruta_raiz/funciones.php"); 
 //p_register_globals($_POST);

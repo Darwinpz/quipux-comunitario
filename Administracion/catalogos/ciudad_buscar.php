@@ -5,7 +5,9 @@
 ** Desarrollado por:                                                                **
 **      Lorena Torres J.                                                            **
 *************************************************************************************/
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = "../..";
 include_once "$ruta_raiz/rec_session.php";
 require_once("$ruta_raiz/funciones.php"); //para traer funciones p_get y p_post

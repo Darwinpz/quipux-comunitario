@@ -26,7 +26,9 @@ $ruta_raiz = "../..";
 require_once "$ruta_raiz/funciones.php";
 require_once("$ruta_raiz/funciones_interfaz.php");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 $flag_login = true;
 $ciu_codigo = limpiar_sql($_SESSION["usua_codi"]);

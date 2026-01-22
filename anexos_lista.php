@@ -18,7 +18,9 @@
 **/
 //////////////   ANEXOS   ////////////////
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset ($ruta_ajax)) $ruta_ajax = ".";
 if ($ruta_ajax != "."  and $ruta_ajax != "..") $ruta_ajax = ".";
 

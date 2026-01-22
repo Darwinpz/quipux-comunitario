@@ -21,7 +21,9 @@
 *****************************************************************************************/
 
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 $ciu_codigo = limpiar_sql($_SESSION["usua_codi"]);
 $accion_btn_cancelar = "history.back();";

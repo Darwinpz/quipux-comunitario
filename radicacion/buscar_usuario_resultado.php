@@ -35,7 +35,9 @@ function restaFechas($dFecIni, $dFecFin)
 }
 
 $ruta_raiz="..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 if (isset ($replicacion) && $replicacion && $config_db_replica_buscar_usuario_resultado!="") $db = new ConnectionHandler($ruta_raiz,$config_db_replica_buscar_usuario_resultado);
 include_once("$ruta_raiz/obtenerdatos.php");

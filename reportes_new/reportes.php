@@ -23,7 +23,9 @@ include "$ruta_raiz/config.php";
 //if ($nombre_servidor != $nombre_servidor_reportes)
 //    session_id ($_GET["id_sess"]);
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 include_once "$ruta_raiz/funciones_interfaz.php";
 

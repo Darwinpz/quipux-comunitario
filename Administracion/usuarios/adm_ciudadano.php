@@ -20,7 +20,9 @@
  * * Administración de datos por parte del ciudadano                                      **
  * ****************************************************************************************/
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "$ruta_raiz/rec_session.php";
 $ciu_login = limpiar_sql($_SESSION["krd"]);
 

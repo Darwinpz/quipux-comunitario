@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 $ruta_raiz = isset($ruta_raiz) ? $ruta_raiz : "..";
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
 /*if (!$_SESSION['permiso_archivar_documentos']) {
     $htm= "<br><br><table align='center' ><tr><td>No cuenta con los permisos necesarios para usar esta parte del sistema. </td></tr><tr><td>&nbsp;</td></tr><tr><td> Si tiene los permisos, comuníquese con su administrador del sistema </td></tr></table>";
     die($htm);

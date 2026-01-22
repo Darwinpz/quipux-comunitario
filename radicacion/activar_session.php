@@ -21,7 +21,9 @@
 **  se encuentran editando un documento en NEW.php                                              **
 **                                                                                              **
 **************************************************************************************************/
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = "..";
 include_once "$ruta_raiz/rec_session.php";
 

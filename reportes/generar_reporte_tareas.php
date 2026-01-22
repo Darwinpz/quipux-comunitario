@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $ruta_raiz = isset($ruta_raiz) ? $ruta_raiz : "..";
 
 //Datos para Reporte-Tareas

@@ -25,7 +25,9 @@ include_once "$ruta_raiz/funciones_interfaz.php";
 include_once "$ruta_raiz/obtenerdatos.php";
 p_register_globals(array('accion', 'usr_codigo', 'usr_destino'));
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 
 if ($_SESSION["usua_admin_sistema"] != 1) {

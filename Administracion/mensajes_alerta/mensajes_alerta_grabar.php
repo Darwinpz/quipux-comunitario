@@ -20,7 +20,9 @@
 ** Administración de mensajes para el sistema                                           **
 *****************************************************************************************/
 $ruta_raiz = "../..";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if ($_SESSION["admin_institucion"] != 1) {
     die("Lo sentimos, usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
 }
