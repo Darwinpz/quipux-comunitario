@@ -44,8 +44,17 @@ $html = '
             <dl><dt><font size=2>Anexos: </font></dt><dd><font size=2> - Anexo 1<br> - Anexo 2</font></dd></dl>
         </body>';
 
+// Generar URL absoluta para el servidor PDF (compatible con Cloudflare)
+$protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$base_path = dirname(dirname(dirname($_SERVER['SCRIPT_NAME'])));
+// Normalizar la ruta para evitar barras duplicadas
+if ($base_path == '/' || $base_path == '\\') {
+    $base_path = '';
+}
+$servidor_pdf_auto = "$protocolo://$host$base_path/html_a_pdf";
 
-$pdf = ws_generar_pdf_base64($html, $plantilla, $servidor_pdf, "1", "INSTITUCION-AREA-001-OF", "Quito, 02 de enero de 2013", "100", "");
+$pdf = ws_generar_pdf_base64($html, $plantilla, $servidor_pdf_auto, "1", "INSTITUCION-AREA-001-OF", "Quito, 02 de enero de 2013", "100", "");
 $tamanio = strlen($pdf)/8*6;
 
 header("Content-Disposition: attachment; filename=prueba_plantilla.pdf");
