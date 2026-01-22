@@ -21,6 +21,25 @@ class SecureSession
     // Regenerate session ID to prevent fixation attacks?
     var $regenerate_id = true;
 
+    // Función para obtener la IP real del cliente cuando se usa proxy/tunnel (como Cloudflare)
+    function _ObtenerIpReal() {
+        // Cloudflare usa CF-Connecting-IP para enviar la IP real del cliente
+        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+            return $_SERVER['HTTP_CF_CONNECTING_IP'];
+        }
+        // Otros proxies usan X-Forwarded-For
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            return trim($ips[0]); // Primera IP es la del cliente real
+        }
+        // X-Real-IP (usado por algunos proxies)
+        if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+            return $_SERVER['HTTP_X_REAL_IP'];
+        }
+        // Si no hay proxy, usar REMOTE_ADDR
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
     // Call this when init session.
     function Open()
     {
@@ -47,7 +66,7 @@ class SecureSession
             if ($num_blocks > 4) {
                 $num_blocks = 4;
             }
-            $blocks = explode('.', $_SERVER['REMOTE_ADDR']);
+            $blocks = explode('.', $this->_ObtenerIpReal());
             for ($i = 0; $i < $num_blocks; $i++) {
                 $fingerprint .= $blocks[$i] . '.';
             }

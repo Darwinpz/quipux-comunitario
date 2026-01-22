@@ -58,7 +58,7 @@ if ($_SESSION["session_dos_pagina"] == $_SERVER["REQUEST_URI"]) {
         $log_dos["usua_codi"] = $_SESSION["usua_codi"];
         $log_dos["pagina"] = $db->conn->qstr($_SERVER["REQUEST_URI"]);
         $log_dos["navegador"] = $db->conn->qstr($_SERVER["HTTP_USER_AGENT"]);
-        $log_dos["ip"] = $db->conn->qstr($_SERVER['HTTP_X_FORWARDED_FOR']." - ".$_SERVER['HTTP_CLIENT_IP']." - ".$_SERVER['REMOTE_ADDR']);
+        $log_dos["ip"] = $db->conn->qstr(obtener_ip_real());
         $log_dos["num_accesos"] = $_SESSION["session_dos_num_accesos"];
         $db->conn->Replace("log_bloqueos_dos", $log_dos, "", false,false,false,false);
         die ("<center><font color='red'>
@@ -87,7 +87,27 @@ require_once "$ruta_raiz/funciones.php";
 //Se incluyo por register globals
   $drd = (isset($_POST['drd'])) ? $_POST['drd'] : "";
   $drd = limpiar_sql($drd);
-  $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
+
+  // Función para obtener la IP real del cliente cuando se usa proxy/tunnel (como Cloudflare)
+  function obtener_ip_real() {
+      // Cloudflare usa CF-Connecting-IP para enviar la IP real del cliente
+      if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+          return $_SERVER['HTTP_CF_CONNECTING_IP'];
+      }
+      // Otros proxies usan X-Forwarded-For
+      if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+          $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+          return trim($ips[0]); // Primera IP es la del cliente real
+      }
+      // X-Real-IP (usado por algunos proxies)
+      if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+          return $_SERVER['HTTP_X_REAL_IP'];
+      }
+      // Si no hay proxy, usar REMOTE_ADDR
+      return $_SERVER['REMOTE_ADDR'];
+  }
+
+  $REMOTE_ADDR = obtener_ip_real();
   $acceso = (isset($_GET['acceso'])) ? $_GET['acceso'] : "";
   $usua_codi=$_SESSION["usua_codi"];
   $recordSet = array();
@@ -127,7 +147,7 @@ if ($acceso=="login") {
     unset($recordSet);
     $recordSet["FECHA"] = $db->conn->sysTimeStamp;
     $recordSet["USUARIO"] = $db->conn->qstr(substr($krd,1,50));
-    $recordSet["IP"] = $db->conn->qstr($_SERVER['HTTP_X_FORWARDED_FOR']." - ".$_SERVER['HTTP_CLIENT_IP']." - ".$_SERVER['REMOTE_ADDR']);
+    $recordSet["IP"] = $db->conn->qstr(obtener_ip_real());
     $recordSet["INTENTOS"] = ($tmp_rs->EOF) ? "0" : "1";
     $recordSet["ACCESO"] = (substr($drd,1,26)==$tmp_rs->fields["USUA_PASW"]) ? "1" : "0";
     $db->conn->Replace("LOG_ACCESO", $recordSet, "", false,false,false,false);
@@ -209,7 +229,7 @@ if ($flag) {
         unset($recordSet);
         $recordSet["FECHA"] = $db->conn->sysTimeStamp;
         $recordSet["USUARIO"] = "E'$krd - ".$_SESSION["krd"]."'";
-        $dir_cliente = $_SERVER['HTTP_X_FORWARDED_FOR'] . " - " . $_SERVER['HTTP_CLIENT_IP'] . " - " . $_SERVER['REMOTE_ADDR'];
+        $dir_cliente = obtener_ip_real();
         if (trim($krd)=="") {
             $recordSet["DESCRIPCION"] = $db->conn->qstr(session_id()."Se perdió la sesión para el usuario de la máquina $dir_cliente");
         } else {
@@ -268,7 +288,7 @@ if ($flag) {
                 /**
                 * Inicia nueva session
                 **/
-                session_id(str_replace(".","o",$_SERVER['REMOTE_ADDR'])."o$krd"."o".date("His")."o$appID");
+                session_id(str_replace(".","o",obtener_ip_real())."o$krd"."o".date("His")."o$appID");
                 session_id();
                 session_start();
 
@@ -332,7 +352,7 @@ if ($flag) {
                 // include "$ruta_raiz/include/local/varSession.php";
             }
 
-            $dir_cliente = $_SERVER['HTTP_X_FORWARDED_FOR'] . " - " . $_SERVER['HTTP_CLIENT_IP'] . " - " . $_SERVER['REMOTE_ADDR'];
+            $dir_cliente = obtener_ip_real();
             unset($recordSet);
             $recordSet["USUA_SESION"] = $db->conn->qstr(session_id());
             $recordSet["USUA_FECH_SESION"] = $db->conn->sysTimeStamp;
