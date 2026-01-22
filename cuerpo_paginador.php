@@ -28,14 +28,14 @@ $txt_fecha_desde = trim(limpiar_sql($_GET['txt_fecha_desde']));
 $txt_fecha_hasta = trim(limpiar_sql($_GET["txt_fecha_hasta"]));
 $estado = 0+$_GET["estado"];
 $busqRadicados = trim(limpiar_sql($_GET["busqRadicados"]));
-$carpeta = 0 + $_GET["carpeta"];
+$carpeta = intval($_GET["carpeta"]);
 $tipoLectura = 0+$_GET["tipoLectura"];
 $tarea_tipo = 0+$_GET["slc_tarea_tipo"];
 $tarea_estado = 0+$_GET["slc_tarea_estado"];
 
 $slc_tipo_fecha = 0 +$_GET['slc_tipo_fecha'];
 //tipo de documento
-$radi_tipo = 0 + $_GET['radi_tipo'];
+$radi_tipo = intval($_GET['radi_tipo']);
 
 $encabezado = "carpeta=$carpeta&";
 

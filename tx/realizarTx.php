@@ -340,7 +340,7 @@ switch ($codTx)
             break;
         case 88:            
             $nombTx = "Asociar Carpetas Virtuales";            
-            $trd_codigo = 0 + $_POST['txt_check_carpeta'];            
+            $trd_codigo = intval($_POST['txt_check_carpeta']);            
             $usCodDestino = $tx->AsoCarpetasVirtuales ($radicadosSel,$_SESSION['usua_codi'],$_SESSION["depe_codi"],$trd_codigo,$observa);
             //$MensajeTx = "";
             break;

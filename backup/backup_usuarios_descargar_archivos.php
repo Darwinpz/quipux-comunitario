@@ -29,7 +29,7 @@ include_once "$ruta_raiz/config.php";
 
 require_once "$ruta_raiz/rec_session.php";
 
-$codigo = 0 + $_GET["codigo_backup"];
+$codigo = intval($_GET["codigo_backup"]);
 $extension = $_GET["extension"];
 
 $txt_resp_soli_codi = isset($_GET["resp_soli_codi"]) ? 0+$_GET["resp_soli_codi"] : 0;

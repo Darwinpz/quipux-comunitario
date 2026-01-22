@@ -35,11 +35,11 @@ if ($bloq_codi == 0) $bloq_codi = $db->nextId("sec_bloqueo_sistema");
 $record["bloq_codi"] = $bloq_codi;
 $record["fecha_inicio"] = $db->conn->qstr(limpiar_sql($_POST["txt_fecha_inicio"]));
 $record["fecha_fin"] = $db->conn->qstr(limpiar_sql($_POST["txt_fecha_fin"]));
-$record["estado"] = 0 + $_POST["txt_estado"];
+$record["estado"] = intval($_POST["txt_estado"]);
 $record["descripcion"] = $db->conn->qstr(limpiar_sql(base64_decode(base64_decode($_POST["txt_descripcion"]))));
 $record["mensaje_usuario"] = $db->conn->qstr(limpiar_sql(base64_decode(base64_decode($_POST["txt_mensaje"])),0));
 $record["usua_acceso"] = $db->conn->qstr(limpiar_sql($_POST["txt_usua_acceso"]));
-$record["tipo_mensaje"] = 0 + $_POST["txt_tipo_mensaje"];
+$record["tipo_mensaje"] = intval($_POST["txt_tipo_mensaje"]);
 
 $ok = $db->conn->Replace("BLOQUEO_SISTEMA", $record, "bloq_codi", false,false, true, false);
 if (!$ok)

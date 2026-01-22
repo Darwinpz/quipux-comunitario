@@ -208,7 +208,7 @@ if ($usr_codigo!=''){//si existe subrogado
 //$selectDepe= "select * from dependencia where depe_codi = $institucionSubrogante";
 //dependencia
 if ($_POST['dependencia_jefe']!='')
-    $dependenciaSubrogado = 0 + $_POST['dependencia_jefe'];
+    $dependenciaSubrogado = intval($_POST['dependencia_jefe']);
 $selectDepe= "select * from dependencia where depe_codi = ".$dependenciaSubrogado;
 $rsDepe = $db->conn->query($selectDepe);
 $dependenciaSubrogacion=$rsDepe->fields["DEPE_NOMB"];

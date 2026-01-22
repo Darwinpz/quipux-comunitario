@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $ruta_raiz = "../..";
 include_once "$ruta_raiz/rec_session.php";
 
-$codi_ciudad = 0 + $_GET["codigo"];
+$codi_ciudad = intval($_GET["codigo"]);
 $area = (isset ($_GET["area"])) ? 0 + limpiar_numero($_GET["area"]) : 0;
 if($area!=0 and $codi_ciudad==0)
 {

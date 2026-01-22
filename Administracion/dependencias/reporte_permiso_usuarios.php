@@ -22,7 +22,7 @@ if (isset($_GET)){
     if (trim($dependencia)==0){
        echo "<table class='borde_tab' width='100%'><tr><td class='listado2'><font size='2' color='red'><center>Seleccione el Área</center></font></td></tr></table>";
     }else{
-    $permisos = 0 + $_GET['codPermiso'];
+    $permisos = intval($_GET['codPermiso']);
     
     if ($radio_filtro=='NO')
         $filtro=" not ";

@@ -31,8 +31,8 @@ if ($_SESSION["depe_codi"]==0 and $_SESSION["tipo_usuario"]==1) {
     die ("<br><center><font size='3' color='blue'><b>Su usuario no tiene definida un &Aacute;rea.<br>Por favor comun&iacute;quese con el administrador del sistema. </b></font></center>");
 }
 
-$carpeta = 0 + $_GET["carpeta"];
-$noLeidos = 0 + $_GET['noLeidos'];
+$carpeta = intval($_GET["carpeta"]);
+$noLeidos = intval($_GET['noLeidos']);
 
 $nombre_carpeta = $_GET['nomcarpeta'];
 

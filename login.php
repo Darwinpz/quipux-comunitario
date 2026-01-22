@@ -22,7 +22,7 @@ $usua_nuevo=3;
 error_reporting(0);
 include_once "config.php";
 
-$txt_administrador = 0 + $_GET["txt_administrador"];
+$txt_administrador = intval($_GET["txt_administrador"]);
 if ($activar_bloqueo_sistema and $txt_administrador != 1) {
     if (is_file("./bodega/mensaje_bloqueo_sistema.html")) {
         include_once "$ruta_raiz/funciones_interfaz.php";

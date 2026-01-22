@@ -421,7 +421,7 @@ function mostrar_div_usuarios() {
 <input type="hidden" name="tipo_lista" id="tipo_lista" value="">
 <input type="hidden" name="txt_nombre_texto_error" id="txt_nombre_texto_error" class="tex_area" value=""/>
 <? if (isset($_GET['listado_listas'])){
-    $lista_modificada = 0 + $_GET['lista_modificada'];
+    $lista_modificada = intval($_GET['lista_modificada']);
 }
 echo '<input type="hidden" name="hidden_lista_modificada" id="hidden_lista_modificada" class="tex_area" value="'.$lista_modificada.'"/>';
 ?>

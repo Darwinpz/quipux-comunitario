@@ -33,7 +33,7 @@ include "$ruta_raiz/funciones_interfaz.php";
 include_once "mnuUsuariosH.php";
 echo "<html>".html_head();
 
-$accion = 0 + $_GET["accion"];
+$accion = intval($_GET["accion"]);
 
 $paginador = new ADODB_Pager_Ajax($ruta_raiz, "div_buscar_usuarios", "busqueda_paginador_usuarios_reporte_areas.php",
                   "txt_reporte,inst_actu,txt_estado");

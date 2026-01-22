@@ -27,7 +27,7 @@ if (isset ($replicacion) && $replicacion && $config_db_replica_lst_listas_cargar
 include_once "$ruta_raiz/obtenerdatos.php";
 
 $usuarios_lista = limpiar_sql($_POST["txt_usuarios_lista"]);
-$lista_orden = 0 + $_POST["txt_lista_orden"];
+$lista_orden = intval($_POST["txt_lista_orden"]);
 
 ?>
 

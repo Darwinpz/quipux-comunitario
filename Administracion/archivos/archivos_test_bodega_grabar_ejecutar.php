@@ -32,8 +32,8 @@ $db->conn->SetFetchMode(ADODB_FETCH_ASSOC);
 $db_bodega = new ConnectionHandler("$ruta_raiz", "bodega_test");
 $db_bodega->conn->SetFetchMode(ADODB_FETCH_ASSOC);
 
-$anio = 0 + $_POST["anio"];
-$offset = 0 + $_POST["offset"];
+$anio = intval($_POST["anio"]);
+$offset = intval($_POST["offset"]);
 $limit = 1;
 
 $sql = "select anex_codigo, anex_path, anex_nombre from anexos where anex_codigo like '$anio%' order by anex_codigo limit $limit offset ".($limit*$offset);

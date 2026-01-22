@@ -29,7 +29,7 @@ $txt_fecha_hasta = trim(limpiar_sql($_GET["txt_fecha_hasta"]));
 $txt_dependencia = trim(limpiar_sql($_GET['txt_depe_codi']));
 $txt_usuario = trim(limpiar_sql($_GET["txt_usua_codi"]));
 $busqRadicados = trim(limpiar_sql($_GET["busqRadicados"]));
-$carpeta = 0 + $_GET["carpeta"];
+$carpeta = intval($_GET["carpeta"]);
 $imprimir = $_GET["imprimir_comprobante"];
 
 $encabezado = "carpeta=$carpeta&";

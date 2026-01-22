@@ -47,7 +47,7 @@ $numero_archivos_cargados = 0;
 for ($file=0 ; $file<10 ; ++$file ) {
     if (trim($_FILES["fil_archivo_nuevo_$file"]["tmp_name"].$_FILES["fil_archivo_nuevo_$file"]["name"])!="") {
         $descripcion = limpiar_sql($_POST["txt_descripcion_nuevo_$file"]);
-        $medio_almacenamiento = 0 + $_POST["chk_medio_nuevo_$file"];
+        $medio_almacenamiento = intval($_POST["chk_medio_nuevo_$file"]);
         $asociar_imagen = (isset ($_POST["chk_asociar_imagen_$file"])) ? (0 + $_POST["chk_asociar_imagen_$file"]) : 0;
 
         $archivo_path = limpiar_sql($_FILES["fil_archivo_nuevo_$file"]["tmp_name"]);

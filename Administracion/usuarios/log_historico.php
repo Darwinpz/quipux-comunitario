@@ -15,7 +15,7 @@ include_once "$ruta_raiz/obtenerdatos.php";
 include_once "../ciudadanos/util_ciudadano.php";
 $ciud = New Ciudadano($db);
 if (isset($_GET['usr_codigo'])){
-        $usr_codigo = 0 + $_GET['usr_codigo'];
+        $usr_codigo = intval($_GET['usr_codigo']);
         $usr_codigo = limpiar_sql($usr_codigo);
         
         if ($usr_codigo!=0){

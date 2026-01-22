@@ -109,7 +109,7 @@
             $titulo = "Usuario:";
             $where = "";
             if (!isset ($_POST["area"])) $_POST["area"] = $_SESSION["depe_codi"];
-            $area = 0 + $_POST["area"];
+            $area = intval($_POST["area"]);
             if (trim($area,",0123456789 ")!="") $area = 0 + $area;
 
             if (($_POST["codTx"]==9 or $_POST["codTx"]==30)  and $_SESSION["depe_codi"] != $area)
@@ -136,7 +136,7 @@
             break;
 
         case "reasignar_respuesta": // Si se respondio un documento mostrar el check
-            $tarea_codi = 0 + $_POST["tarea_codi"];
+            $tarea_codi = intval($_POST["tarea_codi"]);
             $sql = "select r.radi_nume_radi
                 from (select radi_nume_resp from tarea_radi_respuesta where tarea_codi=$tarea_codi) as tr
                 left outer join radicado r on tr.radi_nume_resp=r.radi_nume_radi where r.esta_codi=1 and r.radi_usua_actu=".$_SESSION["usua_codi"];

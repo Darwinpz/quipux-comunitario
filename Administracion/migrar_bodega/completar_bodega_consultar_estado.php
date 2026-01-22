@@ -26,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if($_SESSION["perm_actualizar_sistema"]!=1) die("Usted no tiene permisos suficientes para acceder a esta p&aacute;gina.");
 require_once "$ruta_raiz/rec_session.php";
 
-$txt_anio = 0 + $_POST["txt_anio"];
+$txt_anio = intval($_POST["txt_anio"]);
 $sql = "select count(1) as total_registros
             , count(case when radi_nume_radi::text like '%0' and esta_codi in (0,6) then 1 else null end) as total_pdf
         from radicado

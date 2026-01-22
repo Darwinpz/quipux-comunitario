@@ -295,10 +295,10 @@ function devolver(){
     
     
 if (isset($_GET['usr_subrogado'])){
-    $usr_subrogado = 0 + $_GET['usr_subrogado'];
-    $depe_codi_get = 0 + $_GET['depe_codi_get'];
+    $usr_subrogado = intval($_GET['usr_subrogado']);
+    $depe_codi_get = intval($_GET['depe_codi_get']);
     
-    $cargo_tipo_get = 0 + $_GET['cargo_tipo_get'];
+    $cargo_tipo_get = intval($_GET['cargo_tipo_get']);
     ?><input type="hidden" name="subrogado_get" id="subrogado_get" value="<?=$usr_subrogado?>" />
     <input type="hidden" name="depe_codi_get" id="depe_codi_get" value="<?=$depe_codi_get?>" /> 
     <input type="hidden" name="depe_codi_get" id="cargo_tipo_get" value="<?=$cargo_tipo_get?>" />

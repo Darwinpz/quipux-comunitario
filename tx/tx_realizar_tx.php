@@ -64,7 +64,7 @@ switch ($codTx)
         break;
     case 31:  //finalizar tareas
         $tarea_codi = limpiar_sql($_POST['tarea_codi']);
-        $reasignar_respuesta = 0 + $_POST["txt_reasignar_respuesta"];
+        $reasignar_respuesta = intval($_POST["txt_reasignar_respuesta"]);
         echo $tx->finalizarTareas($tarea_codi, $comentario, $reasignar_respuesta);
         break;
     case 32:  //Cancelar tareas
@@ -85,7 +85,7 @@ switch ($codTx)
         break;
     case 36:  //Registrar avance tareas
         $tarea_codi = limpiar_sql($_POST['tarea_codi']);
-        $reasignar_respuesta = 0 + $_POST["txt_reasignar_respuesta"];
+        $reasignar_respuesta = intval($_POST["txt_reasignar_respuesta"]);
         $tarea_avance = 0+$_POST["txt_avance_tarea"];
         echo $tx->registrarAvanceTareas($tarea_codi, $tarea_avance, $comentario, $reasignar_respuesta);
         break;

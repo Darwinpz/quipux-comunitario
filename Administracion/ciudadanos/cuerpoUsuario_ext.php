@@ -46,7 +46,7 @@ include_once "util_ciudadano.php";
 include_once "../usuarios/mnuUsuariosH.php";
 $ciud = New Ciudadano($db);
 
-$accion = 0 + $_GET["accion"];
+$accion = intval($_GET["accion"]);
 
 $paginador = new ADODB_Pager_Ajax($ruta_raiz, "div_buscar_ciudadanos", "busqueda_paginador.php",
                   "ciu_ver,txt_buscar_nombre,tipo_query");

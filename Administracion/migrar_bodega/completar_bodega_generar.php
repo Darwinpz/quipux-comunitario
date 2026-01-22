@@ -37,8 +37,8 @@ $fecha_inicio = $db->conn->sysTimeStamp;
 $contador = 0;
 $sentencia = "0";
 
-$txt_anio = 0 + $_POST["txt_anio"];
-$txt_num_registros = 0 + $_POST["txt_num_registros"];
+$txt_anio = intval($_POST["txt_anio"]);
+$txt_num_registros = intval($_POST["txt_num_registros"]);
 $sql = "select radi_nume_radi from radicado where radi_nume_radi::text like '$txt_anio%0' and radi_path is null and esta_codi in (0,6) limit $txt_num_registros offset 0";
 $rs = $db->conn->query($sql);
 

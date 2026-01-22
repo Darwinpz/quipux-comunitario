@@ -258,7 +258,7 @@ if (trim($_FILES["firmaDigitalizada"]['name'])!="")
 
 $record["USUA_TIPO_CERTIFICADO"] = 0;
 if (isset($_POST["usr_permiso_19"])) {
-    $record["USUA_TIPO_CERTIFICADO"] = 0 + $_POST["usr_tipo_certificado"];
+    $record["USUA_TIPO_CERTIFICADO"] = intval($_POST["usr_tipo_certificado"]);
     if ($record["USUA_TIPO_CERTIFICADO"] == 0) $record["USUA_TIPO_CERTIFICADO"] = 1;
 }
 
