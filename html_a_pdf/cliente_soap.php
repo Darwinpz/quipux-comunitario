@@ -6,7 +6,7 @@ function ws_generar_pdf($html, $plantilla, $servidor)
 {
     try
     { 
-    	$wsdl = "$servidor/html_a_pdf.php?wsdl";
+    	$wsdl = "$servidor/html_a_pdf.wsdl.php";
         if(!@file_get_contents($wsdl)) {
             throw new SoapFault('Server', 'No WSDL found at ' . $wsdl);
         }

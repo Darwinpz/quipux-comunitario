@@ -8,7 +8,7 @@ function ws_generar_pdf_base64($html, $plantilla, $servidor, $estado="", $numDoc
 
     try
     {
-    	$wsdl = "$servidor/html_a_pdf.php?wsdl";
+    	$wsdl = "$servidor/html_a_pdf.wsdl.php";
        
         if(!@file_get_contents($wsdl)) {
             throw new SoapFault('Server', 'No WSDL found at ' . $wsdl);
@@ -66,7 +66,7 @@ function ws_unir_archivos_pdf($archivos_base64, $servidor)
 {
     try
     {
-        $wsdl = "$servidor/html_a_pdf.php?wsdl";
+        $wsdl = "$servidor/html_a_pdf.wsdl.php";
         if(!@file_get_contents($wsdl)) {
             throw new SoapFault('Server', 'No WSDL found at ' . $wsdl);
         }
@@ -109,7 +109,7 @@ function ws_generar_pdf($html, $plantilla, $servidor, $estado="", $numDocu="", $
 
     try
     {
-    	$wsdl = "$servidor/html_a_pdf.php?wsdl";
+    	$wsdl = "$servidor/html_a_pdf.wsdl.php";
         if(!@file_get_contents($wsdl)) {
             throw new SoapFault('Server', 'No WSDL found at ' . $wsdl);
         }
