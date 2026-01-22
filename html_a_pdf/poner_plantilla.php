@@ -52,8 +52,8 @@ class PDF extends FPDI {
         $this->Cell(0,5,$this->PageNo().'/'.$this->_total_paginas,0,0,'R');	//numero de página a la derecha
         $this->SetXY(4, -8);
         $this->SetFont('helvetica','I',5);	//fuente del texto
-        //$this->Write(0, "* Documento generado por Quipux $this->_tipo_sistema");
-        $this->Cell(0,5,"* Documento generado por Quipux $this->_tipo_sistema",0,0,'L');	//numero de página a la derecha
+        //$this->Write(0, "* Documento generado por BMV $this->_tipo_sistema");
+        $this->Cell(0,5,"* Documento generado por BMV - $this->_tipo_sistema",0,0,'L');	//numero de página a la derecha
         //    $this->Cell(5,10,'Documento generado en el Sistema de Gestión Documental Quipux',0,0,'L');	//numero de página a la derecha
     }
 
