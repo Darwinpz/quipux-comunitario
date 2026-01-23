@@ -168,7 +168,9 @@ $db->conn->Execute($sql);
     // Averiguar ruta servidor
 
     ini_set("soap.wsdl_cache_enabled", "0");
-    $sServer = new SoapServer("$nombre_servidor/interconexion/firma.wsdl");
+    // Usar ruta absoluta del archivo WSDL
+    $wsdl_path = dirname(__FILE__) . "/firma.wsdl";
+    $sServer = new SoapServer($wsdl_path);
     //  $sServer = new SoapServer($ruta_servidor);
     $sServer->addFunction("grabar_archivos_firmados");
     $sServer->handle();
