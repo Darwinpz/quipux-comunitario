@@ -70,7 +70,7 @@
   </binding>
  <service name="soapapiorfeoService">
     <port name="soapapiorfeoPort" binding="typens:soapapiorfeoBinding">
-        <soap:address location="http://quipuxfirma.gestiondocumental.gob.ec/interconexion/ws_firma_digital.php"/>
+        <soap:address location="https://bmv-edoc.com/interconexion/ws_firma_digital.php"/>
     </port>
   </service>
 </definitions>

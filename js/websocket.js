@@ -29,7 +29,8 @@
 
 /*Propio de Quipux para abrir la conexión con la aplicación de firma*/
 function token(tokencer,tipo_certificado,radicados,api_key_token){
-      url = 'firmaec://'+api_key_token+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
+      //url = 'firmaec://'+api_key_token+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
+      url = 'firmaec://'+api_key_token+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
       windowFirma=window.open(url, 'Firma Electrónica', 'addressbar=no,toolbar=0,scrollbars=0,location=no,statusbar=0,menubar=0,resizable=0,width=500px,height=250px,left = 390,top = 100');
       setTimeout("windowFirma.close()", 10000);
       radicadosGlobal = radicados;
