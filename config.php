@@ -22,6 +22,9 @@
 // Las contraseñas y datos importantes se ocultan en un archivo ".env".
 require_once 'cargar_env.php';
 
+// Configurar zona horaria para Ecuador
+date_default_timezone_set('America/Guayaquil');
+
 // Archivo con algunas configuraciones de términos usados en el sistema
 $FILE_LOCAL = getenv('FILE_LOCAL');
 
