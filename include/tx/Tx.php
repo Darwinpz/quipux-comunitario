@@ -683,7 +683,7 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
         $jsoncedula = '"'."cedula".'":';
         $jsonsistema = '"'."sistema".'":';
         $cedula = '"'.$cedula.'"';
-        $sistema = "$api_key_token";
+        $sistema = "$sistema_firma";
         $sistema = '"'.$sistema.'"';
         $jsondocumentos = ',"'."documentos".'":';
         //forma json final
@@ -693,7 +693,7 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
         //CONSUMO DE SERVICIO WEB RES
         $urlws = $swEnvioArchivoFirmaConfig;
         // ------------------------------------------------------------
-        $headers = array("Content-Type: application/json", "X-API-KEY: $api_key_token");
+        $headers = array("Content-Type: application/json", "X-API-KEY: $api_key_firma");
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $urlws);
         curl_setopt($curl, CURLOPT_POST, true);
