@@ -45,12 +45,12 @@ function grabar_archivos_firmados($usuario, $nombre_doc, $archivo,$datos_firmant
         $fechaanio = substr($fecha,6,4);
         $fechahora = substr($fecha,11,8);
         //COMPUESTA
-        //$fecha = "$fechaanio-$fechames-$fechadia $fechahora (GMT-5)";
+        $fecha = "$fechaanio-$fechames-$fechadia $fechahora (GMT-5)";
         $nombre = $datos_firmante;
 //$db->conn->Execute("insert into log_paginas_visitadas (pagina) values('nombredoc: $nombre_doc')");
 //$db->conn->Execute("insert into log_paginas_visitadas (pagina) values('archivo_firmado64: $arch64')");
-        //$datos_firmante = "<table><tr><th>Cédula</th><th>Nombre</th><th>Institución</th><th>Cargo</th><th>Fecha</th></tr>";
-        //$datos_firmante.= "<tr><td>$usuario</td><td>$nombre</td><td>$institucion</td><td>$cargo</td><td>$fecha</td></tr></table>";
+        $datos_firmante = "<table><tr><th>Cédula</th><th>Nombre</th><th>Institución</th><th>Cargo</th><th>Fecha</th></tr>";
+        $datos_firmante.= "<tr><td>$usuario</td><td>$nombre</td><td>$institucion</td><td>$cargo</td><td>$fecha</td></tr></table>";
  $rs_archivo = $db_bodega->query("select func_grabar_archivo(E'$nombre_doc.pdf', E'$arch64') as arch_codi");
 
     if (!$rs_archivo or $rs_archivo->EOF or (0+$rs_archivo->fields["ARCH_CODI"])==0)
