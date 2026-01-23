@@ -712,9 +712,9 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
    }
     $pagina_actual= $_SERVER['REQUEST_URI'];
     $tamanio="width='15' height='15'";
-    //api_key_token, se encuentra configurado en el config.php, dependiendo de la base de datos de firma electrónica
-      echo "<script>token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$api_key_token\",\"$url_api_firma\");</script>";
-      $html = "<a href='javascript:;' onclick='token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$api_key_token\",\"$url_api_firma\");' class='aqui'>";
+    //sistema_firma es el nombre del ambiente (produccion, pruebas, etc.) para el protocolo firmaec://
+      echo "<script>token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\");</script>";
+      $html = "<a href='javascript:;' onclick='token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\");' class='aqui'>";
       $html.="<font color='blue' size='2'>aquí</font>";
       $html.="</a>";
 

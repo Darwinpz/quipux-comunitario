@@ -28,10 +28,10 @@
 		
 
 /*Propio de Quipux para abrir la conexión con la aplicación de firma*/
-function token(tokencer,tipo_certificado,radicados,api_key_token,url_api_firma){
-      //url = 'firmaec://'+api_key_token+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
+function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma){
+      //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
       // Construir URL base con parámetros obligatorios
-      url = 'firmaec://'+api_key_token+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
+      url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
       if (url_api_firma && url_api_firma !== '') {
           url += '&url=' + encodeURIComponent(url_api_firma);
