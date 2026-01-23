@@ -14,5 +14,5 @@
     $web_path = str_replace('\\', '/', $web_path); // Normalizar barras en Windows
 
     $nombre_servidor = "$protocolo://$host$web_path/html_a_pdf";
-    $tipo_sistema = "Produccion";
+    $tipo_sistema = "produccion";
 ?>
