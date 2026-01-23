@@ -112,6 +112,7 @@ $api_key_token = getenv('api_key_token');
 $sistema_firma = getenv('sistema_firma');
 //$api_key_firma = getenv('api_key_firma');
 $swEnvioArchivoFirmaConfig = getenv('swEnvioArchivoFirmaConfig');
+$url_api_firma = getenv('url_api_firma');
 //Determina posición tamano y ambiente Solo para ambiente de pruebas debe estar en 1
 //Posición de la firma al pie
 $centrado = getenv('centrado');
