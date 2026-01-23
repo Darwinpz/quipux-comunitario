@@ -1118,7 +1118,7 @@ if (!class_exists('TCPDF', false)) {
 				mb_internal_encoding("ASCII");
 			}
 			// set language direction
-			$this->rtl = $this->l['a_meta_dir']=='rtl' ? true : false;
+			$this->rtl = (isset($this->l['a_meta_dir']) && $this->l['a_meta_dir']=='rtl') ? true : false;
 			$this->tmprtl = false;
 			//Some checks
 			$this->_dochecks();
@@ -2135,7 +2135,9 @@ if (!class_exists('TCPDF', false)) {
 				} else {
 					$this->SetXY($this->original_lMargin, $this->header_margin);
 				}
-				$this->SetFont($this->header_font[0], $this->header_font[1], $this->header_font[2]);
+				if (is_array($this->header_font)) {
+					$this->SetFont($this->header_font[0], $this->header_font[1], $this->header_font[2]);
+				}
 				$this->Header();
 				//restore position
 				if ($this->rtl) {
@@ -2170,7 +2172,9 @@ if (!class_exists('TCPDF', false)) {
 				} else {
 					$this->SetXY($this->original_lMargin, $footer_y);
 				}
-				$this->SetFont($this->footer_font[0], $this->footer_font[1] , $this->footer_font[2]);
+				if (is_array($this->footer_font)) {
+					$this->SetFont($this->footer_font[0], $this->footer_font[1] , $this->footer_font[2]);
+				}
 				$this->Footer();
 				//restore position
 				if ($this->rtl) {
@@ -3607,6 +3611,7 @@ if (!class_exists('TCPDF', false)) {
 		* @since 2.3.000 (2008-03-05)
 		*/
 		public function unichr($c) {
+			$c = intval($c);
 			if (!$this->isunicode) {
 				return chr($c);
 			} elseif ($c <= 0x7F) {

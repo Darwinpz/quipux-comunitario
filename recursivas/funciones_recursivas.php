@@ -85,7 +85,7 @@ class FuncionesRecursivas {
 **  Ejemplos de uso al final del archivo.                                                                     **
 ***************************************************************************************************************/
     function add_campo($nombre, $tamano, $campo, $tipo="", $funcion="", $campos_funcion="") {
-        $num_campo = count($this->campo);
+        $num_campo = is_array($this->campo) ? count($this->campo) : 0;
         $this->campo[$num_campo]["campo"] = $campo;
         $this->campo[$num_campo]["alias"] = "c$num_campo"; // Se renombran los campos para evitar conflictos
         $this->campo[$num_campo]["nombre"] = $nombre;
