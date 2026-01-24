@@ -235,59 +235,17 @@ class CoordenadasFirma {
     }
 
     /**
-     * Limpia el texto "Documento firmado electrónicamente" del PDF
-     * antes de enviarlo a firmar (ya que el QR indica que está firmado)
+     * Limpia el marcador del PDF antes de enviarlo a firmar
+     * Nota: Como usamos el texto "Documento firmado electrónicamente" como marcador,
+     * no es necesario limpiarlo del PDF ya que es parte natural del documento
      *
      * @param string $pdf_path Ruta del PDF
-     * @return bool true si se limpió correctamente
+     * @return bool true siempre (método mantenido por compatibilidad)
      */
     public function limpiar_marcador($pdf_path) {
-        try {
-            if (!file_exists($pdf_path)) {
-                error_log("CoordenadasFirma: No se puede limpiar, archivo no existe: $pdf_path");
-                return false;
-            }
-
-            // Leer el contenido del PDF
-            $pdf_content = file_get_contents($pdf_path);
-
-            // Buscar el texto en diferentes codificaciones que puede tener en el PDF
-            $textos_a_eliminar = [
-                "Documento firmado electr\xc3\xb3nicamente",  // UTF-8
-                "Documento firmado electronicamente",          // ASCII
-                "Documento firmado electrónicamente",          // Directo
-            ];
-
-            $encontrado = false;
-            foreach ($textos_a_eliminar as $texto) {
-                if (strpos($pdf_content, $texto) !== false) {
-                    // Reemplazar con espacios del mismo largo para no romper el PDF
-                    $espacios = str_repeat(' ', strlen($texto));
-                    $pdf_content = str_replace($texto, $espacios, $pdf_content);
-                    $encontrado = true;
-                }
-            }
-
-            if (!$encontrado) {
-                // No se encontró el texto, pero no es un error crítico
-                error_log("CoordenadasFirma: Texto marcador no encontrado en PDF (puede ser normal)");
-                return true;
-            }
-
-            // Guardar el PDF limpio
-            $resultado = file_put_contents($pdf_path, $pdf_content);
-
-            if ($resultado === false) {
-                error_log("CoordenadasFirma: Error escribiendo PDF limpio");
-                return false;
-            }
-
-            return true;
-
-        } catch (Exception $e) {
-            error_log("CoordenadasFirma: Error limpiando marcador: " . $e->getMessage());
-            return false;
-        }
+        // No es necesario limpiar el texto "Documento firmado electrónicamente"
+        // ya que es parte legítima del documento
+        return true;
     }
 
     /**
