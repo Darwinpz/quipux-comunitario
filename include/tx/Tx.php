@@ -652,6 +652,10 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
 	$doctxt="";
 	$numdocs=count($radicados);
 
+ // Variables para coordenadas dinámicas de firma
+	$coord_llx = 222; // Valores por defecto
+	$coord_lly = 85;
+
  foreach ($radicados as $radi_nume) {
         $sql = "select radi_nume_text,radi_nume_radi from radicado where radi_nume_radi=$radi_nume and esta_codi=3
                 union all
@@ -663,6 +667,17 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
 	$radi_nume_text = $rs->fields["RADI_NUME_RADI"];
          //path del documento
          $path_pdf = $this->ruta_raiz."/bodega/tmp/$radi_nume_text.pdf";
+
+         // Detectar coordenadas dinámicas para la firma QR
+         if (file_exists($path_pdf) && $ejecucion == 1) { // Solo para el primer documento
+             include_once $this->ruta_raiz."/include/tx/Coordenadas_Firma.php";
+             $detectorCoord = new CoordenadasFirma();
+             $coordenadas = $detectorCoord->detectar_posicion_firma($path_pdf);
+             if ($coordenadas['encontrado']) {
+                 $coord_llx = $coordenadas['llx'];
+                 $coord_lly = $coordenadas['lly'];
+             }
+         }
          //get en variable
          $im = file_get_contents("$path_pdf");
          //transformo en base64
@@ -713,8 +728,8 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
     $pagina_actual= $_SERVER['REQUEST_URI'];
     $tamanio="width='15' height='15'";
     //sistema_firma es el nombre del ambiente (produccion, pruebas, etc.) para el protocolo firmaec://
-      echo "<script>token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\");</script>";
-      $html = "<a href='javascript:;' onclick='token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\");' class='aqui'>";
+      echo "<script>token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\",$coord_llx,$coord_lly);</script>";
+      $html = "<a href='javascript:;' onclick='token(\"$token\",\"$tipo_certificado\",\"$radicadosToken\",\"$sistema_firma\",\"$url_api_firma\",$coord_llx,$coord_lly);' class='aqui'>";
       $html.="<font color='blue' size='2'>aquí</font>";
       $html.="</a>";
 

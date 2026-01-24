@@ -28,17 +28,25 @@
 		
 
 /*Propio de Quipux para abrir la conexión con la aplicación de firma*/
-function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma){
+function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly){
       //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
       // Construir URL base con parámetros obligatorios
       //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
       url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado=2';
 
-      // Agregar parámetros de estampado QR (posición y tipo de firma visible)
-      // llx: posición horizontal (260 = centrado)
-      // lly: posición vertical desde el borde inferior (aumentar para mover hacia arriba)
-      //url += '&llx=260&lly=450&estampado=QR&razon=firmado desde BMVeDoc';
-      url += '&llx=222&lly=85&urx=422&ury=49&estampado=QR&razon=firmado desde BMV eDoc&des=true';
+      // Agregar parámetros de estampado QR (posición dinámica o valores por defecto)
+      // llx, lly: esquina inferior izquierda del rectángulo de firma
+      // urx, ury: esquina superior derecha del rectángulo de firma
+      var coordX = llx || 222;  // Usar coordenada detectada o default
+      var coordY = lly || 85;   // Usar coordenada detectada o default
+
+      // Calcular esquina superior derecha basándose en el tamaño del QR
+      var anchoQR = 100;  // Ancho del QR en puntos PDF
+      var altoQR = 100;   // Alto del QR en puntos PDF
+      var coordURX = coordX + anchoQR;  // Esquina superior derecha X
+      var coordURY = coordY + altoQR;   // Esquina superior derecha Y
+
+      url += '&llx='+coordX+'&lly='+coordY+'&urx='+coordURX+'&ury='+coordURY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
 
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
       if (url_api_firma && url_api_firma !== '') {
