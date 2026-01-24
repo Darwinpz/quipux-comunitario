@@ -4,6 +4,9 @@
  * Basado en el proyecto oficial firmadigital-tester
  */
 
+// Iniciar output buffering para capturar cualquier salida no deseada (warnings, notices, etc)
+ob_start();
+
 // Desactivar visualización de errores para que no interfieran con la respuesta
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
@@ -17,6 +20,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     $data = json_decode($json);
 
     if (!$data) {
+        ob_clean(); // Limpiar cualquier salida previa
         echo "ERROR: Invalid JSON";
         exit;
     }
@@ -26,6 +30,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     $archivoBase64 = isset($data->archivo) ? $data->archivo : '';
 
     if (empty($nombreDocumento) || empty($archivoBase64)) {
+        ob_clean(); // Limpiar cualquier salida previa
         echo "ERROR: Missing required fields";
         exit;
     }
@@ -34,6 +39,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     $archivo = base64_decode($archivoBase64);
 
     if ($archivo === false) {
+        ob_clean(); // Limpiar cualquier salida previa
         echo "ERROR: Invalid base64";
         exit;
     }
@@ -52,8 +58,12 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
                 " Fecha: " . $fecha . "\n";
     file_put_contents($log_file, $log_data, FILE_APPEND);
 
-    // Log completo del JSON recibido
-    file_put_contents($log_file, "JSON completo: " . $json . "\n", FILE_APPEND);
+    // Log JSON sin el archivo (para no saturar el log con base64)
+    $data_log = clone $data;
+    if (isset($data_log->archivo)) {
+        $data_log->archivo = "[BASE64_" . strlen($data_log->archivo) . "_BYTES]";
+    }
+    file_put_contents($log_file, "JSON (sin archivo): " . json_encode($data_log) . "\n", FILE_APPEND);
 
     // Incluir solo las dependencias necesarias (evitamos incluir ws_firma_digital.php porque tiene código SOAP)
     $ruta_raiz = "..";
@@ -134,18 +144,25 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
         );
 
         if ($resultado == 1) {
-            // Solo devolver "OK" sin ningún otro texto
+            // Limpiar cualquier warning/notice capturado y devolver solo "OK"
+            ob_clean();
             echo "OK";
             file_put_contents($log_file, date('Y-m-d H:i:s') . " - SUCCESS: " . $nombreDocumento . "\n", FILE_APPEND);
         } else {
+            ob_clean(); // Limpiar cualquier salida previa
             echo "ERROR: No se pudo guardar el documento";
             file_put_contents($log_file, date('Y-m-d H:i:s') . " - ERROR: Resultado=" . $resultado . " - Documento no encontrado o usuario inválido\n", FILE_APPEND);
         }
     } catch (Exception $e) {
+        ob_clean(); // Limpiar cualquier salida previa
         echo "ERROR: " . $e->getMessage();
         file_put_contents($log_file, date('Y-m-d H:i:s') . " - EXCEPTION: " . $e->getMessage() . "\n", FILE_APPEND);
     }
 } else {
+    ob_clean(); // Limpiar cualquier salida previa
     echo "Invalid Request";
 }
+
+// Enviar la salida limpia al cliente
+ob_end_flush();
 ?>
