@@ -21,6 +21,15 @@
         session_start();
     }
     $ruta_raiz = ".";
+
+    // Crear función de log personalizada MUY AL INICIO
+    function debug_log($mensaje) {
+        $log_file = "/var/www/html/quipux-comunitario/vistaprevia_debug.log";
+        file_put_contents($log_file, date('Y-m-d H:i:s') . " - " . $mensaje . "\n", FILE_APPEND);
+    }
+
+    debug_log("=== INICIO VistaPrevia.php ===");
+
     include_once "$ruta_raiz/rec_session.php";
 
     //se incluyo por register_globals
@@ -28,18 +37,14 @@
     $archivo= limpiar_sql($_GET['archivo']);
     $textrad = limpiar_sql($_GET['textrad']);
 
+    debug_log("Parámetros recibidos: verrad=$verrad, archivo=$archivo, textrad=$textrad");
+
     //$ruta_raiz = ".";
     include "$ruta_raiz/plantillas/generar_documento.php";
     include "$ruta_raiz/plantillas/GenerarDocumento.php";
 
-    // Crear función de log personalizada
-    function debug_log($mensaje) {
-        $log_file = __DIR__ . "/vistaprevia_debug.log";
-        file_put_contents($log_file, date('Y-m-d H:i:s') . " - " . $mensaje . "\n", FILE_APPEND);
-    }
-
     // Verificar si el documento ya fue firmado digitalmente
-    debug_log("Buscando documento: verrad=$verrad");
+    debug_log("Buscando documento firmado: verrad=$verrad");
     $rs_firmado = $db->query("select arch_codi, arch_codi_firma, radi_nume_temp, radi_nume_radi from radicado where radi_nume_radi='$verrad' or radi_nume_temp='$verrad'");
     $arch_codi_firma = 0;
     if (!$rs_firmado->EOF) {
