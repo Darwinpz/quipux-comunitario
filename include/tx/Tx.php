@@ -653,8 +653,8 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
 	$numdocs=count($radicados);
 
  // Variables para coordenadas dinámicas de firma
-	$coord_llx = 222; // Valores por defecto
-	$coord_lly = 85;
+	$coord_llx = 100; // Alineado a la izquierda por defecto
+	$coord_lly = 250; // Posición vertical por defecto
 
  foreach ($radicados as $radi_nume) {
         $sql = "select radi_nume_text,radi_nume_radi from radicado where radi_nume_radi=$radi_nume and esta_codi=3

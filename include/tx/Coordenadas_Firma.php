@@ -38,7 +38,7 @@ class CoordenadasFirma {
     public function detectar_posicion_firma($pdf_path) {
         // Valores por defecto si no se encuentra el marcador
         $resultado = [
-            'llx' => 250,          // Centrado horizontal por defecto
+            'llx' => 100,          // Alineado a la izquierda por defecto
             'lly' => 200,          // Posición vertical por defecto
             'pagina' => 1,         // Primera página por defecto
             'encontrado' => false
@@ -133,9 +133,9 @@ class CoordenadasFirma {
                         $xMax = (float)$word['xMax'];
                         $yMax = (float)$word['yMax'];
 
-                        // Calcular posición para el QR (centrado horizontalmente)
-                        $ancho_pagina = 595; // A4
-                        $llx = round(($ancho_pagina / 2) - ($this->ancho_qr / 2));
+                        // Calcular posición para el QR (alineado a la izquierda)
+                        // Alineado con el margen izquierdo del texto del firmante
+                        $llx = 100; // Margen izquierdo típico de documentos oficiales (100-120 puntos)
 
                         // pdftotext -bbox usa Y=0 arriba, PDF usa Y=0 abajo
                         // Necesitamos convertir: lly_pdf = altura_pagina - y_pdftotext
@@ -220,9 +220,8 @@ class CoordenadasFirma {
             // Sumamos espacio adicional para que quede entre "Atentamente," y el texto
             $lly = $alto_pagina - $y_desde_arriba + 20; // +20 puntos para ubicar encima
 
-            // Centrar horizontalmente
-            $ancho_pagina = 595; // A4
-            $llx = round(($ancho_pagina / 2) - ($this->ancho_qr / 2));
+            // Alinear a la izquierda (mismo margen que el texto del firmante)
+            $llx = 100; // Margen izquierdo típico de documentos oficiales
 
             return [
                 'llx' => $llx,
