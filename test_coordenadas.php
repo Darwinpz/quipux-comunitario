@@ -74,9 +74,9 @@ if ($code === 0 && file_exists($tmp)) {
     unlink($tmp);
 
     // Mostrar primeras 2000 caracteres del XML
-    echo "<p>Primeros 2000 caracteres del XML:</p>";
+    echo "<p>Primeros 10000 caracteres del XML:</p>";
     echo "<textarea style='width:100%; height:300px; font-family:monospace; font-size:11px;'>";
-    echo htmlspecialchars(substr($xml_content, 0, 2000));
+    echo htmlspecialchars(substr($xml_content, 0, 10000));
     echo "</textarea>";
 
     // Buscar el marcador manualmente en el XML
