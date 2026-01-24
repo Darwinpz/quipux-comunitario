@@ -236,15 +236,15 @@ class CoordenadasFirma {
 
     /**
      * Limpia el marcador del PDF antes de enviarlo a firmar
-     * Nota: Como el marcador se genera con CSS (opacity:0, user-select:none),
-     * ya es invisible y no seleccionable desde el origen. No requiere limpieza.
+     * Nota: Como usamos el texto "Documento firmado electrónicamente" como marcador,
+     * no es necesario limpiarlo del PDF ya que es parte natural del documento
      *
      * @param string $pdf_path Ruta del PDF
      * @return bool true siempre (método mantenido por compatibilidad)
      */
     public function limpiar_marcador($pdf_path) {
-        // No es necesario limpiar - el marcador ya es invisible por CSS
-        // y no seleccionable (opacity:0, user-select:none, pointer-events:none)
+        // No es necesario limpiar el texto "Documento firmado electrónicamente"
+        // ya que es parte legítima del documento
         return true;
     }
 
