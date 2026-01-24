@@ -33,14 +33,20 @@
     include "$ruta_raiz/plantillas/GenerarDocumento.php";
 
     // Verificar si el documento ya fue firmado digitalmente
-    $rs_firmado = $db->query("select arch_codi_firma from radicado where radi_nume_radi='$verrad' or radi_nume_temp='$verrad'");
+    error_log("DEBUG VistaPrevia - Buscando documento: verrad=$verrad");
+    $rs_firmado = $db->query("select arch_codi, arch_codi_firma, radi_nume_temp, radi_nume_radi from radicado where radi_nume_radi='$verrad' or radi_nume_temp='$verrad'");
     $arch_codi_firma = 0;
     if (!$rs_firmado->EOF) {
+        $arch_codi = 0 + $rs_firmado->fields["ARCH_CODI"];
         $arch_codi_firma = 0 + $rs_firmado->fields["ARCH_CODI_FIRMA"];
+        error_log("DEBUG VistaPrevia - Encontrado: arch_codi=$arch_codi, arch_codi_firma=$arch_codi_firma");
+    } else {
+        error_log("DEBUG VistaPrevia - No se encontró el documento en la base de datos");
     }
 
     // Si existe archivo firmado, recuperarlo de la bodega en lugar de generar PDF
     if ($arch_codi_firma > 0) {
+        error_log("DEBUG VistaPrevia - Recuperando archivo firmado arch_codi_firma=$arch_codi_firma");
         $db_bodega = new ConnectionHandler($ruta_raiz, "bodega");
         $rs_bodega = $db_bodega->query("select func_recuperar_archivo($arch_codi_firma) as archivo");
 
@@ -49,13 +55,19 @@
             // Crear archivo temporal en bodega si no existe
             $path_firmado = "$ruta_raiz/bodega" . $archivo;
             if (!file_exists($path_firmado)) {
-                file_put_contents($path_firmado, base64_decode($rs_bodega->fields["ARCHIVO"]));
+                $bytes_escritos = file_put_contents($path_firmado, base64_decode($rs_bodega->fields["ARCHIVO"]));
+                error_log("DEBUG VistaPrevia - Archivo firmado guardado en: $path_firmado ($bytes_escritos bytes)");
+            } else {
+                error_log("DEBUG VistaPrevia - Archivo firmado ya existe en: $path_firmado");
             }
+        } else {
+            error_log("DEBUG VistaPrevia - ERROR: No se pudo recuperar el archivo de la bodega");
         }
     }
 
     // Si no hay archivo firmado, generar PDF desde cero
     if (empty($archivo)) {
+        error_log("DEBUG VistaPrevia - Regenerando PDF desde cero");
         $doc = New GenerarDocumento($db);
         if (trim($archivo)==""){
             $archivo = $doc->GenerarPDF($verrad,"no");
@@ -66,6 +78,8 @@
         }
         else
             $archivo = str_replace(".p7m","",$archivo);
+    } else {
+        error_log("DEBUG VistaPrevia - Usando archivo existente: $archivo");
     }
     if (!$nombre_archivo) {
         $tmp = explode("/",$archivo);
