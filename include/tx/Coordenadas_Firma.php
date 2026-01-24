@@ -103,22 +103,38 @@ class CoordenadasFirma {
                 }
                 // Cambió de línea
                 else {
+                    // ANTES de cambiar de línea, verificar si la línea actual tiene el marcador
+                    if (stripos($linea, $this->marcador) !== false) {
+                        return [
+                            'llx' => $xInicio,
+                            'lly' => $yLinea,
+                            'pagina' => $page_num + 1
+                        ];
+                    }
+
+                    // Ahora sí, cambiar a nueva línea
                     $linea = $texto;
                     $xInicio = $x;
                     $yLinea = $y;
                 }
 
-                // ¿Encontramos el marcador? (búsqueda flexible)
-                // Buscar tanto con acento como sin acento por si hay problemas de encoding
-                if (stripos($linea, $this->marcador) !== false ||
-                    stripos($linea, "bmvQr") !== false) {
-
+                // También verificar después de agregar palabras a la línea actual
+                if (stripos($linea, $this->marcador) !== false) {
                     return [
                         'llx' => $xInicio,
                         'lly' => $yLinea,
                         'pagina' => $page_num + 1
                     ];
                 }
+            }
+
+            // Verificar la última línea procesada de la página
+            if ($linea !== '' && stripos($linea, $this->marcador) !== false) {
+                return [
+                    'llx' => $xInicio,
+                    'lly' => $yLinea,
+                    'pagina' => $page_num + 1
+                ];
             }
         }
 
