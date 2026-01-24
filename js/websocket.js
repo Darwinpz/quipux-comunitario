@@ -35,19 +35,13 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
       url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado=2';
 
       // Agregar parámetros de estampado QR (posición dinámica o valores por defecto)
-      // llx, lly: esquina inferior izquierda del rectángulo de firma
-      // urx, ury: esquina superior derecha del rectángulo de firma
-      var coordX = llx || 222;  // Usar coordenada detectada o default
-      var coordY = lly || 85;   // Usar coordenada detectada o default
+      // Solo usamos llx y lly - FirmaEC usa su propio tamaño por defecto para el QR
+      var coordX = llx || 222;  // Posición horizontal (centrado)
+      var coordY = lly || 250;  // Posición vertical (ajustada)
 
-      // Calcular esquina superior derecha basándose en el tamaño del QR
-      // Tamaño ajustado: 70x70 puntos (aprox 2.5cm x 2.5cm en papel)
-      var anchoQR = 70;  // Ancho del QR en puntos PDF
-      var altoQR = 70;   // Alto del QR en puntos PDF
-      var coordURX = coordX + anchoQR;  // Esquina superior derecha X
-      var coordURY = coordY + altoQR;   // Esquina superior derecha Y
-
-      url += '&llx='+coordX+'&lly='+coordY+'&urx='+coordURX+'&ury='+coordURY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
+      // Omitimos urx y ury porque FirmaEC los interpreta incorrectamente
+      // haciendo el QR gigante - mejor usar su tamaño por defecto
+      url += '&llx='+coordX+'&lly='+coordY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
 
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
       if (url_api_firma && url_api_firma !== '') {

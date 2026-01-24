@@ -133,10 +133,21 @@ class CoordenadasFirma {
                         $xMax = (float)$word['xMax'];
                         $yMax = (float)$word['yMax'];
 
-                        // Calcular posición para el QR (ENCIMA del marcador, centrado)
-                        $llx = round($xMin + (($xMax - $xMin) / 2) - ($this->ancho_qr / 2));
-                        // El QR debe ir ENCIMA del texto, así que usamos yMax + espacio
-                        $lly = round($yMax + 15); // 15 puntos de separación encima del texto
+                        // Calcular posición para el QR (centrado horizontalmente)
+                        $ancho_pagina = 595; // A4
+                        $llx = round(($ancho_pagina / 2) - ($this->ancho_qr / 2));
+
+                        // pdftotext -bbox usa Y=0 arriba, PDF usa Y=0 abajo
+                        // Necesitamos convertir: lly_pdf = altura_pagina - y_pdftotext
+                        $alto_pagina = 842;
+
+                        // El texto está en yMin (desde arriba en pdftotext)
+                        // Convertimos a coordenadas PDF y posicionamos QR encima
+                        $lly_texto_desde_abajo = $alto_pagina - $yMin;
+
+                        // Colocamos el QR justo encima del texto (valores menores = más abajo)
+                        // Agregamos espacio para que quede entre "Atentamente," y el texto
+                        $lly = round($lly_texto_desde_abajo + 10); // 10 pts de separación
 
                         return [
                             'llx' => $llx,
