@@ -17,7 +17,9 @@
 *------------------------------------------------------------------------------
 **/
     //Manejo de Sessiones
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $ruta_raiz = ".";
     include_once "$ruta_raiz/rec_session.php";
 
@@ -40,7 +42,7 @@
        
         if ($archivo=='')
         $archivo = GenerarPDF($verrad,"no",".");
-        $archivo = str_replace(".p7m","",$archivo);        
+        $archivo = str_replace(".p7m","",$archivo);
     }
     else
         $archivo = str_replace(".p7m","",$archivo);
@@ -58,7 +60,7 @@
         if ($ext == '.p7m')
         $nombre_archivo = str_replace(".p7m","",$nombre_archivo);
     $mime = get_mime_tipe($nombre_archivo);
-    
+
     if($mime)
         header( "Content-Disposition: attachment; filename=".$nombre_archivo);
     else
@@ -70,7 +72,7 @@
         header("Content-Type: $mime");
     else
         header("Content-Type: application/pdf");
-        
+
 	header("Content-Transfer-Encoding: binary");
 
     //echo $archivo;
@@ -124,4 +126,3 @@ var_dump($ok);
         }
     </script>
 </body>
-</html>*/?>
