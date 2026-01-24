@@ -76,9 +76,20 @@ class CoordenadasFirma {
     private function parsear_coordenadas_xml($xml_content) {
 
         $xml = simplexml_load_string($xml_content);
-        if (!$xml || !isset($xml->page)) return false;
+        if (!$xml) return false;
 
-        foreach ($xml->page as $page_num => $page) {
+        // pdftotext -bbox envuelve el XML en HTML: <html><body><doc><page>
+        // Intentar acceder a través de la estructura HTML
+        $pages = null;
+        if (isset($xml->body->doc->page)) {
+            $pages = $xml->body->doc->page;
+        } elseif (isset($xml->page)) {
+            $pages = $xml->page;
+        }
+
+        if (!$pages) return false;
+
+        foreach ($pages as $page_num => $page) {
             if (!isset($page->word)) continue;
 
             $linea = '';
