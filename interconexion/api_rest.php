@@ -4,6 +4,12 @@
  * Basado en el proyecto oficial firmadigital-tester
  */
 
+// Desactivar visualización de errores para que no interfieran con la respuesta
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/api_rest_errors.log');
+
 // Recibir JSON del servicio FirmaEC
 $json = file_get_contents('php://input');
 
@@ -41,7 +47,13 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Log para debug (comentar en producción)
     $log_file = __DIR__ . "/api_rest.log";
-    file_put_contents($log_file, date('Y-m-d H:i:s') . " - Documento: " . $nombreDocumento . " Cedula: " . $cedula . "\n", FILE_APPEND);
+    $log_data = date('Y-m-d H:i:s') . " - Documento: " . $nombreDocumento . " Cedula: " . $cedula .
+                " Nombre: " . $nombre . " Institucion: " . $institucion . " Cargo: " . $cargo .
+                " Fecha: " . $fecha . "\n";
+    file_put_contents($log_file, $log_data, FILE_APPEND);
+
+    // Log completo del JSON recibido
+    file_put_contents($log_file, "JSON completo: " . $json . "\n", FILE_APPEND);
 
     // Incluir solo las dependencias necesarias (evitamos incluir ws_firma_digital.php porque tiene código SOAP)
     $ruta_raiz = "..";
@@ -61,7 +73,20 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
         $tx = new Tx($db);
 
         $radicado = ObtenerDatosRadicado($nombre_doc, $db);
+
+        // Validar que se obtuvo el radicado
+        if (!$radicado || !is_array($radicado) || !isset($radicado["usua_rem"])) {
+            error_log("ERROR: No se encontró el radicado $nombre_doc");
+            return 0;
+        }
+
         $usr = ObtenerDatosUsuario(str_replace("-", "", $radicado["usua_rem"]), $db);
+
+        // Validar que se obtuvo el usuario
+        if (!$usr || !is_array($usr) || !isset($usr["usua_codi"])) {
+            error_log("ERROR: No se encontró el usuario para el radicado $nombre_doc");
+            return 0;
+        }
 
         $arch64 = base64_encode($archivo);
         $archivo5 = md5($arch64);
@@ -109,11 +134,12 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
         );
 
         if ($resultado == 1) {
+            // Solo devolver "OK" sin ningún otro texto
             echo "OK";
             file_put_contents($log_file, date('Y-m-d H:i:s') . " - SUCCESS: " . $nombreDocumento . "\n", FILE_APPEND);
         } else {
             echo "ERROR: No se pudo guardar el documento";
-            file_put_contents($log_file, date('Y-m-d H:i:s') . " - ERROR: Resultado=" . $resultado . "\n", FILE_APPEND);
+            file_put_contents($log_file, date('Y-m-d H:i:s') . " - ERROR: Resultado=" . $resultado . " - Documento no encontrado o usuario inválido\n", FILE_APPEND);
         }
     } catch (Exception $e) {
         echo "ERROR: " . $e->getMessage();
