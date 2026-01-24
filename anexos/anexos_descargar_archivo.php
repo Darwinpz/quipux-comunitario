@@ -81,16 +81,10 @@ if ($anex_codigo != "") {
     $arch_codi_firma = 0+ (int) $rs_arch->fields["ARCH_CODI_FIRMA"];
     $arch_codi       = 0+ (int) $rs_arch->fields["ARCH_CODI_FIRMA"];
     if ($arch_tipo==0) {
-        // Sin firma: usar archivo original sin .p7m
         $arch_nombre = str_ireplace(".p7m", "", $arch_nombre);
         $arch_path   = str_ireplace(".p7m", "", $arch_path);
         $arch_ext    = str_ireplace(".p7m", "", $arch_ext);
         $arch_codi   = 0 + (int) $rs_arch->fields["ARCH_CODI"];
-    } else {
-        // Con firma: el archivo firmado es PDF (sin .p7m)
-        $arch_nombre = str_ireplace(".p7m", "", $arch_nombre);
-        $arch_path   = str_ireplace(".p7m", "", $arch_path);
-        $arch_ext    = str_ireplace(".p7m", "", $arch_ext);
     }
     if ($arch_path=="" and $arch_codi==0 and $arch_codi_firma==0) {
         include_once "$ruta_raiz/plantillas/generar_documento.php";
