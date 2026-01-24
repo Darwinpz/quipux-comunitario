@@ -38,7 +38,7 @@ class CoordenadasFirma {
     public function detectar_posicion_firma($pdf_path) {
         // Valores por defecto si no se encuentra el marcador
         $resultado = [
-            'llx' => 112,          // Alineado a la izquierda por defecto
+            'llx' => 114,          // Alineado a la izquierda por defecto
             'lly' => 250,          // Posición vertical por defecto
             'pagina' => 1,         // Primera página por defecto
             'encontrado' => false
@@ -135,7 +135,7 @@ class CoordenadasFirma {
 
                         // Calcular posición para el QR (alineado a la izquierda)
                         // Alineado con el margen izquierdo del texto del firmante
-                        $llx = 112; // Margen izquierdo típico de documentos oficiales (112-120 puntos)
+                        $llx = 114; // Margen izquierdo típico de documentos oficiales (114-120 puntos)
 
                         // pdftotext -bbox usa Y=0 arriba, PDF usa Y=0 abajo
                         // Necesitamos convertir: lly_pdf = altura_pagina - y_pdftotext
@@ -221,7 +221,7 @@ class CoordenadasFirma {
             $lly = $alto_pagina - $y_desde_arriba + 20; // +20 puntos para ubicar encima
 
             // Alinear a la izquierda (mismo margen que el texto del firmante)
-            $llx = 112; // Margen izquierdo típico de documentos oficiales
+            $llx = 114; // Margen izquierdo típico de documentos oficiales
 
             return [
                 'llx' => $llx,
