@@ -125,10 +125,31 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
 
         $usr = ObtenerDatosUsuario(str_replace("-", "", $radicado["usua_rem"]), $db);
 
-        // Validar que se obtuvo el usuario
+        // Validar que se obtuvo el usuario remitente
         if (!$usr || !is_array($usr) || !isset($usr["usua_codi"])) {
-            error_log("ERROR: No se encontró el usuario para el radicado $nombre_doc");
+            error_log("ERROR: No se encontró el usuario remitente para el radicado $nombre_doc");
             return 0;
+        }
+
+        // Buscar al usuario FIRMANTE por su cédula (puede ser diferente al remitente)
+        // Usar parámetro 'C' para buscar por cédula
+        $usr_firmante = ObtenerDatosUsuario($cedula_firmante, $db, 'C');
+
+        if ($usr_firmante && is_array($usr_firmante) && isset($usr_firmante["usua_codi"])) {
+            // Si la institución viene vacía del certificado, usar la dependencia del firmante
+            if (empty($institucion) && !empty($usr_firmante["dependencia"])) {
+                $institucion = $usr_firmante["dependencia"];
+            }
+            // Si el cargo viene vacío del certificado, usar el cargo del firmante
+            if (empty($cargo) && !empty($usr_firmante["cargo"])) {
+                $cargo = $usr_firmante["cargo"];
+            }
+
+            error_log("DEBUG - Firmante encontrado: " . $usr_firmante["usua_nombre"] .
+                     ", Dependencia: " . $usr_firmante["dependencia"] .
+                     ", Cargo: " . $usr_firmante["cargo"]);
+        } else {
+            error_log("ADVERTENCIA: No se encontró el usuario firmante con cédula $cedula_firmante en la BD de Quipux");
         }
 
         $arch64 = base64_encode($archivo);
