@@ -80,10 +80,10 @@ if ($code === 0 && file_exists($tmp)) {
     echo "</textarea>";
 
     // Buscar el marcador manualmente en el XML
-    if (stripos($xml_content, "Documento firmado") !== false) {
-        echo "<p style='color:green;'>✓ La frase 'Documento firmado' SÍ aparece en el XML</p>";
+    if (stripos($xml_content, "bmvQr") !== false) {
+        echo "<p style='color:green;'>✓ La frase 'bmvQr' SÍ aparece en el XML</p>";
     } else {
-        echo "<p style='color:red;'>✗ La frase 'Documento firmado' NO aparece en el XML</p>";
+        echo "<p style='color:red;'>✗ La frase 'bmvQr' NO aparece en el XML</p>";
     }
 } else {
     echo "<p style='color:red;'>Error al ejecutar pdftotext</p>";
