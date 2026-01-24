@@ -76,9 +76,10 @@ class CoordenadasFirma {
     private function parsear_coordenadas_xml($xml_content) {
 
         $xml = simplexml_load_string($xml_content);
-        if (!$xml) return false;
+        if (!$xml || !isset($xml->page)) return false;
 
         foreach ($xml->page as $page_num => $page) {
+            if (!isset($page->word)) continue;
 
             $linea = '';
             $xInicio = null;
@@ -96,8 +97,8 @@ class CoordenadasFirma {
                     $xInicio = $x;
                     $yLinea = $y;
                 }
-                // Misma línea (misma Y)
-                elseif (abs($yLinea - $y) < 1) {
+                // Misma línea (misma Y con tolerancia de 3 puntos)
+                elseif (abs($yLinea - $y) < 3) {
                     $linea .= ' ' . $texto;
                 }
                 // Cambió de línea
@@ -107,11 +108,10 @@ class CoordenadasFirma {
                     $yLinea = $y;
                 }
 
-                // ¿Encontramos el marcador?
-                if (strpos($linea, $this->marcador) !== false) {
-
-                    error_log("Marcador encontrado en página " . ($page_num + 1));
-                    error_log("X real PDF: $xInicio | Y real PDF: $yLinea");
+                // ¿Encontramos el marcador? (búsqueda flexible)
+                // Buscar tanto con acento como sin acento por si hay problemas de encoding
+                if (stripos($linea, $this->marcador) !== false ||
+                    stripos($linea, "Documento firmado electronicamente") !== false) {
 
                     return [
                         'llx' => $xInicio,
