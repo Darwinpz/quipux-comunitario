@@ -677,6 +677,10 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
                  $coord_llx = $coordenadas['llx'];
                  $coord_lly = $coordenadas['lly'];
              }
+
+             // Limpiar el texto "Documento firmado electrónicamente" del PDF
+             // después de detectar las coordenadas (el QR ya indica que está firmado)
+             $detectorCoord->limpiar_marcador($path_pdf);
          }
          //get en variable
          $im = file_get_contents("$path_pdf");
