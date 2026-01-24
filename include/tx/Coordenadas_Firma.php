@@ -89,8 +89,12 @@ class CoordenadasFirma {
 
         if (!$pages) return false;
 
-        foreach ($pages as $page_num => $page) {
-            if (!isset($page->word)) continue;
+        $num_pagina = 1; // Contador manual de página
+        foreach ($pages as $page) {
+            if (!isset($page->word)) {
+                $num_pagina++;
+                continue;
+            }
 
             $linea = '';
             $xInicio = null;
@@ -119,7 +123,7 @@ class CoordenadasFirma {
                         return [
                             'llx' => $xInicio,
                             'lly' => $yLinea,
-                            'pagina' => $page_num + 1
+                            'pagina' => $num_pagina
                         ];
                     }
 
@@ -134,7 +138,7 @@ class CoordenadasFirma {
                     return [
                         'llx' => $xInicio,
                         'lly' => $yLinea,
-                        'pagina' => $page_num + 1
+                        'pagina' => $num_pagina
                     ];
                 }
             }
@@ -144,9 +148,11 @@ class CoordenadasFirma {
                 return [
                     'llx' => $xInicio,
                     'lly' => $yLinea,
-                    'pagina' => $page_num + 1
+                    'pagina' => $num_pagina
                 ];
             }
+
+            $num_pagina++; // Incrementar contador para siguiente página
         }
 
         return false;
