@@ -56,12 +56,6 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
       windowFirma=window.open(url, 'Firma Electrónica', 'addressbar=no,toolbar=0,scrollbars=0,location=no,statusbar=0,menubar=0,resizable=0,width=500px,height=250px,left = 390,top = 100');
       setTimeout("windowFirma.close()", 10000);
 
-      // Refrescar la página después de que se cierra la ventana de firma
-      // Esperar 12 segundos (2 segundos después de cerrar la ventana) para que la firma se procese
-      setTimeout(function() {
-          location.reload();
-      }, 12000);
-
       radicadosGlobal = radicados;
       intentos = 1;
     }
