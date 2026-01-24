@@ -42,12 +42,12 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
 
       // Calcular esquina superior derecha basándose en el tamaño del QR
       // Tamaño ajustado: 70x70 puntos (aprox 2.5cm x 2.5cm en papel)
-      var anchoQR = 10;  // Ancho del QR en puntos PDF
-      var altoQR = 0;   // Alto del QR en puntos PDF
+      var anchoQR = 70;  // Ancho del QR en puntos PDF
+      var altoQR = 70;   // Alto del QR en puntos PDF
       var coordURX = coordX + anchoQR;  // Esquina superior derecha X
       var coordURY = coordY + altoQR;   // Esquina superior derecha Y
 
-      url += '&llx='+coordX+'&lly='+coordY+'&ury='+coordURY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
+      url += '&llx='+coordX+'&lly='+coordY+'&urx='+coordURX+'&ury='+coordURY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
 
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
       if (url_api_firma && url_api_firma !== '') {

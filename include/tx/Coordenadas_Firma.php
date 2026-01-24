@@ -133,9 +133,10 @@ class CoordenadasFirma {
                         $xMax = (float)$word['xMax'];
                         $yMax = (float)$word['yMax'];
 
-                        // Calcular posición para el QR (debajo del marcador, centrado)
+                        // Calcular posición para el QR (ENCIMA del marcador, centrado)
                         $llx = round($xMin + (($xMax - $xMin) / 2) - ($this->ancho_qr / 2));
-                        $lly = round($yMin - $this->alto_qr - 10); // 10 puntos de separación
+                        // El QR debe ir ENCIMA del texto, así que usamos yMax + espacio
+                        $lly = round($yMax + 15); // 15 puntos de separación encima del texto
 
                         return [
                             'llx' => $llx,
@@ -204,7 +205,9 @@ class CoordenadasFirma {
 
             // Calcular Y (desde abajo hacia arriba en PDF)
             $y_desde_arriba = $margen_superior + ($posicion_en_pagina * $puntos_por_linea);
-            $lly = $alto_pagina - $y_desde_arriba - $this->alto_qr - 30; // 30 puntos de margen
+            // El QR debe ir ENCIMA del texto "Documento firmado electrónicamente"
+            // Sumamos espacio adicional para que quede entre "Atentamente," y el texto
+            $lly = $alto_pagina - $y_desde_arriba + 20; // +20 puntos para ubicar encima
 
             // Centrar horizontalmente
             $ancho_pagina = 595; // A4
