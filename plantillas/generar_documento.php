@@ -265,8 +265,11 @@ class GenerarDocumento {
             if ($this->registro["estado"]==5) { //Si es para un ciudadano y el remitente tiene escaneada su firma
                 if (trim($this->remitente[0]["usua_firma_path"]) != "")
                     $this->datos_doc_firma_digital = "<img src='".trim($this->remitente[0]["usua_firma_path"])."'><br>";
-            } elseif ($this->registro_padre["estado"]==3)
-                $this->datos_doc_firma_digital = "&nbsp;<br><i><b><h6><font color='blue'>Documento firmado electr&oacute;nicamente</font></h6></b></i>";
+            } elseif ($this->registro_padre["estado"]==3) {
+                // Dejar solo espacio en blanco para que el QR de FirmaEC se coloque aquí
+                // El texto "Documento firmado electrónicamente" queda redundante con el QR
+                $this->datos_doc_firma_digital = "&nbsp;<br>&nbsp;<br>&nbsp;<br>";
+            }
         }
         //$this->datos_doc_firma_digital = "&nbsp;<br><i><b><h6><font color='blue'>Documento firmado electr&oacute;nicamente</font></h6></b></i>";
         //$this->datos_doc_firma_digital = "<img src='$nombre_servidor/bodega/firmas/3.jpeg'>";
