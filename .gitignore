@@ -1,1 +1,4 @@
 .env
+bodega/tmp/*
+bodega/plantillas/*
+bodega/respaldos/*
