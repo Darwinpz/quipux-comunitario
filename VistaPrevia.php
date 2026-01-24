@@ -31,21 +31,42 @@
     //$ruta_raiz = ".";
     include "$ruta_raiz/plantillas/generar_documento.php";
     include "$ruta_raiz/plantillas/GenerarDocumento.php";
-    $doc = New GenerarDocumento($db);
-    /*if (trim($archivo)=="")
-        $archivo = $doc->GenerarPDF($verrad,"no");
-    else
-        $archivo = str_replace(".p7m","",$archivo);
-    */
-    if (trim($archivo)==""){
-        $archivo = $doc->GenerarPDF($verrad,"no");
-       
-        if ($archivo=='')
-        $archivo = GenerarPDF($verrad,"no",".");
-        $archivo = str_replace(".p7m","",$archivo);        
+
+    // Verificar si el documento ya fue firmado digitalmente
+    $rs_firmado = $db->query("select arch_codi_firma from radicado where radi_nume_radi='$verrad' or radi_nume_temp='$verrad'");
+    $arch_codi_firma = 0;
+    if (!$rs_firmado->EOF) {
+        $arch_codi_firma = 0 + $rs_firmado->fields["ARCH_CODI_FIRMA"];
     }
-    else
-        $archivo = str_replace(".p7m","",$archivo);
+
+    // Si existe archivo firmado, recuperarlo de la bodega en lugar de generar PDF
+    if ($arch_codi_firma > 0) {
+        $db_bodega = new ConnectionHandler($ruta_raiz, "bodega");
+        $rs_bodega = $db_bodega->query("select func_recuperar_archivo($arch_codi_firma) as archivo");
+
+        if (!$rs_bodega->EOF && !empty($rs_bodega->fields["ARCHIVO"])) {
+            $archivo = "/" . $arch_codi_firma . ".pdf";
+            // Crear archivo temporal en bodega si no existe
+            $path_firmado = "$ruta_raiz/bodega" . $archivo;
+            if (!file_exists($path_firmado)) {
+                file_put_contents($path_firmado, base64_decode($rs_bodega->fields["ARCHIVO"]));
+            }
+        }
+    }
+
+    // Si no hay archivo firmado, generar PDF desde cero
+    if (empty($archivo)) {
+        $doc = New GenerarDocumento($db);
+        if (trim($archivo)==""){
+            $archivo = $doc->GenerarPDF($verrad,"no");
+
+            if ($archivo=='')
+            $archivo = GenerarPDF($verrad,"no",".");
+            $archivo = str_replace(".p7m","",$archivo);
+        }
+        else
+            $archivo = str_replace(".p7m","",$archivo);
+    }
     if (!$nombre_archivo) {
         $tmp = explode("/",$archivo);
         $nombre_archivo = $tmp[count($tmp)-1];
