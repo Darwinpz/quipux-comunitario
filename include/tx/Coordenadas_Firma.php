@@ -133,23 +133,17 @@ class CoordenadasFirma {
                         $xMax = (float)$word['xMax'];
                         $yMax = (float)$word['yMax'];
 
-                        // Calcular posición para el QR (alineado a la izquierda)
-                        // Alineado con el margen izquierdo del texto del firmante
-                        $llx = 113; // Margen izquierdo típico de documentos oficiales (113-120 puntos)
-
-                        // pdftotext -bbox usa Y=0 arriba, PDF usa Y=0 abajo
-                        // Necesitamos convertir: lly_pdf = altura_pagina - y_pdftotext
+                        // pdftotext -bbox: Y=0 arriba, PDF: Y=0 abajo
                         $alto_pagina = 842;
 
-                        // DEBUG: Log de coordenadas detectadas
-                        error_log("CoordenadasFirma DEBUG: yMin=$yMin, yMax=$yMax, xMin=$xMin, xMax=$xMax");
+                        // Coordenada X: usar la del texto (o fija en 113)
+                        $llx = 113; // round($xMin);
 
-                        // El QR debe aparecer EXACTAMENTE donde está el texto marcador
-                        // yMin es el borde SUPERIOR del texto desde arriba en pdftotext
-                        // Convertimos yMin a coordenadas PDF (Y=0 abajo)
-                        $lly = round($alto_pagina - $yMin);
+                        // Probar con yMax (borde inferior del texto) en lugar de yMin
+                        $lly = round($alto_pagina - $yMax);
 
-                        error_log("CoordenadasFirma DEBUG: lly final=$lly (usando yMin=$yMin)");
+                        error_log("CoordenadasFirma DEBUG: xMin=$xMin, yMin=$yMin, xMax=$xMax, yMax=$yMax");
+                        error_log("CoordenadasFirma DEBUG: Usando yMax=$yMax convertido a PDF: lly=$lly (842-$yMax)");
 
                         return [
                             'llx' => $llx,
@@ -216,20 +210,14 @@ class CoordenadasFirma {
             $margen_superior = 70;
             $puntos_por_linea = 17;
 
-            // Calcular Y desde arriba (donde empieza el texto)
+            // Calcular posición Y del texto desde arriba
             $y_desde_arriba = $margen_superior + ($posicion_en_pagina * $puntos_por_linea);
 
-            // DEBUG
-            error_log("CoordenadasFirma ALT DEBUG: posicion_en_pagina=$posicion_en_pagina, y_desde_arriba=$y_desde_arriba");
-
             // Convertir a coordenadas PDF (Y=0 abajo)
-            // El QR va EXACTAMENTE donde está el texto marcador
             $lly = $alto_pagina - $y_desde_arriba;
+            $llx = 113;
 
-            error_log("CoordenadasFirma ALT DEBUG: lly_final=$lly");
-
-            // Alinear a la izquierda (mismo margen que el texto del firmante)
-            $llx = 113; // Margen izquierdo típico de documentos oficiales
+            error_log("CoordenadasFirma ALT DEBUG: posicion_en_pagina=$posicion_en_pagina, y_desde_arriba=$y_desde_arriba, lly=$lly");
 
             return [
                 'llx' => $llx,
