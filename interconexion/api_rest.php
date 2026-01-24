@@ -45,11 +45,44 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Extraer información adicional del JSON
-    $cedula = isset($data->cedula) ? $data->cedula : '';
-    $nombre = isset($data->nombre) ? $data->nombre : '';
-    $institucion = isset($data->institucion) ? $data->institucion : '';
-    $cargo = isset($data->cargo) ? $data->cargo : '';
-    $fecha = isset($data->fecha) ? $data->fecha : date('d/m/Y H:i:s');
+    // Los datos del firmante vienen en el objeto certificado[0]
+    $certificado = isset($data->certificado) && is_array($data->certificado) && count($data->certificado) > 0
+                   ? $data->certificado[0]
+                   : null;
+
+    if ($certificado) {
+        // Extraer datos del certificado digital
+        $cedula = isset($certificado->cedula) ? $certificado->cedula : (isset($data->cedula) ? $data->cedula : '');
+
+        // Concatenar nombre y apellido
+        $nombre = '';
+        if (isset($certificado->nombre) && isset($certificado->apellido)) {
+            $nombre = trim($certificado->nombre . ' ' . $certificado->apellido);
+        } elseif (isset($certificado->emitidoPara)) {
+            $nombre = $certificado->emitidoPara;
+        }
+
+        $institucion = isset($certificado->institucion) ? $certificado->institucion : '';
+        $cargo = isset($certificado->cargo) ? $certificado->cargo : '';
+
+        // Usar la fecha de la firma del certificado
+        $fecha = isset($certificado->fechaFirma) ? $certificado->fechaFirma : date('Y-m-d H:i:s');
+
+        // Si la fecha viene en formato ISO, convertir a d/m/Y H:i:s
+        if (strpos($fecha, '-') !== false && strpos($fecha, ':') !== false) {
+            $fechaObj = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
+            if ($fechaObj) {
+                $fecha = $fechaObj->format('d/m/Y H:i:s');
+            }
+        }
+    } else {
+        // Fallback si no hay certificado (no debería pasar)
+        $cedula = isset($data->cedula) ? $data->cedula : '';
+        $nombre = isset($data->nombre) ? $data->nombre : '';
+        $institucion = isset($data->institucion) ? $data->institucion : '';
+        $cargo = isset($data->cargo) ? $data->cargo : '';
+        $fecha = isset($data->fecha) ? $data->fecha : date('d/m/Y H:i:s');
+    }
 
     // Log para debug (comentar en producción)
     $log_file = __DIR__ . "/api_rest.log";
