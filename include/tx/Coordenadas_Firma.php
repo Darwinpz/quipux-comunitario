@@ -141,14 +141,22 @@ class CoordenadasFirma {
                         // Necesitamos convertir: lly_pdf = altura_pagina - y_pdftotext
                         $alto_pagina = 842;
 
-                        // El texto está en yMin (desde arriba en pdftotext)
-                        // Convertimos a coordenadas PDF y posicionamos QR encima
-                        $lly_texto_desde_abajo = $alto_pagina - $yMin;
+                        // DEBUG: Log de coordenadas detectadas
+                        error_log("CoordenadasFirma DEBUG: yMin=$yMin, yMax=$yMax, xMin=$xMin, xMax=$xMax");
 
-                        // Colocamos el QR justo encima del texto
-                        // En coordenadas PDF: valores MENORES = más abajo (más cerca del borde inferior)
-                        // Restamos para que el QR quede visualmente ENCIMA del texto
-                        $lly = round($lly_texto_desde_abajo - 10); // 10 pts de separación hacia abajo
+                        // yMin es el borde SUPERIOR del texto desde arriba en pdftotext
+                        // yMax es el borde INFERIOR del texto desde arriba en pdftotext
+                        // Convertimos yMax (borde inferior del texto) a coordenadas PDF
+                        $lly_texto_inferior = $alto_pagina - $yMax;
+
+                        error_log("CoordenadasFirma DEBUG: lly_texto_inferior=$lly_texto_inferior, alto_qr={$this->alto_qr}");
+
+                        // El QR debe aparecer ENCIMA del texto (visualmente)
+                        // En PDF: más arriba = valor Y mayor
+                        // Colocamos el borde inferior del QR (LLY) justo encima del texto
+                        $lly = round($lly_texto_inferior + $this->alto_qr + 5); // +5 pts de separación
+
+                        error_log("CoordenadasFirma DEBUG: lly calculado=$lly");
 
                         return [
                             'llx' => $llx,
@@ -217,10 +225,17 @@ class CoordenadasFirma {
 
             // Calcular Y (desde abajo hacia arriba en PDF)
             $y_desde_arriba = $margen_superior + ($posicion_en_pagina * $puntos_por_linea);
-            // El QR debe ir ENCIMA del texto "Documento firmado electrónicamente"
-            // En coordenadas PDF: valores MENORES = más abajo (más cerca del borde inferior)
-            // Restamos para que el QR quede visualmente ENCIMA del texto marcador
-            $lly = $alto_pagina - $y_desde_arriba - 20; // -20 puntos para ubicar encima del texto
+
+            // DEBUG
+            error_log("CoordenadasFirma ALT DEBUG: posicion_en_pagina=$posicion_en_pagina, y_desde_arriba=$y_desde_arriba");
+
+            // Convertir a coordenadas PDF (Y=0 abajo)
+            $lly_texto = $alto_pagina - $y_desde_arriba;
+
+            // El QR debe aparecer ENCIMA del texto (visualmente arriba = valor Y mayor en PDF)
+            $lly = $lly_texto + $this->alto_qr + 5; // Sumar alto del QR + separación
+
+            error_log("CoordenadasFirma ALT DEBUG: lly_texto=$lly_texto, lly_final=$lly");
 
             // Alinear a la izquierda (mismo margen que el texto del firmante)
             $llx = 113; // Margen izquierdo típico de documentos oficiales
