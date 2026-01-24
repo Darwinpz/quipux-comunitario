@@ -99,8 +99,8 @@ function html_head ($flag_estilos=true, $flag_index=false) {
                 }
      
             </script>
-            <script type='text/JavaScript' src='$ruta_raiz/js/shortcut.js'></script>            
-<script type='text/JavaScript' src='$ruta_raiz/js/websocket.js'></script>
+            <script type='text/JavaScript' src='$ruta_raiz/js/shortcut.js'></script>
+<script type='text/JavaScript' src='$ruta_raiz/js/websocket.js?v=".time()."'></script>
 <script type='text/JavaScript' src='$ruta_raiz/js/jquery171.js'></script> 
         </head>";
     return $texto;
