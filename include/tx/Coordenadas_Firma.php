@@ -12,7 +12,7 @@
 
 class CoordenadasFirma {
 
-    private $marcador = "Documento firmado electrónicamente";
+    private $marcador = "bmvQr";
 
     /**
      * Detecta la posición del marcador en el PDF
