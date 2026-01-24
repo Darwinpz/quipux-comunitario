@@ -125,10 +125,25 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
 
         $usr = ObtenerDatosUsuario(str_replace("-", "", $radicado["usua_rem"]), $db);
 
-        // Validar que se obtuvo el usuario
+        // Validar que se obtuvo el usuario remitente
         if (!$usr || !is_array($usr) || !isset($usr["usua_codi"])) {
             error_log("ERROR: No se encontró el usuario para el radicado $nombre_doc");
             return 0;
+        }
+
+        // Obtener datos del usuario firmante por su cédula para completar institución y cargo
+        $usr_firmante = ObtenerDatosUsuario($cedula_firmante, $db, "C"); // "C" indica búsqueda por cédula
+
+        // Si encontramos el usuario firmante, extraer su cargo e institución
+        if ($usr_firmante && is_array($usr_firmante)) {
+            // Si la institución viene vacía del certificado, usar la dependencia del usuario
+            if (empty($institucion) && isset($usr_firmante["depe_nomb"])) {
+                $institucion = $usr_firmante["depe_nomb"];
+            }
+            // Si el cargo viene vacío del certificado, usar el cargo del usuario
+            if (empty($cargo) && isset($usr_firmante["carg_nomb"])) {
+                $cargo = $usr_firmante["carg_nomb"];
+            }
         }
 
         $arch64 = base64_encode($archivo);
