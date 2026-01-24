@@ -36,8 +36,8 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
 
       // Agregar parámetros de estampado QR (posición dinámica o valores por defecto)
       // Solo usamos llx y lly - FirmaEC usa su propio tamaño por defecto para el QR
-      var coordX = llx || 113;  // Posición horizontal (alineado a la izquierda)
-      var coordY = lly || 250;  // Posición vertical (ajustada)
+      var coordX = llx + 10 || 113;  // Posición horizontal (alineado a la izquierda)
+      var coordY = lly + 10 || 250;  // Posición vertical (ajustada)
 
       // Omitimos urx y ury porque FirmaEC los interpreta incorrectamente
       // haciendo el QR gigante - mejor usar su tamaño por defecto
