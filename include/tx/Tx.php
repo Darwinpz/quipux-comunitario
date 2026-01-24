@@ -653,7 +653,7 @@ function mostrar_applet_firma_digital($radicados,$token='',$ejecucion=0,$numdocs
 	$numdocs=count($radicados);
 
  // Variables para coordenadas dinámicas de firma
-	$coord_llx = 114; // Alineado a la izquierda por defecto
+	$coord_llx = 113; // Alineado a la izquierda por defecto
 	$coord_lly = 250; // Posición vertical por defecto
 
  foreach ($radicados as $radi_nume) {
