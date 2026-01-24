@@ -24,9 +24,9 @@
 
 class CoordenadasFirma {
 
-    private $marcador = "###MARCA_FIRMA_QR###";
-    private $ancho_qr = 100;  // Ancho estimado del QR en puntos PDF
-    private $alto_qr = 100;   // Alto estimado del QR en puntos PDF
+    private $marcador = "Documento firmado electrónicamente";  // Patrón único que aparece en documentos de firma
+    private $ancho_qr = 70;  // Ancho del QR en puntos PDF (aprox 2.5cm)
+    private $alto_qr = 70;   // Alto del QR en puntos PDF (aprox 2.5cm)
 
     /**
      * Detecta la posición del marcador de firma en un PDF y calcula
@@ -222,27 +222,16 @@ class CoordenadasFirma {
 
     /**
      * Limpia el marcador del PDF antes de enviarlo a firmar
-     * Esto es opcional - el marcador es casi invisible de todas formas
+     * Nota: Como usamos el texto "Documento firmado electrónicamente" como marcador,
+     * no es necesario limpiarlo del PDF ya que es parte natural del documento
      *
      * @param string $pdf_path Ruta del PDF
-     * @return bool true si se limpió correctamente
+     * @return bool true siempre (método mantenido por compatibilidad)
      */
     public function limpiar_marcador($pdf_path) {
-        try {
-            // Leer el PDF como string binario
-            $pdf_content = file_get_contents($pdf_path);
-
-            // Buscar y reemplazar el marcador por espacios
-            $pdf_content = str_replace($this->marcador, '               ', $pdf_content);
-
-            // Guardar el PDF limpio
-            file_put_contents($pdf_path, $pdf_content);
-
-            return true;
-        } catch (Exception $e) {
-            error_log("Error limpiando marcador: " . $e->getMessage());
-            return false;
-        }
+        // No es necesario limpiar el texto "Documento firmado electrónicamente"
+        // ya que es parte legítima del documento
+        return true;
     }
 
     /**

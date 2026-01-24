@@ -266,8 +266,8 @@ class GenerarDocumento {
                 if (trim($this->remitente[0]["usua_firma_path"]) != "")
                     $this->datos_doc_firma_digital = "<img src='".trim($this->remitente[0]["usua_firma_path"])."'><br>";
             } elseif ($this->registro_padre["estado"]==3)
-                // Insertamos un marcador invisible para detectar la posición del QR de firma
-                $this->datos_doc_firma_digital = "<span style='font-size:1px;color:white;'>###MARCA_FIRMA_QR###</span>&nbsp;<br><i><b><h6><font color='blue'>Documento firmado electr&oacute;nicamente</font></h6></b></i>";
+                // El texto "Documento firmado electrónicamente" se usa como referencia para ubicar el QR
+                $this->datos_doc_firma_digital = "&nbsp;<br><i><b><h6><font color='blue'>Documento firmado electrónicamente</font></h6></b></i>";
         }
         //$this->datos_doc_firma_digital = "&nbsp;<br><i><b><h6><font color='blue'>Documento firmado electr&oacute;nicamente</font></h6></b></i>";
         //$this->datos_doc_firma_digital = "<img src='$nombre_servidor/bodega/firmas/3.jpeg'>";
