@@ -134,10 +134,8 @@ if (substr($tipo_descarga,0,7) == "embeded") {
 //    }
     switch (substr($arch_nombre,-3)) {
         case "pdf":
-            if (substr($tipo_descarga, -2) == "ar") //Si tiene el plugin de Acrobat Reader
-                echo "<embed src='$url' type='text/html; charset=UTF-8' width='97%' height='100%'></embed>";
-            else
-                include "$ruta_raiz/js/pdf_js/visor_pdf.php";
+            // Siempre usar embed nativo para mostrar firmas digitales correctamente
+            echo "<embed src='$url' type='application/pdf' width='97%' height='100%'></embed>";
             break;
         case "png":
         case "jpg":
