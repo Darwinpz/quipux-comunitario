@@ -55,9 +55,12 @@ $radi_refe = $datosrad['radi_padre'];
 $path_descarga = "return;";
 $path_archivo_embebido = "";
 if ($nivel_seguridad_documento >= 2 and $menu_ver==3) {
-    $path_descarga = "fjs_radicado_descargar_archivo('".$datosrad["radi_nume_radi"]."', '".$datosrad["radi_imagen"]."', 0, 'download');";
+    // Determinar si hay un archivo firmado digitalmente
+    $arch_tipo = (isset($datosrad["arch_codi_firma"]) && $datosrad["arch_codi_firma"] > 0) ? 1 : 0;
+
+    $path_descarga = "fjs_radicado_descargar_archivo('".$datosrad["radi_nume_radi"]."', '".$datosrad["radi_imagen"]."', $arch_tipo, 'download');";
     if ($datosrad["radi_path"]!="" or $datosrad["radi_imagen"]!="" or $datosrad["arch_codi"]!=0 or ($datosrad["estado"]==1 and substr($datosrad["radi_nume_radi"], -1)=="0"))
-        $path_archivo_embebido = "fjs_radicado_descargar_archivo('".$datosrad["radi_nume_radi"]."', '".$datosrad["radi_imagen"]."', 0, 'embeded');";
+        $path_archivo_embebido = "fjs_radicado_descargar_archivo('".$datosrad["radi_nume_radi"]."', '".$datosrad["radi_imagen"]."', $arch_tipo, 'embeded');";
 }
 
 echo "<html>".html_head();
