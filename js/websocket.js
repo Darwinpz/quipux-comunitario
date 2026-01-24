@@ -34,7 +34,9 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma){
       url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
 
       // Agregar parámetros de estampado QR (posición y tipo de firma visible)
-      url += '&llx=260&lly=91&estampado=QR&razon=firmado desde BMVeDoc';
+      // llx: posición horizontal (260 = centrado)
+      // lly: posición vertical desde el borde inferior (aumentar para mover hacia arriba)
+      url += '&llx=260&lly=450&estampado=QR&razon=firmado desde BMVeDoc';
 
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
       if (url_api_firma && url_api_firma !== '') {
