@@ -111,7 +111,7 @@ class CoordenadasFirma {
                 // ¿Encontramos el marcador? (búsqueda flexible)
                 // Buscar tanto con acento como sin acento por si hay problemas de encoding
                 if (stripos($linea, $this->marcador) !== false ||
-                    stripos($linea, "Documento firmado electronicamente") !== false) {
+                    stripos($linea, "bmvQr") !== false) {
 
                     return [
                         'llx' => $xInicio,
