@@ -107,7 +107,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     include_once "$ruta_raiz/include/tx/Firma_Digital.php";
 
     // Función copiada de ws_firma_digital.php para evitar conflictos con SOAP
-    function grabar_archivos_firmados_rest($usuario, $nombre_doc, $archivo, $datos_firmante, $fecha, $institucion, $cargo) {
+    function grabar_archivos_firmados_rest($cedula_firmante, $nombre_doc, $archivo, $datos_firmante, $fecha, $institucion, $cargo) {
         $ruta_raiz = "..";
         include_once "$ruta_raiz/config.php";
 
@@ -142,7 +142,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
 
         $nombre = $datos_firmante;
         $datos_firmante = "<table><tr><th>Cédula</th><th>Nombre</th><th>Institución</th><th>Cargo</th><th>Fecha</th></tr>";
-        $datos_firmante .= "<tr><td>$usuario</td><td>$nombre</td><td>$institucion</td><td>$cargo</td><td>$fecha</td></tr></table>";
+        $datos_firmante .= "<tr><td>$cedula_firmante</td><td>$nombre</td><td>$institucion</td><td>$cargo</td><td>$fecha</td></tr></table>";
 
         $rs_archivo = $db_bodega->query("select func_grabar_archivo(E'$nombre_doc.pdf', E'$arch64') as arch_codi");
 
@@ -164,7 +164,7 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Llamar a la función para grabar el archivo firmado
-    // La función espera: ($usuario, $nombre_doc, $archivo, $datos_firmante, $fecha, $institucion, $cargo)
+    // La función espera: ($cedula_firmante, $nombre_doc, $archivo, $datos_firmante, $fecha, $institucion, $cargo)
     try {
         $resultado = grabar_archivos_firmados_rest(
             $cedula,
