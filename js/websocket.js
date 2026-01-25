@@ -34,13 +34,15 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
       //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
       url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado=2';
 
-      // Agregar parámetros de estampado QR (posición dinámica o valores por defecto)
-      // Solo usamos llx y lly - FirmaEC usa su propio tamaño por defecto para el QR
+      // Convertir coordenadas de pdftotext (Y=0 arriba) a FirmaEC/PDF (Y=0 abajo)
       var coordX = llx || 113;  // Posición horizontal (alineado a la izquierda)
-      var coordY = lly + 40 || 250;  // Posición vertical (ajustada)
+
+      // pdftotext usa Y=0 arriba, FirmaEC usa Y=0 abajo (estándar PDF)
+      // Altura de página A4 = 842 puntos
+      var coordY_pdftotext = lly || 250;
+      var coordY = (842 - coordY_pdftotext) + 40;  // +40 para subir el QR visualmente
 
       // Omitimos urx y ury porque FirmaEC los interpreta incorrectamente
-      // haciendo el QR gigante - mejor usar su tamaño por defecto
       url += '&llx='+coordX+'&lly='+coordY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
 
       // Agregar parámetro &url= para que la app FirmaEC Desktop se conecte al servidor local
