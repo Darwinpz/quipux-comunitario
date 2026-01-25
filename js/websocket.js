@@ -32,7 +32,7 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
       //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado+'&llx=222&lly=85&urx=422&ury=49&pre=true';
       // Construir URL base con parámetros obligatorios
       //url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
-      url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado=2';
+      url = 'firmaec://'+sistema+'/firmar?token='+tokencer+'&tipo_certificado='+tipo_certificado;
 
       // Convertir coordenadas de pdftotext (Y=0 arriba) a FirmaEC/PDF (Y=0 abajo)
       var coordX = llx || 113;  // Posición horizontal (alineado a la izquierda)
