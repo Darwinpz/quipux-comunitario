@@ -40,7 +40,7 @@ function token(tokencer,tipo_certificado,radicados,sistema,url_api_firma,llx,lly
       // pdftotext usa Y=0 arriba, FirmaEC usa Y=0 abajo (estándar PDF)
       // Altura de página A4 = 842 puntos
       var coordY_pdftotext = lly || 250;
-      var coordY = (842 - coordY_pdftotext) + 40;  // +40 para subir el QR visualmente
+      var coordY = (842 - coordY_pdftotext) + 20;  // +40 para subir el QR visualmente
 
       // Omitimos urx y ury porque FirmaEC los interpreta incorrectamente
       url += '&llx='+coordX+'&lly='+coordY+'&estampado=QR&razon=firmado desde BMV eDoc&des=true';
