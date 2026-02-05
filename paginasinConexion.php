@@ -2,7 +2,7 @@
     $ruta_raiz = '.';
 ?>
 <html>
-<title>.:: Bmv-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
+<title>.:: BMV-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
 <HEAD>
 <link href="estilos/light_slate.css" rel="stylesheet" type="text/css">
 <link href="estilos/splitmenu.css" rel="stylesheet" type="text/css">

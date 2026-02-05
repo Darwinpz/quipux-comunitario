@@ -76,6 +76,6 @@ if ($usr_email != "") {
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
 //    echo "enviarMail($mail, 'Quipux: Registro de nueva cuenta.', $usr_email, $usr_nombre, $ruta_raiz);";
-    enviarMail($mail, "Bmv-eDoc: Cambio de contraseña.", $usr_email, $usr_nombre, $ruta_raiz);
+    enviarMail($mail, "BMV-eDoc: Cambio de contraseña.", $usr_email, $usr_nombre, $ruta_raiz);
 }
 ?>

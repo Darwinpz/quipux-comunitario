@@ -35,7 +35,7 @@ include_once "$ruta_raiz/rec_session.php";
 ?>
 <html>
     <head>
-        <title>.:: Bmv-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
+        <title>.:: BMV-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="imagenes/favicon.ico">
     </head>

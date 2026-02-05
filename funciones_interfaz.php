@@ -26,7 +26,7 @@ function html_head ($flag_estilos=true, $flag_index=false) {
     global $ruta_raiz;
     $texto = "<head>
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-            <title>.:: Bmv-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
+            <title>.:: BMV-eDoc - Sistema de Gesti&oacute;n Documental ::.</title>
             <link href='$ruta_raiz/estilos/orfeo.css' rel='stylesheet' type='text/css'>
             ";
     if ($flag_estilos) {
