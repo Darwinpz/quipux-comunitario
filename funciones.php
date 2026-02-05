@@ -265,7 +265,6 @@ function enviarMail($mensaje, $asunto, $destinatario_ori, $nombre_dest="", $ruta
 
             $header = 'MIME-Version: 1.0' . "\r\n";
             $header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-            $header .= "To: $nombre_dest <" . $destinatario . ">" . "\r\n";
             $header .= "From: BMV eDoc <$cuenta_mail_envio>" . "\r\n";
 
             ini_set('sendmail_from', "$cuenta_mail_envio"); //Suggested by "Some Guy"
