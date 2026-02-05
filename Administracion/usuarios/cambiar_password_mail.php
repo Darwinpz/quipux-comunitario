@@ -47,8 +47,9 @@ $usr_email = "";
 while (!$rs_pass->EOF) {
     // Selecciono los mails de todas las cuentas; si es funcionario ya no se ponen las cuentas de los ciudadanos
     if ($rs_pass->fields["TIPO_USUARIO"]==1) $flag_ciudadano = false;
-    if (trim($rs_pass->fields["USUA_EMAIL"])!="" and ($rs_pass->fields["TIPO_USUARIO"]==1 or $flag_ciudadano)) {
-        $usr_email .= ",".trim($rs_pass->fields["USUA_EMAIL"]);
+    $tmp_email = trim($rs_pass->fields["USUA_EMAIL"]);
+    if ($tmp_email != "" and ($rs_pass->fields["TIPO_USUARIO"]==1 or $flag_ciudadano) and strpos($usr_email, $tmp_email) === false) {
+        $usr_email .= ",".$tmp_email;
     }
     $rs_pass->MoveNext();
 }
