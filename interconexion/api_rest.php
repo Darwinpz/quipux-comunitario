@@ -11,7 +11,6 @@ ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/api_rest_errors.log');
 
 // Recibir JSON del servicio FirmaEC
 $json = file_get_contents('php://input');
@@ -85,18 +84,16 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Log para debug (comentar en producción)
-    $log_file = __DIR__ . "/api_rest.log";
-    $log_data = date('Y-m-d H:i:s') . " - Documento: " . $nombreDocumento . " Cedula: " . $cedula .
-                " Nombre: " . $nombre . " Institucion: " . $institucion . " Cargo: " . $cargo .
-                " Fecha: " . $fecha . "\n";
-    file_put_contents($log_file, $log_data, FILE_APPEND);
+    error_log("API_REST - Documento: " . $nombreDocumento . " Cedula: " . $cedula .
+              " Nombre: " . $nombre . " Institucion: " . $institucion . " Cargo: " . $cargo .
+              " Fecha: " . $fecha);
 
     // Log JSON sin el archivo (para no saturar el log con base64)
     $data_log = clone $data;
     if (isset($data_log->archivo)) {
         $data_log->archivo = "[BASE64_" . strlen($data_log->archivo) . "_BYTES]";
     }
-    file_put_contents($log_file, "JSON (sin archivo): " . json_encode($data_log) . "\n", FILE_APPEND);
+    error_log("API_REST - JSON (sin archivo): " . json_encode($data_log));
 
     // Incluir solo las dependencias necesarias (evitamos incluir ws_firma_digital.php porque tiene código SOAP)
     $ruta_raiz = "..";
@@ -201,16 +198,16 @@ if ($json != "" && $_SERVER["REQUEST_METHOD"] == "POST") {
             // Limpiar cualquier warning/notice capturado y devolver solo "OK"
             ob_clean();
             echo "OK";
-            file_put_contents($log_file, date('Y-m-d H:i:s') . " - SUCCESS: " . $nombreDocumento . "\n", FILE_APPEND);
+            error_log("API_REST - SUCCESS: " . $nombreDocumento);
         } else {
             ob_clean(); // Limpiar cualquier salida previa
             echo "ERROR: No se pudo guardar el documento";
-            file_put_contents($log_file, date('Y-m-d H:i:s') . " - ERROR: Resultado=" . $resultado . " - Documento no encontrado o usuario inválido\n", FILE_APPEND);
+            error_log("API_REST - ERROR: Resultado=" . $resultado . " - Documento no encontrado o usuario inválido");
         }
     } catch (Exception $e) {
         ob_clean(); // Limpiar cualquier salida previa
         echo "ERROR: " . $e->getMessage();
-        file_put_contents($log_file, date('Y-m-d H:i:s') . " - EXCEPTION: " . $e->getMessage() . "\n", FILE_APPEND);
+        error_log("API_REST - EXCEPTION: " . $e->getMessage());
     }
 } else {
     ob_clean(); // Limpiar cualquier salida previa
