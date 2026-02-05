@@ -35,6 +35,11 @@ if ($activar_bloqueo_sistema and $txt_administrador != 1) {
     **/
     $krd = $_POST['krd'];
     if ($krd) {
+        // Limpiar datos de sesión anterior para evitar que validar_register_globals
+        // sobreescriba $krd con el valor viejo de $_SESSION["krd"] (fix: re-login)
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_unset();
+        }
         // Validar si el usuario y contraseña son corectos
         include_once "$ruta_raiz/session_orfeo.php";
         
