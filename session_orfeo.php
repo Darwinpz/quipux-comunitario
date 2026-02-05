@@ -269,7 +269,8 @@ if ($flag) {
 		//echo "login---".$rs->fields["USUA_LOGIN"]."---estado usuario---".$rs->fields["USUA_ESTA"];
 	    if (trim($rs->fields["USUA_ESTA"])==1) {
 		//echo "usuarioo--".$_SESSION["usua_codi"];
-            if (!isset($_SESSION["usua_codi"])) {
+            // Siempre recrear la sesión al hacer login, incluso si ya existe una sesión previa
+            // (fix: re-login fallaba cuando el usuario cerraba la ventana sin hacer logout)
                 $dependencia=$rs->fields["DEPE_CODI"];
                 $depe_nomb =$rs->fields["DEPE_NOMB"];
                 $inst_codi = $rs->fields["INST_CODI"];
@@ -354,7 +355,6 @@ if ($flag) {
                 //	die("");
                 //  incluimos las Variables locales del sistema
                 // include "$ruta_raiz/include/local/varSession.php";
-            }
 
             $dir_cliente = obtener_ip_real();
             unset($recordSet);
