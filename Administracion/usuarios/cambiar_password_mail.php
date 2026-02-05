@@ -54,6 +54,7 @@ while (!$rs_pass->EOF) {
 }
 $usr_email = trim ($usr_email, ",");
 
+$server_name = "https://bmv-edoc.com";
 
 if ($usr_email != "") {
     $clave = generar_password(30);
@@ -61,20 +62,20 @@ if ($usr_email != "") {
     $db->query($sql);
     $sql = "update ciudadano set ciu_nuevo=1, ciu_pasw='".substr(md5($clave),1,26)."' where ciu_cedula='$usr_cedula'";
     $db->query($sql);
-    $direccion = "$nombre_servidor/usuarionuevo.php?krd=".base64_encode($usr_login)."&code=".base64_encode($clave);
+    $direccion = "$server_name/usuarionuevo.php?krd=".base64_encode($usr_login)."&code=".base64_encode($clave);
 
     // Enviamos un mail de notificación
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail = "<html><title>Informaci&oacute;n BMV - eDOC</title>";
+    $mail .= "<body><center><img src='$server_name/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "Estimado(a) $usr_nombre.<br /><br />";
-    $mail .= "El Sistema de Gesti&oacute;n Documental Quipux le da la bienvenida. Su cuenta ha sido registrada con el usuario &quot;<b>".substr($usr_login,1)."</b>&quot;. <br /><br />";
+    $mail .= "El Sistema de Gesti&oacute;n Documental del Instituto Superior Tecnológico Bolivar Madero Vargas le da la bienvenida. Su cuenta ha sido registrada con el usuario &quot;<b>".substr($usr_login,1)."</b>&quot;. <br /><br />";
     $mail .= "Para poder acceder al sistema deber&aacute; definir su contrase&ntilde;a ingresando a:<br />
               <a href='$direccion' target='_blank'>$direccion</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV - eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
 //    echo "enviarMail($mail, 'Quipux: Registro de nueva cuenta.', $usr_email, $usr_nombre, $ruta_raiz);";
-    enviarMail($mail, "Quipux: Cambio de contraseña.", $usr_email, $usr_nombre, $ruta_raiz);
+    enviarMail($mail, "Bmv-eDoc: Cambio de contraseña.", $usr_email, $usr_nombre, $ruta_raiz);
 }
 ?>
