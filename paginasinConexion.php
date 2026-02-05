@@ -28,7 +28,7 @@ if (session_id())
 <table>
 <TR align="center" valign="top"><TD >
     <h1>Instituto Superior Tecnológico Bolivar Madero Vargas</h1>
-    <h1>Sistema de Gesti&oacute;n Documental - QUIPUX</h1>
+    <h1>Sistema de Gesti&oacute;n Documental - BMV-eDoc</h1>
     </TD></TR>
 <tr align="center">
 	<td height="150px"><h3>

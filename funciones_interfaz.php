@@ -183,7 +183,7 @@ function html_error($mensaje, $estilos=true) {
         <table align='center' width='100%' cellpadding='0' cellspacing='0' class='mainbody'>
             <tr valign='top' align='center'>
                 <td class='left'  align='center' width='100%'>
-                    <h1>Sistema de Gesti&oacute;n Documental - QUIPUX</h1><br />
+                    <h1>Sistema de Gesti&oacute;n Documental - BMV-eDoc</h1><br />
                     $mensaje
                 </td>
             </tr>

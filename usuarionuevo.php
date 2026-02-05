@@ -45,7 +45,7 @@
         <table align="center" width="100%" cellpadding="0" cellspacing="0" class="mainbody">
             <tr valign="top" align="center">
                 <td class="left"  align="center" width="100%">
-                    <h1>Sistema de Gesti&oacute;n Documental - QUIPUX</h1><br /><br />
+                    <h1>Sistema de Gesti&oacute;n Documental - BMV-eDoc</h1><br /><br />
                     Para Ingresar al sistema, haga click &nbsp
                     <a href="javascript:popup_main();"><font color="blue" face="Verdana" size="3" ><b>&quot;AQU&Iacute;&quot;</b></font></a>
                 </td>
