@@ -823,7 +823,7 @@ if ($codTx==9){
             <textarea id="observa" name=observa cols=70 rows=3 class=ecajasfecha onkeypress="return limita(event);"></textarea>            
             <span id="spn_numero_caracteres_disponibles"></span>
             <table >
-                <? if(sizeof($radiNumeAsociados) > 0){?>                
+                <? if(is_array($radiNumeAsociados) && sizeof($radiNumeAsociados) > 0){?>                
                 <tr>
                     <td align ="center">
                         <input type="checkbox" name="chk_reasigna_padre" id="chk_reasigna_padre" value="0" />¿Desea reasignar los documentos antecedentes?                        
@@ -855,7 +855,7 @@ if ($codTx==9){
             <textarea id="observa" name=observa cols=70 rows=3 class=ecajasfecha onkeypress="return limita(event);"></textarea>
             <span id="spn_numero_caracteres_disponibles"></span>
             <table >
-                <? if(sizeof($radiNumeAsociados) > 0){?>                
+                <? if(is_array($radiNumeAsociados) && sizeof($radiNumeAsociados) > 0){?>                
                 <tr>
                     <td align ="center">
                         <input type="checkbox" name="chk_reasigna_padre" id="chk_reasigna_padre" value="0" />¿Desea reasignar los documentos antecedentes?                        
@@ -892,7 +892,7 @@ if ($codTx==9){
                     <span id="spn_numero_caracteres_disponibles"></span>
                 </td>
             </tr>           
-                <? if( is_array(radiNumeAsociados) && sizeof($radiNumeAsociados) > 0) { ?>                
+                <? if( is_array($radiNumeAsociados) && sizeof($radiNumeAsociados) > 0) { ?>                
                 <tr>
                      <td  colspan="2" align='center'>
                         <input type="checkbox" name="chk_reasigna_padre" id="chk_reasigna_padre" value="0" />¿Desea reasignar los documentos antecedentes?                        
