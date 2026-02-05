@@ -66,7 +66,7 @@ if ($usr_email != "") {
 
     // Enviamos un mail de notificación
     $mail = "<html><title>Informaci&oacute;n BMV - eDOC</title>";
-    $mail .= "<body><center><img src='$server_name/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
+    $mail .= "<body><center><img src='$server_name/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "Estimado(a) $usr_nombre.<br /><br />";
     $mail .= "El Sistema de Gesti&oacute;n Documental del Instituto Superior Tecnológico Bolivar Madero Vargas le da la bienvenida. Su cuenta ha sido registrada con el usuario &quot;<b>".substr($usr_login,1)."</b>&quot;. <br /><br />";
     $mail .= "Para poder acceder al sistema deber&aacute; definir su contrase&ntilde;a ingresando a:<br />
