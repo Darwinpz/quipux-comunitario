@@ -93,7 +93,7 @@ function cargar_index() {
     $html = "
         <html>
           <head>
-            <title>Respaldos .: Sistema de Gesti&oacute;n Documental &quot;Quipux&quot; :.</title>
+            <title>Respaldos .: Sistema de Gesti&oacute;n Documental &quot;BMV eDoc&quot; :.</title>
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
           </head>
           <frameset rows='97,864*' frameborder='YES' border='0' framespacing='0' cols='*'>
@@ -203,7 +203,7 @@ function cargar_informacion($respaldo) {
             <center>
             <br>
             <table width='80%' border='1' cellspacing='0' cellpadding='0'>
-              <tr class='titulo'><td><center>Respaldo de documentos generados en el Sistema de Gesti&oacute;n Documental &quot;Quipux&quot;</center></td></tr>
+              <tr class='titulo'><td><center>Respaldo de documentos generados en el Sistema de Gesti&oacute;n Documental &quot;BMV eDoc&quot;</center></td></tr>
             </table>
             <br>
             <table width='80%' border='1' cellspacing='0' cellpadding='0'>

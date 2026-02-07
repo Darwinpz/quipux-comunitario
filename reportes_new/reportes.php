@@ -175,7 +175,7 @@ $txt_fecha_hasta = date("Y-m-d");
               <tr>
                 <th width="100%" colspan="2">
                   <center>
-                    Reportes - Sistema de Gesti&oacute;n Documental &quot;Quipux&quot;
+                    Reportes - Sistema de Gesti&oacute;n Documental &quot;BMV eDoc&quot;
                   </center>
                 </th>
               </tr>

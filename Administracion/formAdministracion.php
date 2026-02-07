@@ -106,7 +106,7 @@ echo "<html>".html_head();
         }
         
         if ($_SESSION["perm_actualizar_sistema"] == 1) {
-            echo dibujar_opcion_menu("archivos/archivos_menu.php", "Administrar repositorio de archivos", "Administra el repositorio para los archivos anexos y generados en Quipux");
+            echo dibujar_opcion_menu("archivos/archivos_menu.php", "Administrar repositorio de archivos", "Administra el repositorio para los archivos anexos y generados en BMV eDoc");
         }       
     } // IF Si es funcionario publico
 

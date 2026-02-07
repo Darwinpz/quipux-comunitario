@@ -175,20 +175,20 @@ if($autorizar == 0)
     $ciu_mail = limpiar_sql(trim($_POST["ciu_email"]));
     $ciu_ced = limpiar_sql(trim($_POST["ciu_cedula"]));
     //Enviar correo al Super Administrador para verificar datos del ciudadano actualizado
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
+    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
     $mail .= "Estimado(a) Ciudadano(a):";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "La solicitud del ciudadano(a) ".limpiar_sql($_POST["ciu_nombre"])." "
             .limpiar_sql($_POST["ciu_apellido"])." enviada a la instituci&oacute;n "
             .$_SESSION["inst_nombre"].", ha sido <b>Rechazada</b>.";
     $mail .= "<br /><br />Por favor verifique las observaciones de la solicitud y envie nuevamente al cumplir con lo solicitado.";
     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$ciu_ced&quot;
               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";    
-    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $ciu_mail, $ciu_nomb. " " . $ciu_apel, $ruta_raiz);
+    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $ciu_mail, $ciu_nomb. " " . $ciu_apel, $ruta_raiz);
 //    echo "enviarMail($mail, \"Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.\", $ciu_mail, $ciu_nomb. \" \" . $ciu_apel, $ruta_raiz);";
 }
 else
@@ -198,19 +198,19 @@ else
     $ciu_mail = limpiar_sql(trim($_POST["ciu_email"]));
     $ciu_ced = limpiar_sql(trim($_POST["ciu_cedula"]));
     //Enviar correo al Super Administrador para verificar datos del ciudadano actualizado
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
+    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
     $mail .= "Estimado(a) Ciudadano(a):";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "La solicitud del ciudadano(a) ".limpiar_sql($_POST["ciu_nombre"])." "
             .limpiar_sql($_POST["ciu_apellido"])." enviada a la instituci&oacute;n "
             .$_SESSION["inst_nombre"].", ha sido <b>Aceptada</b>.";    
     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$ciu_ced&quot;
               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
-    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $ciu_mail, $ciu_nomb. " " . $ciu_apel, $ruta_raiz);
+    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $ciu_mail, $ciu_nomb. " " . $ciu_apel, $ruta_raiz);
 //    echo "enviarMail($mail, \"Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.\", $ciu_mail, $ciu_nomb. \" \" . $ciu_apel, $ruta_raiz);";
 }
 

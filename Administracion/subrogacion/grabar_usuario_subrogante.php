@@ -223,8 +223,8 @@ $rsInsGado = $db->conn->query($sqlInsGado);
 $institucionGado=$rsInsGado->fields["INST_NOMBRE"];
 
 //Institucion subrogado
-$mail = "<html><title>Subrogacion de Puesto - Quipux</title>";
-$mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+$mail = "<html><title>Subrogacion de Puesto - BMV eDoc</title>";
+$mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
 $mail .= "Estimado(a). <br /><br />";
 $mail .= "Se notifica que se ha realizado la Subrogaci&oacute;n de Puesto en la Instituci&oacute;n <b>$instNombre</b>, para el periodo desde: ";
 $mail .= " $desde hasta: $hasta <br>&nbsp;<br>";
@@ -232,7 +232,7 @@ $mail .= "<b>Subrogante: </b><br>&nbsp;<br>";
 $mail .= "Funcionario P&uacute;blico: $nombresubrogante / $cargosubrogante al Puesto $encargado / $dependenciaSubrogacion / $institucionGate<br>&nbsp;<br>";
 $mail .= "<b>Subrogado: </b><br>&nbsp;<br>";
 $mail .= "Funcionario P&uacute;blico: $nombresubrogado / $cargosubrogado / $dependenciaSubrogacion / $institucionGado";
-$mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+$mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
 $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
 $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
 $mail .= "</body></html>";    
@@ -246,7 +246,7 @@ if ($instSubrogado !='' and $instSubrogante!='')
         $sqlInstituciones= "select usua_email from usuarios where inst_codi = $instSubrogante $andlike";        
         $rsInstituciones = $db->conn->query($sqlInstituciones);
         $emailAdminInst=$rsInstituciones->fields["USUA_EMAIL"];
-        enviarMail($mail, "Quipux: Subrogacion de Puesto.", $emailAdminInst, "Administrador Quipux", $ruta_raiz);
+        enviarMail($mail, "BMV eDoc: Subrogacion de Puesto.", $emailAdminInst, "Administrador BMV eDoc", $ruta_raiz);
         //enviarMail($mail, "Quipux: Subrogacion de Cargo.", 'josedavo@hotmail.com', "Administrador Quipux", $ruta_raiz);
     }else{
         $sqlInstituciones= "select usua_email from usuarios where inst_codi in ($instSubrogante,$instSubrogado) $andlike";
@@ -254,7 +254,7 @@ if ($instSubrogado !='' and $instSubrogante!='')
         while (!$rsInstituciones->EOF) { //Cargamos los permisos especiales  
             //inserto los nuevos permisos al subrogado
             $emailAdminInst=$rsInstituciones->fields["USUA_EMAIL"];
-            enviarMail($mail, "Quipux: Subrogacion de Puesto.", $emailAdminInst, "Administrador Quipux", $ruta_raiz);
+            enviarMail($mail, "BMV eDoc: Subrogacion de Puesto.", $emailAdminInst, "Administrador BMV eDoc", $ruta_raiz);
             //enviarMail($mail, "Quipux: Subrogacion de Cargo.", 'josedavo@hotmail.com', "Administrador Quipux", $ruta_raiz);
             $rsInstituciones->MoveNext();
         }
@@ -265,9 +265,9 @@ $sqlAdministrador = "select usua_email from usuarios where usua_login = 'UADMINI
 //echo $sqlAdministrador;
 $rsAdmin = $db->conn->query($sqlAdministrador);
 $emailAdmin = $rsAdmin->fields["USUA_EMAIL"];
-enviarMail($mail, "Quipux: Subrogacion de Puesto.", $emailAdmin, "Administrador Quipux", $ruta_raiz);
-enviarMail($mail, "Quipux: Subrogacion de Puesto.", $emailsubrogante, $nombresubrogante, $ruta_raiz);
-enviarMail($mail, "Quipux: Subrogacion de Puesto.", $emailsubrogado, $nombresubrogado, $ruta_raiz);
+enviarMail($mail, "BMV eDoc: Subrogacion de Puesto.", $emailAdmin, "Administrador BMV eDoc", $ruta_raiz);
+enviarMail($mail, "BMV eDoc: Subrogacion de Puesto.", $emailsubrogante, $nombresubrogante, $ruta_raiz);
+enviarMail($mail, "BMV eDoc: Subrogacion de Puesto.", $emailsubrogado, $nombresubrogado, $ruta_raiz);
 //funcion para insertar permisos
 function ins_permisos_usr($db,$usr_subrogado,$usr_codigo,$recper){
    $sqlPerimisos = "select * from permiso_usuario where usua_codi = $usr_subrogado";

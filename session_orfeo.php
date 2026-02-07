@@ -197,7 +197,7 @@ $rs = $db->query($query);
 // Bloqueo del ingreso a ciudadanos
 if ($config_bloquear_acceso_ciudadano && ($rs->fields["TIPO_USUARIO"]==2 or $_SESSION["tipo_usuario"]==2)) {
     include_once "$ruta_raiz/funciones_interfaz.php";
-    $mensaje .= "Lo sentimos, al momento se encuentra restingido el acceso al sistema Quipux para usuarios ciudadanos.";
+    $mensaje .= "Lo sentimos, al momento se encuentra restingido el acceso al sistema BMV eDoc para usuarios ciudadanos.";
     $mensaje .= "<br><br>Para ir a la pantalla de ingreso, haga click&nbsp<a href=\"$ruta_raiz/login.php\" target=\"_parent\" class=\"aqui\">&quot;AQUI&quot;</a>";
     die (html_error($mensaje));
 }

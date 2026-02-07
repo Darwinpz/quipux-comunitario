@@ -96,19 +96,19 @@ $ok2 = $db->conn->Replace("solicitud_firma_ciudadano", $recordsolicitud, $whereS
 if($ok2)
 {
     //Enviar correo al Super Administrador para verificar datos del ciudadano actualizado
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
+    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
     $mail .= "Estimado(a) Administrad@r:";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "Los datos del ciudadano ".limpiar_sql($_POST["ciu_nombre"])." "
             .limpiar_sql($_POST["ciu_apellido"])." han sido modificados por ".$_SESSION["usua_nomb"]." de la instituci&oacute;n "
             .$_SESSION["inst_nombre"].", por favor, verificar la informaci&oacute;n.";
     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
-    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $amd_email, "Administrador", $ruta_raiz);
+    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $amd_email, "Administrador", $ruta_raiz);
 }
 ?>
 
