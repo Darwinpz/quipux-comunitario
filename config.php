@@ -87,6 +87,7 @@ $cuenta_mail_soporte = getenv('cuenta_mail_soporte');
 $cuenta_mail_envio = getenv('cuenta_mail_envio');
 
 // Configuración para la conexión con otros servidores adicionales
+$server_name_url = getenv('server_name_url');
 $nombre_servidor = getenv('nombre_servidor');
 $nombre_servidor_reportes = getenv('nombre_servidor_reportes'); // en caso que los reportes se lo quiera enviar a un servidor diferente
 $nombre_servidor_respaldos = getenv('nombre_servidor_respaldos'); // en caso que los respaldos se requiera sacar en un servidor diferente

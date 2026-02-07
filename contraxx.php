@@ -97,7 +97,7 @@ if ($rs->fields["USUA_NUEVO"] != 0) {
             echo "<h3>Estimado(a) $usr_nombre.<br /><br />";
             echo "Su cuenta ha sido activada. En unos minutos recibir&aacute; un mensaje a su e-mail indicandole su nueva contraseña.<br /><br />";
             echo "Para m&aacute;s informaci&oacute;n comun&iacute;quese con su administrador del sistema.<br /><br />";
-            echo "Gracias por utilizar el Sistema de Gesti&oacute;n Documental QUIPUX.</h3>";
+            echo "Gracias por utilizar el Sistema de Gesti&oacute;n Documental BMV eDoc.</h3>";
             $boton = "<input type='button' value='Aceptar' class='botones' name='btn_aceptar' onClick=\"window.location='login.php'\">";
         } else {
             // Desplegamos el mensaje. no se puede activar cuentas si no tiene un email valido
@@ -119,7 +119,7 @@ if ($rs->fields["USUA_NUEVO"] != 0) {
                 }
             } else {
                 echo "Por favor comun&iacute;quese con su administrador del sistema.<br /><br />";
-                echo "Gracias por utilizar el Sistema de Gesti&oacute;n Documental QUIPUX.</h3>";
+                echo "Gracias por utilizar el Sistema de Gesti&oacute;n Documental BMV eDoc.</h3>";
                 $boton = "<input type='button' value='Aceptar' class='botones' name='btn_aceptar' onClick=\"window.location='login.php'\">";
             }
         }
