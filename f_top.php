@@ -88,7 +88,7 @@ include_once "$ruta_raiz/js/ajax.js";
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr height="74px">
                 <td width="10%" align="rigth" valign="middle">&nbsp;&nbsp;&nbsp;
-                    <img src="<?=$ruta_raiz?>/imagenes/logo_ing2.png" height="50" width="150" alt="BMV eDoc"/></td>
+                    <img src="<?=$ruta_raiz?>/imagenes/logo_ing2.png" height="50" width="150" alt="Quipux"/></td>
                 <td width="70%">
                     <h2>Instituto Superior Tecnológico Bolivar Madero Vargas</h2>
                 </td>

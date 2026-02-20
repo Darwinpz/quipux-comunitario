@@ -71,17 +71,17 @@ $db->conn->query($sqlUp);
 $rs_new=$db->conn->Execute($sql);
 //$ciud->grabar_log_tabla('LOG_USR_CIUDADANOS',$rs_old, $rs_new, $_SESSION['usua_codi'],4);
 
-$mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
-$mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
+$mail = "<html><title>Informaci&oacute;n Quipux</title>";
+$mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
 $mail .= "Estimado(a) $usr_nombreOri.<br /><br />";
 $mail .= "Los cambios solicitados a la informaci&oacute;n de su usuario han sido rechazados.
           Por favor comuníquese con $cuenta_mail_soporte solicitando la aprobación de su solicitud de cambio de información.";
-$mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
+$mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
 $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
 $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
 $mail .= "</body></html>";
 if ($usr_emailOri)
-enviarMail($mail, "BMV eDoc: Actualización de datos.", $usr_emailOri, $usr_nombreOri, $ruta_raiz);
+enviarMail($mail, "Quipux: Actualización de datos.", $usr_emailOri, $usr_nombreOri, $ruta_raiz);
 
 
 ?>

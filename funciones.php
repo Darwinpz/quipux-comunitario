@@ -51,9 +51,9 @@ function enviar_mail_intento_ataque($asunto, $cadena) {
     $header = 'MIME-Version: 1.0' . "\r\n";
     $header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
     $header .= "To: " . $mail_destino . "\r\n";
-    $header .= "From: BMV eDoc <adm@bmv.edu.ec>" . "\r\n";
+    $header .= "From: Quipux <soporte@informatica.gob.ec>" . "\r\n";
 
-    ini_set('sendmail_from', "adm@bmv.edu.ec");
+    ini_set('sendmail_from', "soporte@informatica.gob.ec");
     //mail($mail_destino, $asunto, $mensaje, $header); //mail command :)
 
     return;
@@ -67,7 +67,7 @@ function limpiar_numero($numero) {
     $flag_punto = false;
     $cadena = "";
     if (ltrim($numero, "0123456789.-") != "") {
-        enviar_mail_intento_ataque("BMV eDoc: NOTIFICACION INTENTO DE ATAQUE - TEXTO INTRODUCIDO EN CAMPO NUMERICO", $cadena);
+        enviar_mail_intento_ataque("QUIPUX: NOTIFICACION INTENTO DE ATAQUE - TEXTO INTRODUCIDO EN CAMPO NUMERICO", $cadena);
     }
     for ($i=0; $i<strlen($numero); $i++){
         $num = substr($numero,$i,1);
@@ -256,7 +256,7 @@ function enviarMail($mensaje, $asunto, $destinatario_ori, $nombre_dest="", $ruta
             //$email = $para; //recipient
             $subject = $asunto;
 
-            $despedida = "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
+            $despedida = "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
             $despedida .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
             $despedida .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
 
