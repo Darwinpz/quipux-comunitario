@@ -62,7 +62,7 @@ if ($accion==1) {
     $flag_copiar_contrasena = true;
 
     $ciu_nuevo = 0;
-    $mensajeCorreo = "Se ha creado un usuario en el sistema QUIPUX como ciudadano con la siguiente información:";
+    $mensajeCorreo = "Se ha creado un usuario en el sistema BMV eDoc como ciudadano con la siguiente información:";
 } else {
 
     // Valido el cambio de contraseña segun la cedula actual del usuario
@@ -154,7 +154,6 @@ else
    
 }
 
-
 //Datos del usuario que modifico al ciudadano la ultima ves.
 $record["USUA_CODI_ACTUALIZA"] = $_SESSION['usua_codi'];
 $record["CIU_FECHA_ACTUALIZA"] = "CURRENT_TIMESTAMP";
@@ -194,8 +193,8 @@ if ($ciu_nuevo==0 and trim($ciu_email)!="") {
 
 if (trim($ciu_email)!="") {
     
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "Estimado(a) $ciu_nombre $ciu_apellido.<br /><br />";
     $mail .= $mensajeCorreo;
     $mail .= "<br /><br />";
@@ -213,15 +212,15 @@ if (trim($ciu_email)!="") {
               
               </table>";
     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
-              ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+              ingresando a <a href='$server_name_url' target='_blank'>$server_name_url</a>";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
     if ($ciu_nuevo==1)
-        enviarMail($mail, "Quipux: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
+        enviarMail($mail, "BMV eDoc: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
     else
-        enviarMail($mail, "Quipux: Creación de Ciudadano.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
+        enviarMail($mail, "BMV eDoc: Creación de Ciudadano.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
 }
 
 if (isset($_POST["ciu_codigo_eliminar"])) {
@@ -297,23 +296,23 @@ if (isset($_POST["ciu_codigo_eliminar"])) {
         
         
 
-        $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-        $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+        $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+        $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
         $mail .= "Estimado(a) $ciu_nombre $ciu_apellido.<br /><br />";
         $mail .= "Se ha unificado la información de los usuarios &quot;$old_cedula&quot; y &quot;$tmp_cedula&quot; en uno solo.<br /><br />";
         $mail .= "Todos los documentos pertenecientes al usuario &quot;$old_cedula&quot; fueron movidos a las bandejas del usuario &quot;$tmp_cedula&quot; y el usuario &quot;$old_cedula&quot; ha sido desactivado.<br /><br />";
         $mail .= "Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
-                  ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-        $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                  ingresando a <a href='$server_name_url' target='_blank'>$server_name_url</a>";
+        $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMB eDoc.";
         $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
         $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
         $mail .= "</body></html>";
         if (trim($ciu_email)!="")
             if ($grabar_ciu==1)
-            enviarMail($mail, "Quipux: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
+            enviarMail($mail, "BMV eDoc: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
         if (trim($rs->fields["CIU_EMAIL"])!="" && $rs->fields["CIU_EMAIL"]!=$ciu_email)
                  if ($grabar_ciu==1)
-            enviarMail($mail, "Quipux: Actualización de datos.", $rs->fields["CIU_EMAIL"], "$ciu_nombre $ciu_apellido", $ruta_raiz);
+            enviarMail($mail, "BMV eDoc: Actualización de datos.", $rs->fields["CIU_EMAIL"], "$ciu_nombre $ciu_apellido", $ruta_raiz);
  
 
     }
