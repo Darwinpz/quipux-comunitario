@@ -347,11 +347,11 @@
         $titulo_anterior=trim($rs->fields["USUA_TITULO"]);
         //ARMAR EL MAIL
         if ($_POST['inst_codidest']==0)
-            $asuntoE="Quipux: Modificacion Ciudadano";
+            $asuntoE="BMV eDoc: Modificacion Ciudadano";
                 else
-            $asuntoE="Quipux: Modificacion Funcionario";
-        $mail = "<html><title>Notificaci&oacute;n Quipux</title>";
-        $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+            $asuntoE="BMV eDoc: Modificacion Funcionario";
+        $mail = "<html><title>Notificaci&oacute;n BMV eDoc</title>";
+        $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
         $mail .= "Estimado Administrador.<br/><br/>";
         $mail .= "Se sugiere tomar en cuenta la modificaci&oacute;n realizada  en opciones de impresión en el documento que se está elaborando en $institucion: <br><br>";
         $mail .= " Documento número: <b>".$textrad."</b><br><br>";
@@ -375,7 +375,7 @@
         $mail .= " Apellido (se añadió) &quot;<b>".trim($_POST['txt_opcFirmantes'])."</b>&quot;,<br>";        
         $mail .= "<br><br>Nota: Adicionalmente se solicita verificar las faltas ortogr&aacute;ficas de cada uno de los campos ingresados para los funcionarios de su Instituci&oacute;n.<br />";
         $mail .= "<br /><br />Saludos cordiales,<br /><br />";
-        $mail .= "Soporte Quipux<br /><br />";
+        $mail .= "Soporte BMV eDoc<br /><br />";
         $mail .= "<br><br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
         $mail .= "<br>Servidor: ".$nombre_servidor;
         $mail .= "</body></html>";

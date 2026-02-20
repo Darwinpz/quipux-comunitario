@@ -109,8 +109,8 @@ function eliminarDocumento($radicados, $usua_codi, $observa)
 
             $usr_dest = ObtenerDatosUsuario($rs->fields["RADI_USUA_ACTU"],$this->db);
             if ($radicado["estado"]==1) $bandeja = "en Elaboraci&oacute;n"; else $bandeja = "Recibidos";
-            $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-            $mail .= "<body><center><h1>QUIPUX</h1><br><h2>Sistema de Gesti&oacute;n Documental</h2></center>";
+            $mail = "<html><title>Informaci&oacute;n BNV eDoc</title>";
+            $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
             $mail .= "<br><br>Estimado(a):<br><br>".$usr_dest["abr_titulo"] . " " . $usr_dest["nombre"] . "<br>" . $usr_dest["cargo"];
             $mail .= "<br><br>El funcionario ".$usr_actu["abr_titulo"] . " " . $usr_actu["nombre"] .
                      ", ha eliminado el documento No. " . $radi["radi_nume_text"] .
@@ -1665,8 +1665,8 @@ function buscarFechaTareaHija($tarea_codi,$fecha_maxima_tram,$tipo){
             $radicado = ObtenerDatosRadicado ($radi_nume, $this->db);
 
             $asunto = " - ".$radicado["radi_asunto"];
-            $mail_body = "<html><title>Informaci&oacute;n Quipux</title>";
-            $mail_body .= "<body><center><h2>Sistema de Gesti&oacute;n Documental Quipux</h2><br><br></center>";
+            $mail_body = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+            $mail_body .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
             $mail_body .= "Estimado(a):<br><br>".$dest["abr_titulo"] . " " . $dest["nombre"] . "<br>" . $dest["cargo"]. "<br><br>";
 
 
@@ -1837,7 +1837,7 @@ function buscarFechaTareaHija($tarea_codi,$fecha_maxima_tram,$tipo){
                     return;
                     break;
             }
-            $mail_body .= "<br><br>Saludos cordiales,<br><br>Soporte Quipux.";
+            $mail_body .= "<br><br>Saludos cordiales,<br><br>Soporte BMV eDoc.";
             $mail_body .= "<br><br><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
             $mail_body .= "<br>Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
             $mail_body .= "</body></html>";
@@ -1848,10 +1848,10 @@ function buscarFechaTareaHija($tarea_codi,$fecha_maxima_tram,$tipo){
                 $header  = 'MIME-Version: 1.0' . "\r\n";
                 $header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
                 $header .= "To: ".$dest["titulo"] . " " . $dest["nombre"] . " <" . $destinatario . ">" . "\r\n";
-                $header .= "From: Quipux <$cuenta_mail_envio>" . "\r\n";
+                $header .= "From: BMV eDoc <$cuenta_mail_envio>" . "\r\n";
 
                 $email = $destinatario; //recipient
-                $subject = "Quipux: $nombre_accion $asunto"; //asunto
+                $subject = "BMV eDoc: $nombre_accion $asunto"; //asunto
 //echo "$subject<br>$mail_body<hr>";
                 ini_set('sendmail_from', "$cuenta_mail_envio");
                 mail($email, $subject, $mail_body, $header);

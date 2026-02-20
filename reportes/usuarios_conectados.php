@@ -86,14 +86,14 @@ include_once "$ruta_raiz/js/ajax.js";
 
 
     function ver_usuarios_por_institucion(inst_codi) {
-        titulo = 'N&uacute;mero de usuarios conectados al Sistema &quot;Quipux&quot; por Instituci&oacute;n';
+        titulo = 'N&uacute;mero de usuarios conectados al Sistema &quot;BMV eDoc&quot; por Instituci&oacute;n';
         fjs_popup_activar (titulo, 'usuarios_conectados_por_institucion.php', 'institucion='+inst_codi);
     }
 </script>
 
 <?
 
-echo "<body><center><br><h3>N&uacute;mero de usuarios conectados al Sistema &quot;Quipux&quot;</h3><h5>Fecha: $fecha</h5><br>";
+echo "<body><center><br><h3>N&uacute;mero de usuarios conectados al Sistema &quot;BMV eDoc&quot;</h3><h5>Fecha: $fecha</h5><br>";
 echo "<table border='1' width='65%'><tr><th>&nbsp;</th><th>Instituci&oacute;n</th><th>N&uacute;mero de Usuarios</th></tr>";
 $i = 0;
 $total = 0;

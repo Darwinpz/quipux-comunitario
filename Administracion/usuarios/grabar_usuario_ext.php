@@ -178,8 +178,8 @@ if ($ciu_nuevo==0 and trim($ciu_email)!="") {
 }
 
 if (isset($pagina_anterior) and trim($ciu_email)!="") {
-    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
     $mail .= "Estimado(a) $ciu_nombre $ciu_apellido.<br /><br />";
     $mail .= "Se han realizado los siguientes cambios en la informaci&oacute;n personal de su usuario:<br /><br />";
     $mail .= "<table border='0'>
@@ -195,11 +195,11 @@ if (isset($pagina_anterior) and trim($ciu_email)!="") {
               </table>";
     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
     $mail .= "</body></html>";
-    enviarMail($mail, "Quipux: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
+    enviarMail($mail, "BMV eDoc: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
 }
 
 if (isset($_POST["ciu_codigo_eliminar"])) {
@@ -254,23 +254,23 @@ if (isset($_POST["ciu_codigo_eliminar"])) {
 
         $ok1 = $db->conn->Replace("CIUDADANO", $record, "CIU_CODIGO", false,false,true,false);
 
-        $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-        $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+        $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+        $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
         $mail .= "Estimado(a) $ciu_nombre $ciu_apellido.<br /><br />";
         $mail .= "Se ha unificado la información de los usuarios &quot;$old_cedula&quot; y &quot;$tmp_cedula&quot; en uno solo.<br /><br />";
         $mail .= "Todos los documentos pertenecientes al usuario &quot;$old_cedula&quot; fueron movidos a las bandejas del usuario &quot;$tmp_cedula&quot; y el usuario &quot;$old_cedula&quot; ha sido desactivado.<br /><br />";
         $mail .= "Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
                   ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-        $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+        $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
         $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
         $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
         $mail .= "</body></html>";
         if (trim($ciu_email)!="")
             if ($grabar_ciu==1)
-            enviarMail($mail, "Quipux: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
+            enviarMail($mail, "BMV eDoc: Actualización de datos.", $ciu_email, "$ciu_nombre $ciu_apellido", $ruta_raiz);
         if (trim($rs->fields["CIU_EMAIL"])!="" && $rs->fields["CIU_EMAIL"]!=$ciu_email)
                  if ($grabar_ciu==1)
-            enviarMail($mail, "Quipux: Actualización de datos.", $rs->fields["CIU_EMAIL"], "$ciu_nombre $ciu_apellido", $ruta_raiz);
+            enviarMail($mail, "BMV eDoc: Actualización de datos.", $rs->fields["CIU_EMAIL"], "$ciu_nombre $ciu_apellido", $ruta_raiz);
     }
 }
 

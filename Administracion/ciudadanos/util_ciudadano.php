@@ -293,70 +293,70 @@ class Ciudadano {
               switch ($accion)
               {
                 case 'rechazada':
-                    $mail = "<html><title>Informaci&oacute;n Quipux</title>";                    
-                    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+                    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";                    
+                    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
                     $mail .= "Estimado(a) Ciudadano(a): <br><br/>";
                     $mail .= "La solicitud del ciudadano(a) ".$ciu_nombre." enviada a la instituci&oacute;n "
                             .$institucion.", ha sido <b>Rechazada</b>.";
                     $mail .= "<br /><br />Por favor verifique las observaciones de la solicitud y envie nuevamente al cumplir con lo solicitado.";
                     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$ciu_cedula&quot;
                               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
                     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
                     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
                     $mail .= "</body></html>";    
-                    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, $ciu_nombre, $ruta_raiz);                    
+                    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, $ciu_nombre, $ruta_raiz);                    
                     break;
                 case 'aceptada':
                     //Enviar correo al Super Administrador para verificar datos del ciudadano actualizado
-                    $mail = "<html><title>Informaci&oacute;n Quipux</title>";                    
-                    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+                    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";                    
+                    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
                     $mail .= "Estimado(a) Ciudadano(a): <br><br/><br/>";
                     $mail .= "La solicitud del ciudadano(a) ".$ciu_nombre." enviada a la instituci&oacute;n "
                             .$institucion.", ha sido <b>Aceptada</b>.";    
                     $mail .= "<br /><br />Por favor, para revisar la informaci&oacute;n. ingrese a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
                     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
                     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
                     $mail .= "</body></html>";
-                    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, $ciu_nombre, $ruta_raiz);
+                    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, $ciu_nombre, $ruta_raiz);
                     break;
                 case 'enviar':
                     //El ciudadano envia correo Al administrador
-                    $mail = "<html><title>Informaci&oacute;n Quipux</title>";                    
-                    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+                    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";                    
+                    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
                     $mail .= "Estimado(a) Administrad@r: <br><br/><br/>";
                     $mail .= "Los datos del ciudadano ".$ciu_nombre." han sido modificados por ".$ciu_nombre." "
                             .$institucion.", por favor verificar la informaci&oacute;n ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
                     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
                     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
                     $mail .= "</body></html>";
-                    enviarMail($mail, "Quipux: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, "Administrador", $ruta_raiz);
+                    enviarMail($mail, "BMV eDoc: Solicitud para generar y firmar documentos por parte de un ciudadano.", $emailDestino, "Administrador", $ruta_raiz);
                     break;
                 case 'mod_datos_ciu':
                     //El ciudadano envia correo Al administrador
-                    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
-                    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+                    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
+                    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
                     $mail .= "Estimado(a) $ciu_nombre..<br /><br />";
                     $mail .= "Los cambios solicitados a la informaci&oacute;n de su usuario han sido rechazados.
                               Por favor acerquese a la instituci&oacute;n &quot;$institucion&quot;, en donde fue registrado,
                               para que un funcionario de la misma actualice su informaci&oacute;n.";
-                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
                     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
                     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
                     $mail .= "</body></html>";
                     break;
                 case 'ciu_grabar':
                     //Enviar correo al Super Administrador para verificar datos del ciudadano actualizado
-                    $mail = "<html><title>Informaci&oacute;n Quipux</title>";
+                    $mail = "<html><title>Informaci&oacute;n BMV eDoc</title>";
                     $mail .= "Estimado(a) Administrad@r:";
-                    $mail .= "<body><center><h1>QUIPUX</h1><br /><h2>Sistema de Gesti&oacute;n Documental</h2><br /><br /></center>";
+                    $mail .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
                     $mail .= "Los datos del ciudadano ".$ciu_nombre." han sido modificados por ".$_SESSION["usua_nomb"]." de la instituci&oacute;n "
                             .$_SESSION["inst_nombre"].", por favor, verificar la informaci&oacute;n.";
                     $mail .= "<br /><br />Le recordamos que para acceder al sistema deber&aacute; hacerlo con el usuario &quot;$tmp_cedula&quot;
                               ingresando a <a href='$nombre_servidor' target='_blank'>$nombre_servidor</a>";
-                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte Quipux.";
+                    $mail .= "<br /><br />Saludos cordiales,<br /><br />Soporte BMV eDoc.";
                     $mail .= "<br /><br /><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
                     $mail .= "<br />Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
                     $mail .= "</body></html>";
