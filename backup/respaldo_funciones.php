@@ -440,13 +440,13 @@ function EnviarCorreo($accion, $destinatario, $remitente, $datos, $ruta_raiz, $d
             */
             if($accion == 9){ //Acción de envío de correo a soporte@informatica.gob.ec
                 $asunto = " - Solicitud para Descarga de Respaldo ".$datos["resp_soli_codi"];
-                $mail_body = "<html><title>Informaci&oacute;n BMV eDoc</title>";
-                $mail_body .= "<body><center><h2>Sistema de Gesti&oacute;n Documental BMV eDoc</h2><br><br></center>";
+                $mail_body = "<html><title>Informaci&oacute;n Quipux</title>";
+                $mail_body .= "<body><center><h2>Sistema de Gesti&oacute;n Documental Quipux</h2><br><br></center>";
                 $mail_body .= "Estimado:<br>Equipo de Soporte<br><br>";
             }else{
                  $asunto = " - Solicitud de Respaldo ".$datos["resp_soli_codi"];
-                $mail_body = "<html><title>Informaci&oacute;n BMV eDoc</title>";
-                $mail_body .= "<body><center><img src='$server_name_url/imagenes/logo_ing2.png' alt='BMV - eDoc' height='80' /><br /><br /><h2>Sistema de Gesti&oacute;n Documental - Bolivar Madero Vargas</h2><br /><br /></center>";
+                $mail_body = "<html><title>Informaci&oacute;n Quipux</title>";
+                $mail_body .= "<body><center><h2>Sistema de Gesti&oacute;n Documental Quipux</h2><br><br></center>";
                 $mail_body .= "Estimado(a):<br><br>".$dest["abr_titulo"] . " " . $dest["nombre"] . "<br>" . $dest["cargo"]. "<br><br>";
             }
 
@@ -534,7 +534,7 @@ function EnviarCorreo($accion, $destinatario, $remitente, $datos, $ruta_raiz, $d
             }
         }
         
-        $mail_body .= "<br><br>Saludos cordiales,<br><br>Soporte BMV eDoc.";
+        $mail_body .= "<br><br>Saludos cordiales,<br><br>Soporte Quipux.";
         $mail_body .= "<br><br><b>Nota: </b>Este mensaje fue enviado autom&aacute;ticamente por el sistema, por favor no lo responda.";
         $mail_body .= "<br>Si tiene alguna inquietud respecto a este mensaje, comun&iacute;quese con <a href='mailto:$cuenta_mail_soporte'>$cuenta_mail_soporte</a>";
         $mail_body .= "</body></html>";
@@ -543,9 +543,9 @@ function EnviarCorreo($accion, $destinatario, $remitente, $datos, $ruta_raiz, $d
             $header  = 'MIME-Version: 1.0' . "\r\n";
             $header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
             //$header .= "To: ".$dest["titulo"] . " " . $dest["nombre"] . " <" . $var_correo . ">" . "\r\n";
-            $header .= "From: BMV eDoc <$cuenta_mail_envio>" . "\r\n";
+            $header .= "From: Quipux <$cuenta_mail_envio>" . "\r\n";
             $email = $cuenta_mail_respaldo; //recipient
-            $subject = "BMV eDoc: $nombre_accion $asunto"; //asunto
+            $subject = "Quipux: $nombre_accion $asunto"; //asunto
             ini_set('sendmail_from', "$cuenta_mail_envio");
             mail($email, $subject, $mail_body, $header);
             //echo "Correo " . $email . "<br>" . $subject . "<br>" . $mail_body . "<br>" . $header;
@@ -556,9 +556,9 @@ function EnviarCorreo($accion, $destinatario, $remitente, $datos, $ruta_raiz, $d
                 $header  = 'MIME-Version: 1.0' . "\r\n";
                 $header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
                 $header .= "To: ".$dest["titulo"] . " " . $dest["nombre"] . " <" . $var_correo . ">" . "\r\n";
-                $header .= "From: BMV eDoc <$cuenta_mail_envio>" . "\r\n";
+                $header .= "From: Quipux <$cuenta_mail_envio>" . "\r\n";
                 $email = $var_correo; //recipient
-                $subject = "BMV eDoc: $nombre_accion $asunto"; //asunto
+                $subject = "Quipux: $nombre_accion $asunto"; //asunto
                 ini_set('sendmail_from', "$cuenta_mail_envio");
                 mail($email, $subject, $mail_body, $header);
                 //echo "Correo " . $email . "<br>" . $subject . "<br>" . $mail_body . "<br>" . $header;

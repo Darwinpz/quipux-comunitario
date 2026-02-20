@@ -54,7 +54,7 @@ $rs = $db->query($sql);
 
 $html = "<html>
 <head>
-    <title>.: BMV eDoc - HOJA DE RUTA :.</title>
+    <title>.: QUIPUX - HOJA DE RUTA :.</title>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 </head>
 <body>

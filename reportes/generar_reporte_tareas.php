@@ -37,7 +37,7 @@ $verrad = $_GET["verrad"];
 
 $doc_pdf = "<html>
 <head>
-<title>.: BMV eDoc - TAREAS :.</title>
+<title>.: QUIPUX - TAREAS :.</title>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 </head>
 <body><br>";

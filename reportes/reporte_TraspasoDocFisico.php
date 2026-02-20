@@ -83,7 +83,7 @@ if (isset($_GET['verrad'])){
     //creacion del pdf
     $cabecerapdf = '<html>
                 <head>
-                 <title>.: BMV eDoc - VISTA PREVIA :.</title>
+                 <title>.: QUIPUX - VISTA PREVIA :.</title>
                  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 </head>
                 <body style="margin: 5 20 30 5;">';
